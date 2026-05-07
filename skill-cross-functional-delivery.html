@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross-functional Delivery — Alexandre Leblanc</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --green: #1D9E75;
+    --green-dark: #0F6E56;
+    --green-light: #E1F5EE;
+    --dark: #1a1f2e;
+    --dark-panel: #14192a;
+    --text-primary: #1a1f2e;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f9fafb;
+    --white: #ffffff;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --accent: #1D9E75;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+  .nav-logo span { color: var(--green); }
+  .nav-back {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-muted); text-decoration: none;
+    font-weight: 500; transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--green); }
+
+  .hero {
+    background: var(--dark-panel);
+    padding: 7rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 760px; margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(29,158,117,0.15);
+    color: #5DCAA5;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(29,158,117,0.25);
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; color: white;
+    letter-spacing: -1px; line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero-tagline {
+    font-size: 1.1rem; color: #9ca3af;
+    border-left: 3px solid rgba(29,158,117,0.5);
+    padding-left: 1rem; line-height: 1.6;
+    max-width: 560px;
+  }
+
+  main {
+    max-width: 760px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .section-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+    border-left: 3px solid var(--accent);
+    transition: box-shadow 0.2s;
+  }
+  .section-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .section-card h3 {
+    font-size: 1rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-card h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .section-card p {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .nav-skills {
+    max-width: 760px; margin: 0 auto;
+    padding: 0 2rem 3rem;
+  }
+  .nav-skills h4 {
+    font-size: 11px; font-weight: 600;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 1rem;
+  }
+  .skill-nav-grid {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .skill-nav-link {
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    background: white; border: 1px solid var(--border);
+    color: var(--text-muted); text-decoration: none;
+    transition: all 0.2s;
+  }
+  .skill-nav-link:hover, .skill-nav-link.active {
+    background: var(--green-light);
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  footer {
+    background: var(--dark-panel);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem; text-align: center;
+    color: #6b7280; font-size: 13px;
+  }
+  footer span { color: var(--green); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">AL<span>.</span></a>
+  <a href="index.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Back to portfolio
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><i class="ti ti-users-group" aria-hidden="true"></i> How I work</div>
+    <h1><span>Cross-functional Delivery</span></h1>
+    <p class="hero-tagline">Shipping together, across every boundary</p>
+  </div>
+</div>
+
+<main>
+
+        <div class="section-card">
+          <h3>The real challenge</h3>
+          <p>Cross-functional delivery fails not because of technical problems but because of misaligned incentives, unclear ownership, and invisible dependencies. My job is to make all three visible before they become blockers.</p>
+        </div>
+        <div class="section-card">
+          <h3>DACI for decision clarity</h3>
+          <p>I use DACI (Driver, Approver, Contributor, Informed) on every significant decision. It sounds administrative but it eliminates the most common failure mode: everyone thinks someone else is making the call. When ownership is explicit, decisions are faster and reversals are rarer.</p>
+        </div>
+        <div class="section-card">
+          <h3>Dependency mapping</h3>
+          <p>At the start of every program, I run a dependency mapping session with all team leads. We map every cross-team dependency on a shared board, assign an owner and a due date, and review it weekly. A dependency without an owner is a future incident.</p>
+        </div>
+        <div class="section-card">
+          <h3>Communication cadence</h3>
+          <p>Weekly written status update (not a meeting) sent to all stakeholders: what shipped, what's blocked, what's at risk, what I need from them. Async-first for updates, sync for decisions. This reduces meeting load by ~40% while keeping everyone aligned.</p>
+        </div>
+        <div class="section-card">
+          <h3>Real example</h3>
+          <p>At Datachain, I coordinated engineering, QA, and SRE/ops teams split across Tokyo and European timezones for the IBC bridge launch. I introduced a shared war room channel, a daily async update template, and a pre-launch checklist co-owned by all three teams. Result: first bridge deployed in 12 months with 0 critical production incidents.</p>
+        </div>
+</main>
+
+<div class="nav-skills">
+  <h4>Other skills</h4>
+  <div class="skill-nav-grid">
+    <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
+    <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
+    <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
+    <a href="skill-experimentation.html" class="skill-nav-link ">Experimentation</a>
+    <a href="skill-cross-functional-delivery.html" class="skill-nav-link active">Cross-functional Delivery</a>
+    <a href="skill-stakeholder-management.html" class="skill-nav-link ">Stakeholder Management</a>
+    <a href="skill-data-driven-growth.html" class="skill-nav-link ">Data-driven Growth</a>
+    <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
+    <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
+    <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+  </div>
+</div>
+
+<footer>
+  <p>Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+</footer>
+</body>
+</html>
