@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stakeholder Management — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VE4EQ9F8WT');
+</script>
 <style>
   :root {
     --green: #1D9E75;
@@ -23,142 +31,34 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
   .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
   .nav-logo span { color: var(--green); }
-  .nav-back {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    font-weight: 500; transition: color 0.2s;
-  }
+  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-back:hover { color: var(--green); }
-
-  .hero {
-    background: var(--dark-panel);
-    padding: 7rem 2rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 760px; margin: 0 auto;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(29,158,117,0.15);
-    color: #5DCAA5;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(29,158,117,0.25);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; color: white;
-    letter-spacing: -1px; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
+  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
   .hero h1 span { color: var(--green); }
-  .hero-tagline {
-    font-size: 1.1rem; color: #9ca3af;
-    border-left: 3px solid rgba(29,158,117,0.5);
-    padding-left: 1rem; line-height: 1.6;
-    max-width: 560px;
-  }
-
-  main {
-    max-width: 760px; margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .section-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    border-left: 3px solid var(--accent);
-    transition: box-shadow 0.2s;
-  }
-  .section-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-card h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .section-card p {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  .nav-skills {
-    max-width: 760px; margin: 0 auto;
-    padding: 0 2rem 3rem;
-  }
-  .nav-skills h4 {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .skill-nav-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-nav-link {
-    font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 20px;
-    background: white; border: 1px solid var(--border);
-    color: var(--text-muted); text-decoration: none;
-    transition: all 0.2s;
-  }
-  .skill-nav-link:hover, .skill-nav-link.active {
-    background: var(--green-light);
-    border-color: var(--green);
-    color: var(--green-dark);
-  }
-
-  footer {
-    background: var(--dark-panel);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem; text-align: center;
-    color: #6b7280; font-size: 13px;
-  }
+  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
+  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
+  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
   footer span { color: var(--green); }
+  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VE4EQ9F8WT');
-</script>
 </head>
 <body>
 <nav>
@@ -172,7 +72,7 @@
   <div class="hero-inner">
     <div class="hero-tag"><i class="ti ti-hierarchy-2" aria-hidden="true"></i> How I work</div>
     <h1><span>Stakeholder Management</span></h1>
-    <p class="hero-tagline">Turning alignment into momentum</p>
+    <p class="hero-tagline">Turning alignment into momentum — from investors to protocol partners.</p>
   </div>
 </div>
 
@@ -180,29 +80,29 @@
 
         <div class="section-card">
           <h3>My approach</h3>
-          <p>Stakeholder management is not about getting sign-off. It's about building a coalition of people who understand the direction, trust the process, and feel heard even when the answer is no. I map stakeholders by influence and interest, and I tailor my communication accordingly.</p>
+          <p>Stakeholder management is about building a coalition of people who understand the direction, trust the process, and feel heard even when the answer is no. In Web3, stakeholders include not just internal execs and teams but token holders, protocol partners, auditors, and community members — each with different information needs and influence levels.</p>
         </div>
         <div class="section-card">
-          <h3>The stakeholder map</h3>
-          <p>High influence + high interest = manage closely, involve in decisions. High influence + low interest = keep informed, never surprise. Low influence + high interest = leverage as champions and early adopters. Low influence + low interest = standard updates only. I review this map quarterly — stakeholder dynamics shift.</p>
+          <h3>Stakeholder mapping</h3>
+          <p>High influence + high interest = manage closely, involve in decisions. High influence + low interest = keep informed, never surprise. In Web3 this means: protocol partners (high/high), investors and token holders (high/variable), community (medium/high). At Datachain I maintained separate communication channels for banking partners (formal weekly reports), internal leadership (concise weekly written update), and engineering teams (daily async Slack). At SmartNews I mapped 18 stakeholders across 5 teams and executive leadership in Japan and the US.</p>
         </div>
         <div class="section-card">
-          <h3>Managing up</h3>
-          <p>I bring executives two things: early bad news (with options, not just problems) and data-backed recommendations (not requests for permission). I structure every exec update as: situation → complication → question → recommendation → ask. No more than one page or five slides.</p>
+          <h3>Managing up in a Web3 context</h3>
+          <p>Web3 executives and investors expect data-backed confidence, not just effort reporting. I structure every exec update as: situation → complication → question → recommendation → ask. For blockchain-specific risks (audit delays, protocol dependency changes, chain governance votes), I present options with trade-offs rather than problems — and I surface issues early. A 3-week early warning on an audit delay is manageable; a same-week announcement destroys trust.</p>
         </div>
         <div class="section-card">
-          <h3>Managing conflict</h3>
-          <p>When stakeholders disagree, I don't mediate — I reframe. Instead of 'Engineering says X, Sales says Y', I ask 'What outcome are we both trying to achieve?' Usually the conflict is about method, not goal. Getting everyone back to the shared goal dissolves most disagreements.</p>
+          <h3>Managing external protocol partners</h3>
+          <p>At Datachain, the IBC bridge required active coordination with Cosmos ecosystem partners and external chain maintainers. These are not employees — you can't mandate their timelines. I built relationship-first communication: regular technical syncs, shared dependency trackers, and early involvement in our release planning. When an external chain announced an unplanned upgrade, the relationship meant we had 3 weeks notice instead of 3 days.</p>
         </div>
         <div class="section-card">
           <h3>Real example</h3>
-          <p>At SmartNews, I managed stakeholders across 5 teams and 18 people for global Ads programs. I introduced a weekly stakeholder newsletter, quarterly OKR reviews, and a dedicated escalation path for blockers above team level. Stakeholder satisfaction tracked at 8/10 consistently across the program lifecycle.</p>
+          <p>Datachain: weekly stakeholder reporting to banking partners and leadership; satisfaction score 8/10 consistently. SmartNews: managed stakeholders across 5 Ads teams + Japan/US executive leadership; introduced weekly newsletter, quarterly OKR reviews, and a structured escalation path. Hakuhodo: navigated Japanese corporate stakeholder culture (nemawashi, ringi) for a 3-year roadmap and ¥100M R&D budget. Wargaming: coordinated between Tokyo HQ, regional marketing, PR, and support teams for TGS, PAX, and Gamescom launches.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4>Other skills</h4>
-  <div class="skill-nav-grid">
+  <h4>All skills</h4>
+      <div class="skill-nav-grid">
     <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
     <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
     <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
@@ -213,6 +113,8 @@
     <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
     <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
     <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+    <a href="skill-web3-product.html" class="skill-nav-link ">Web3 Product Management</a>
+    <a href="skill-defi-delivery.html" class="skill-nav-link ">DeFi / Protocol Delivery</a>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cross-functional Delivery — Alexandre Leblanc</title>
+<title>DeFi / Protocol Delivery — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
@@ -27,7 +27,7 @@
     --white: #ffffff;
     --radius: 12px;
     --radius-sm: 8px;
-    --accent: #1D9E75;
+    --accent: #0F6E56;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -70,33 +70,33 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-users-group" aria-hidden="true"></i> How I work</div>
-    <h1><span>Cross-functional Delivery</span></h1>
-    <p class="hero-tagline">Shipping together across every boundary — timezones, chains, and teams.</p>
+    <div class="hero-tag"><i class="ti ti-link" aria-hidden="true"></i> How I work</div>
+    <h1><span>DeFi / Protocol Delivery</span></h1>
+    <p class="hero-tagline">Delivering blockchain infrastructure that financial systems depend on.</p>
   </div>
 </div>
 
 <main>
 
         <div class="section-card">
-          <h3>The real challenge</h3>
-          <p>Cross-functional delivery fails not because of technical problems but because of misaligned incentives, unclear ownership, and invisible dependencies. In Web3, this is amplified: Engineering, Security, QA, SRE, Legal (token compliance), and external protocol teams all have veto power on a release. My job is to make ownership and dependencies explicit before they become blockers.</p>
+          <h3>What protocol delivery means</h3>
+          <p>Delivering a DeFi protocol or blockchain bridge is fundamentally different from shipping a SaaS feature. There is no rollback on a live blockchain. A smart contract bug can result in permanent fund loss. External chains you depend on can change their specs without warning. The PM role in protocol delivery is equal parts product owner, program manager, risk manager, and ecosystem diplomat.</p>
         </div>
         <div class="section-card">
-          <h3>DACI for decision clarity</h3>
-          <p>I apply DACI (Driver, Approver, Contributor, Informed) on every significant decision. At SmartNews I rolled this out across 5 Ads teams — it eliminated the most common failure mode: everyone thinks someone else is making the call. At Datachain, DACI was critical for mainnet release decisions involving Engineering, SRE, and external IBC protocol maintainers.</p>
+          <h3>The IBC bridge at Datachain</h3>
+          <p>The first IBC inter-chain bridge connecting Ethereum and BNB Chain ecosystems — built for institutional banking use cases. IBC (Inter-Blockchain Communication) is the Cosmos cross-chain standard; adapting it for EVM-compatible chains was a novel technical challenge with no existing playbook. I owned the product definition, roadmap, and delivery coordination. Key milestones: architecture finalization, external security audit, testnet launch, limited mainnet (whitelisted partners), full mainnet. Delivered in 12 months. 0 critical production incidents.</p>
         </div>
         <div class="section-card">
-          <h3>Dependency mapping in Web3</h3>
-          <p>Web3 products have external dependencies traditional products don't: third-party chain upgrades, IBC protocol spec versions, external auditor timelines, wallet compatibility. I map all of these at program start, assign owners, and review weekly. At Datachain, the IBC bridge had dependencies on 3 external chains — any unplanned upgrade by those chains could invalidate our integration. I maintained a live external dependency monitor with weekly status checks.</p>
+          <h3>Delivery framework for protocol products</h3>
+          <p>1. Spec freeze before audit: smart contract specs must be locked before auditors start — scope changes mid-audit reset the clock and cost. 2. Testnet-first: every feature validated on testnet with production-equivalent load before mainnet consideration. 3. Staged mainnet rollout: whitelisted partners → limited open access → full public. 4. Incident response plan: defined before launch, owned by SRE, reviewed by PM. 5. External dependency monitoring: protocol upgrades on connected chains tracked weekly.</p>
         </div>
         <div class="section-card">
-          <h3>Communication cadence</h3>
-          <p>Weekly written status update (not a meeting) sent to all stakeholders: what shipped, what's blocked, what's at risk, what I need. Async-first for updates, sync for decisions. At SmartNews this cut meeting load ~40% while keeping 18 people aligned across 5 teams. At Datachain I ran a daily async war room in Slack: 3 fixed threads (shipped / blocked / at risk) with a 4-hour SLA for blocker response across Tokyo and European timezones.</p>
+          <h3>Working with auditors</h3>
+          <p>Security audits are a critical path item in any DeFi delivery. I treat auditors as design partners, not final reviewers. At Datachain I involved the auditing firm early — sharing the architecture design before code was written, which surfaced 2 design-level concerns that would have been expensive to fix post-audit. Audit timeline: built in as a hard gate (6 weeks) with a 2-week buffer in the plan. No launch pressure can override an open audit finding.</p>
         </div>
         <div class="section-card">
           <h3>Real example</h3>
-          <p>Datachain: coordinated Engineering, QA, SRE, and external IBC maintainers across 2 timezones for the first inter-chain bridge launch. Result: delivered in 12 months, 0 critical production incidents, 0 sprint goal misses over 8 sprints. SmartNews: managed 5 cross-functional Ads teams (18 people) across a global program — team velocity +25% in 2 quarters. Hakuhodo: coordinated internal teams + a 5-person offshore Vietnam team for Pechat hardware/software releases across JP, US, and EU market timelines.</p>
+          <p>Datachain IBC Bridge: 12-month delivery of first EVM-compatible IBC bridge. Role: Senior Project Manager / Product Owner. Coordinated Engineering (Tokyo), QA, SRE/Ops (Europe), external auditors, and IBC protocol maintainers. Wrote 90+ user stories. Ran 2-week sprints, 8 consecutive sprints with 0 goal misses. Pre-deployment checklist: 47 items. Security audit: 0 critical findings on mainnet. Bridge live with institutional banking partners. 0 critical incidents in production over 12+ months.</p>
         </div>
 </main>
 
@@ -107,14 +107,14 @@
     <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
     <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
     <a href="skill-experimentation.html" class="skill-nav-link ">Experimentation</a>
-    <a href="skill-cross-functional-delivery.html" class="skill-nav-link active">Cross-functional Delivery</a>
+    <a href="skill-cross-functional-delivery.html" class="skill-nav-link ">Cross-functional Delivery</a>
     <a href="skill-stakeholder-management.html" class="skill-nav-link ">Stakeholder Management</a>
     <a href="skill-data-driven-growth.html" class="skill-nav-link ">Data-driven Growth</a>
     <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
     <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
     <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
     <a href="skill-web3-product.html" class="skill-nav-link ">Web3 Product Management</a>
-    <a href="skill-defi-delivery.html" class="skill-nav-link ">DeFi / Protocol Delivery</a>
+    <a href="skill-defi-delivery.html" class="skill-nav-link active">DeFi / Protocol Delivery</a>
   </div>
 </div>
 

@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agile / Scrum — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VE4EQ9F8WT');
+</script>
 <style>
   :root {
     --green: #1D9E75;
@@ -23,142 +31,34 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
   .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
   .nav-logo span { color: var(--green); }
-  .nav-back {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    font-weight: 500; transition: color 0.2s;
-  }
+  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-back:hover { color: var(--green); }
-
-  .hero {
-    background: var(--dark-panel);
-    padding: 7rem 2rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 760px; margin: 0 auto;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(29,158,117,0.15);
-    color: #5DCAA5;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(29,158,117,0.25);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; color: white;
-    letter-spacing: -1px; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
+  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
   .hero h1 span { color: var(--green); }
-  .hero-tagline {
-    font-size: 1.1rem; color: #9ca3af;
-    border-left: 3px solid rgba(29,158,117,0.5);
-    padding-left: 1rem; line-height: 1.6;
-    max-width: 560px;
-  }
-
-  main {
-    max-width: 760px; margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .section-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    border-left: 3px solid var(--accent);
-    transition: box-shadow 0.2s;
-  }
-  .section-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-card h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .section-card p {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  .nav-skills {
-    max-width: 760px; margin: 0 auto;
-    padding: 0 2rem 3rem;
-  }
-  .nav-skills h4 {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .skill-nav-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-nav-link {
-    font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 20px;
-    background: white; border: 1px solid var(--border);
-    color: var(--text-muted); text-decoration: none;
-    transition: all 0.2s;
-  }
-  .skill-nav-link:hover, .skill-nav-link.active {
-    background: var(--green-light);
-    border-color: var(--green);
-    color: var(--green-dark);
-  }
-
-  footer {
-    background: var(--dark-panel);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem; text-align: center;
-    color: #6b7280; font-size: 13px;
-  }
+  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
+  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
+  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
   footer span { color: var(--green); }
+  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VE4EQ9F8WT');
-</script>
 </head>
 <body>
 <nav>
@@ -172,37 +72,37 @@
   <div class="hero-inner">
     <div class="hero-tag"><i class="ti ti-refresh" aria-hidden="true"></i> How I work</div>
     <h1><span>Agile / Scrum</span></h1>
-    <p class="hero-tagline">Process that serves the team, not the other way around</p>
+    <p class="hero-tagline">Process that serves the team — not the other way around.</p>
   </div>
 </div>
 
 <main>
 
         <div class="section-card">
-          <h3>My Agile philosophy</h3>
-          <p>Agile is a mindset, not a compliance exercise. The worst teams I've seen are the most 'Scrum-certified' — they follow the ceremonies perfectly and miss the point entirely. The goal is fast learning loops, not perfect process adherence. I adapt ceremonies to team size, maturity, and context.</p>
+          <h3>My philosophy</h3>
+          <p>Agile is a mindset, not a compliance exercise. The worst teams follow ceremonies perfectly and miss the point entirely. The goal is fast learning loops, not process adherence. I adapt the framework to context: a blockchain infrastructure team has different rhythms than an AdTech product team or a hardware IoT team. The principles are constant; the implementation varies.</p>
         </div>
         <div class="section-card">
           <h3>Sprint setup</h3>
-          <p>2-week sprints as default. Sprint goal is written before backlog items are selected — the goal drives the selection, not the other way around. Definition of Done is agreed upfront and includes: code reviewed, tests written, documentation updated, analytics event live, and deployed to staging. No DoD exceptions without explicit team agreement.</p>
+          <p>Two-week sprints. Sprint goal written before backlog items are selected. Definition of Done includes: code reviewed, tests written, documentation updated, analytics event live, deployed to staging — and for blockchain products: testnet validation passed, security checklist reviewed. No DoD exceptions without explicit team agreement. At Datachain this DoD prevented 3 potential mainnet incidents caught in testnet validation.</p>
         </div>
         <div class="section-card">
-          <h3>Ceremonies I keep lean</h3>
-          <p>Planning: 90 min max, goal-first. Daily standup: 15 min, three questions only. Refinement: 60 min/week, async pre-reading required. Review/demo: 45 min, real users or stakeholders present when possible. Retro: 45 min, action items owned and tracked. Total ceremony overhead: ~5 hours per 2-week sprint.</p>
+          <h3>Lean ceremonies</h3>
+          <p>Planning: 90 min max, goal-first. Daily standup: 15 min, three questions only. Refinement: 60 min/week, async pre-reading required. Review/demo: 45 min, real stakeholders present when possible. Retro: 45 min, action items owned and tracked. Total overhead: ~5 hours per 2-week sprint. I cut any ceremony that doesn't change a decision.</p>
         </div>
         <div class="section-card">
-          <h3>Scrum Master mindset</h3>
-          <p>As Scrum Master at Datachain, my focus was not on running meetings but on removing impediments. I kept a live impediment log, reviewed it daily, and measured my own performance by how fast blockers were resolved. Average blocker resolution time: under 48 hours.</p>
+          <h3>Scrum Master at Datachain</h3>
+          <p>As Scrum Master for the IBC bridge program at Datachain, my focus was impediment removal, not meeting facilitation. I kept a live impediment log, reviewed it daily, and measured my performance by blocker resolution speed. Average resolution time: under 48 hours. The most complex blockers were cross-team: Engineering waiting on QA capacity, or SRE waiting on an external chain's API stability — these required escalation, negotiation, and creative sequencing, not just process.</p>
         </div>
         <div class="section-card">
-          <h3>Scaling across teams</h3>
-          <p>At SmartNews I applied Agile processes across 5 teams simultaneously using a lightweight Scrum-of-Scrums: one cross-team sync per week where each team lead shared the top blocker and upcoming dependency. No status updates — only decisions and blockers. Team velocity increased 25% over 2 quarters.</p>
+          <h3>Scaling Agile across teams</h3>
+          <p>At SmartNews I applied Agile processes across 5 Ads product teams simultaneously using a lightweight Scrum-of-Scrums: one cross-team sync per week — top blocker and upcoming dependency per team. No status reports, only decisions and blockers. Team velocity increased 25% over 2 quarters. At Hakuhodo, Agile adoption reduced average feature delivery time by 40% for the Pechat hardware/software release cycle — a hardware context where sprint-level iteration is harder than in pure software.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4>Other skills</h4>
-  <div class="skill-nav-grid">
+  <h4>All skills</h4>
+      <div class="skill-nav-grid">
     <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
     <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
     <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
@@ -213,6 +113,8 @@
     <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
     <a href="skill-agile-scrum.html" class="skill-nav-link active">Agile / Scrum</a>
     <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+    <a href="skill-web3-product.html" class="skill-nav-link ">Web3 Product Management</a>
+    <a href="skill-defi-delivery.html" class="skill-nav-link ">DeFi / Protocol Delivery</a>
   </div>
 </div>
 
