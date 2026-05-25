@@ -1,244 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agile / Scrum — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VE4EQ9F8WT');
+</script>
 <style>
   :root {
-    --green: #1D9E75;
-    --green-dark: #0F6E56;
-    --green-light: #E1F5EE;
-    --dark: #1a1f2e;
-    --dark-panel: #14192a;
-    --text-primary: #1a1f2e;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-    --bg: #f9fafb;
-    --white: #ffffff;
-    --radius: 12px;
-    --radius-sm: 8px;
-    --accent: #1D9E75;
+    --green: #1D9E75; --green-dark: #0F6E56; --green-light: #E1F5EE;
+    --dark: #1a1f2e; --dark-panel: #14192a; --text-primary: #1a1f2e;
+    --text-muted: #6b7280; --border: #e5e7eb; --bg: #f9fafb;
+    --radius: 12px; --radius-sm: 8px; --accent: #1D9E75;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; }
   .nav-logo span { color: var(--green); }
-  .nav-back {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    font-weight: 500; transition: color 0.2s;
-  }
+  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-back:hover { color: var(--green); }
-
-  .hero {
-    background: var(--dark-panel);
-    padding: 7rem 2rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 760px; margin: 0 auto;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(29,158,117,0.15);
-    color: #5DCAA5;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(29,158,117,0.25);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; color: white;
-    letter-spacing: -1px; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .hero h1 span { color: var(--green); }
-  .hero-tagline {
-    font-size: 1.1rem; color: #9ca3af;
-    border-left: 3px solid rgba(29,158,117,0.5);
-    padding-left: 1rem; line-height: 1.6;
-    max-width: 560px;
-  }
-
-  main {
-    max-width: 760px; margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .section-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    border-left: 3px solid var(--accent);
-    transition: box-shadow 0.2s;
-  }
-  .section-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-card h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .section-card p {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  .nav-skills {
-    max-width: 760px; margin: 0 auto;
-    padding: 0 2rem 3rem;
-  }
-  .nav-skills h4 {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .skill-nav-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-nav-link {
-    font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 20px;
-    background: white; border: 1px solid var(--border);
-    color: var(--text-muted); text-decoration: none;
-    transition: all 0.2s;
-  }
-  .skill-nav-link:hover, .skill-nav-link.active {
-    background: var(--green-light);
-    border-color: var(--green);
-    color: var(--green-dark);
-  }
-
-  footer {
-    background: var(--dark-panel);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem; text-align: center;
-    color: #6b7280; font-size: 13px;
-  }
-  footer span { color: var(--green); }
-
   .lang-switcher { display: flex; gap: 4px; align-items: center; }
   .lang-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; transition: all 0.15s; opacity: 0.45; }
   .lang-btn:hover { opacity: 0.8; }
-  .lang-btn.active { opacity: 1; border-color: var(--border); background: rgba(255,255,255,0.08); }
-
+  .lang-btn.active { opacity: 1; border-color: var(--border); background: var(--bg); }
+  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--green); }
+  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
+  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
+  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
+  footer span { color: var(--green); }
+  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
 </style>
 </head>
 <body>
 <nav>
-  <a href="alexandre_leblanc_portfolio.html" class="nav-logo">AL<span>.</span></a>
-  <a href="alexandre_leblanc_portfolio.html#about" class="nav-back">
-    <i class="ti ti-arrow-left" aria-hidden="true"></i> <span id="nav-back-text">Back to portfolio</span>
+  <a href="index.html" class="nav-logo">AL<span>.</span></a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    <button class="lang-btn" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+  </div>
+  <a href="index.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i>
+    <span id="nav-back-text">Back to portfolio</span>
   </a>
 </nav>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-refresh" aria-hidden="true"></i> <span id="how-i-work-text">How I work</span></div>
-    <h1><span>Agile / Scrum</span></h1>
-    <p class="hero-tagline">Process that serves the team, not the other way around</p>
+    <div class="hero-tag">
+      <i class="ti ti-refresh" aria-hidden="true"></i>
+      <span id="how-i-work-text">How I work</span>
+    </div>
+    <h1><span id="hero-title">Agile / Scrum</span></h1>
+    <p class="hero-tagline" id="hero-tagline">Process that serves the team, not the other way around</p>
   </div>
 </div>
 
 <main>
 
         <div class="section-card">
-          <h3>My Agile philosophy</h3>
-          <p>Agile is a mindset, not a compliance exercise. The worst teams I've seen are the most 'Scrum-certified' — they follow the ceremonies perfectly and miss the point entirely. The goal is fast learning loops, not perfect process adherence. I adapt ceremonies to team size, maturity, and context.</p>
+          <h3 data-card-h="agile-scrum-0">My Agile philosophy</h3>
+          <p data-card-p="agile-scrum-0">Agile is a mindset, not a compliance exercise. The worst teams I've seen are the most 'Scrum-certified' — they follow the ceremonies perfectly and miss the point entirely. The goal is fast learning loops, not perfect process adherence. I adapt ceremonies to team size, maturity, and context.</p>
         </div>
         <div class="section-card">
-          <h3>Sprint setup</h3>
-          <p>2-week sprints as default. Sprint goal is written before backlog items are selected — the goal drives the selection, not the other way around. Definition of Done is agreed upfront and includes: code reviewed, tests written, documentation updated, analytics event live, and deployed to staging. No DoD exceptions without explicit team agreement.</p>
+          <h3 data-card-h="agile-scrum-1">Sprint setup</h3>
+          <p data-card-p="agile-scrum-1">2-week sprints as default. Sprint goal is written before backlog items are selected — the goal drives the selection, not the other way around. Definition of Done is agreed upfront and includes: code reviewed, tests written, documentation updated, analytics event live, and deployed to staging. No DoD exceptions without explicit team agreement.</p>
         </div>
         <div class="section-card">
-          <h3>Ceremonies I keep lean</h3>
-          <p>Planning: 90 min max, goal-first. Daily standup: 15 min, three questions only. Refinement: 60 min/week, async pre-reading required. Review/demo: 45 min, real users or stakeholders present when possible. Retro: 45 min, action items owned and tracked. Total ceremony overhead: ~5 hours per 2-week sprint.</p>
+          <h3 data-card-h="agile-scrum-2">Ceremonies I keep lean</h3>
+          <p data-card-p="agile-scrum-2">Planning: 90 min max, goal-first. Daily standup: 15 min, three questions only. Refinement: 60 min/week, async pre-reading required. Review/demo: 45 min, real users or stakeholders present when possible. Retro: 45 min, action items owned and tracked. Total ceremony overhead: ~5 hours per 2-week sprint.</p>
         </div>
         <div class="section-card">
-          <h3>Scrum Master mindset</h3>
-          <p>As Scrum Master at Datachain, my focus was not on running meetings but on removing impediments. I kept a live impediment log, reviewed it daily, and measured my own performance by how fast blockers were resolved. Average blocker resolution time: under 48 hours.</p>
+          <h3 data-card-h="agile-scrum-3">Scrum Master mindset</h3>
+          <p data-card-p="agile-scrum-3">As Scrum Master at Datachain, my focus was not on running meetings but on removing impediments. I kept a live impediment log, reviewed it daily, and measured my own performance by how fast blockers were resolved. Average blocker resolution time: under 48 hours.</p>
         </div>
         <div class="section-card">
-          <h3>Scaling across teams</h3>
-          <p>At SmartNews I applied Agile processes across 5 teams simultaneously using a lightweight Scrum-of-Scrums: one cross-team sync per week where each team lead shared the top blocker and upcoming dependency. No status updates — only decisions and blockers. Team velocity increased 25% over 2 quarters.</p>
+          <h3 data-card-h="agile-scrum-4">Scaling across teams</h3>
+          <p data-card-p="agile-scrum-4">At SmartNews I applied Agile processes across 5 teams simultaneously using a lightweight Scrum-of-Scrums: one cross-team sync per week where each team lead shared the top blocker and upcoming dependency. No status updates — only decisions and blockers. Team velocity increased 25% over 2 quarters.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4 id="other-skills-text">Other skills</h4>
+  <h4 id="all-skills-text">All skills</h4>
   <div class="skill-nav-grid">
-    <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
-    <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
-    <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
-    <a href="skill-experimentation.html" class="skill-nav-link ">Experimentation</a>
-    <a href="skill-cross-functional-delivery.html" class="skill-nav-link ">Cross-functional Delivery</a>
-    <a href="skill-stakeholder-management.html" class="skill-nav-link ">Stakeholder Management</a>
-    <a href="skill-data-driven-growth.html" class="skill-nav-link ">Data-driven Growth</a>
-    <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
-    <a href="skill-agile-scrum.html" class="skill-nav-link active">Agile / Scrum</a>
-    <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+    <a href="skill-ab-testing.html" class="skill-nav-link " data-skill="ab-testing">EN_NAME</a>
+    <a href="skill-agile-scrum.html" class="skill-nav-link active" data-skill="agile-scrum">EN_NAME</a>
+    <a href="skill-cross-functional-delivery.html" class="skill-nav-link " data-skill="cross-functional-delivery">EN_NAME</a>
+    <a href="skill-data-driven-growth.html" class="skill-nav-link " data-skill="data-driven-growth">EN_NAME</a>
+    <a href="skill-execution-excellence.html" class="skill-nav-link " data-skill="execution-excellence">EN_NAME</a>
+    <a href="skill-experimentation.html" class="skill-nav-link " data-skill="experimentation">EN_NAME</a>
+    <a href="skill-go-to-market.html" class="skill-nav-link " data-skill="go-to-market">EN_NAME</a>
+    <a href="skill-okrs.html" class="skill-nav-link " data-skill="okrs">EN_NAME</a>
+    <a href="skill-roadmap-strategy.html" class="skill-nav-link " data-skill="roadmap-strategy">EN_NAME</a>
+    <a href="skill-stakeholder-management.html" class="skill-nav-link " data-skill="stakeholder-management">EN_NAME</a>
   </div>
 </div>
 
 <footer>
-  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project &amp; Product Manager · 2026</p>
 </footer>
+
 
 <script>
 (function() {
-  var UI = {"en": {"back": "Back to portfolio", "how_i_work": "How I work", "other_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026"}, "fr": {"back": "Retour au portfolio", "how_i_work": "Ma méthode", "other_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026"}, "ja": {"back": "ポートフォリオに戻る", "how_i_work": "私の仕事の仕方", "other_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026"}};
+  var T = {"en": {"title": "Agile / Scrum", "tagline": "Process that serves the team, not the other way around", "how_i_work": "How I work", "back": "Back to portfolio", "all_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"agile-scrum-0-h": "My Agile philosophy", "agile-scrum-0-p": "Agile is a mindset, not a compliance exercise. The worst teams I've seen are the most 'Scrum-certified' — they follow the ceremonies perfectly and miss the point entirely. The goal is fast learning loops, not perfect process adherence. I adapt ceremonies to team size, maturity, and context.", "agile-scrum-1-h": "Sprint setup", "agile-scrum-1-p": "2-week sprints as default. Sprint goal is written before backlog items are selected — the goal drives the selection, not the other way around. Definition of Done is agreed upfront and includes: code reviewed, tests written, documentation updated, analytics event live, and deployed to staging. No DoD exceptions without explicit team agreement.", "agile-scrum-2-h": "Ceremonies I keep lean", "agile-scrum-2-p": "Planning: 90 min max, goal-first. Daily standup: 15 min, three questions only. Refinement: 60 min/week, async pre-reading required. Review/demo: 45 min, real users or stakeholders present when possible. Retro: 45 min, action items owned and tracked. Total ceremony overhead: ~5 hours per 2-week sprint.", "agile-scrum-3-h": "Scrum Master mindset", "agile-scrum-3-p": "As Scrum Master at Datachain, my focus was not on running meetings but on removing impediments. I kept a live impediment log, reviewed it daily, and measured my own performance by how fast blockers were resolved. Average blocker resolution time: under 48 hours.", "agile-scrum-4-h": "Scaling across teams", "agile-scrum-4-p": "At SmartNews I applied Agile processes across 5 teams simultaneously using a lightweight Scrum-of-Scrums: one cross-team sync per week where each team lead shared the top blocker and upcoming dependency. No status updates — only decisions and blockers. Team velocity increased 25% over 2 quarters."}}, "fr": {"title": "Agile / Scrum", "tagline": "Un processus au service de l'équipe — pas l'inverse.", "how_i_work": "Ma méthode", "back": "Retour au portfolio", "all_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"agile-scrum-0-h": "Ma philosophie Agile", "agile-scrum-0-p": "L'Agile est un état d'esprit, pas un exercice de conformité. Les pires équipes que j'ai vues sont les plus 'certifiées Scrum' — elles suivent les cérémonies parfaitement et ratent complètement l'essentiel. L'objectif est des boucles d'apprentissage rapides, pas le respect du processus. J'adapte le cadre au contexte : une équipe d'infrastructure blockchain a des rythmes différents d'une équipe produit AdTech ou IoT.", "agile-scrum-1-h": "Mise en place du sprint", "agile-scrum-1-p": "Sprints de 2 semaines. L'objectif du sprint est rédigé avant la sélection des items du backlog — l'objectif guide la sélection. La définition de Done inclut : code revu, tests écrits, documentation à jour, événement analytics live, déployé en staging — et pour les produits blockchain : validation testnet réussie, checklist sécurité revue. Aucune exception sans accord explicite de l'équipe.", "agile-scrum-2-h": "Des cérémonies allégées", "agile-scrum-2-p": "Planning : 90 min max, objectif en premier. Daily standup : 15 min, trois questions uniquement. Refinement : 60 min/semaine, pré-lecture async requise. Review/démo : 45 min, vrais stakeholders présents si possible. Rétro : 45 min, actions possédées et suivies. Charge totale : ~5 heures par sprint de 2 semaines. Je supprime toute cérémonie qui ne change pas une décision.", "agile-scrum-3-h": "Mindset Scrum Master chez Datachain", "agile-scrum-3-p": "En tant que Scrum Master pour le programme IBC bridge chez Datachain, mon focus était la levée des obstacles, pas l'animation des réunions. Je tenais un registre des impediments en temps réel, le revoyais quotidiennement, et mesurais ma performance par la vitesse de résolution des blocages. Délai moyen de résolution : moins de 48 heures.", "agile-scrum-4-h": "Mise à l'échelle de l'Agile sur plusieurs équipes", "agile-scrum-4-p": "Chez SmartNews, j'ai appliqué les processus Agile sur 5 équipes produit Ads simultanément via un Scrum-of-Scrums allégé : un sync inter-équipes par semaine — un blocage principal et une dépendance à venir par équipe. Pas de rapports de statut, uniquement des décisions et des blocages. Vélocité d'équipe +25% en 2 trimestres. Chez Hakuhodo, l'adoption Agile a réduit le délai moyen de livraison feature de 40%."}}, "ja": {"title": "アジャイル / スクラム", "tagline": "チームに奉仕するプロセス — その逆ではなく。", "how_i_work": "私の仕事の仕方", "back": "ポートフォリオに戻る", "all_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026", "cards": {"agile-scrum-0-h": "私のアジャイル哲学", "agile-scrum-0-p": "アジャイルはマインドセットであり、コンプライアンス演習ではありません。私が見てきた最悪のチームは最も「スクラム認定」を受けているチームです。セレモニーを完璧に実行しながら本質を完全に見逃している。目標は高速な学習ループであり、プロセスへの準拠ではない。ブロックチェーンインフラチームはAdTechプロダクトチームやIoTチームとは異なるリズムを持っています。", "agile-scrum-1-h": "スプリント設定", "agile-scrum-1-p": "2週間スプリント。スプリントゴールはバックログアイテムを選択する前に書きます — ゴールが選択を導く。Doneの定義には：コードレビュー済み、テスト作成済み、ドキュメント更新済み、アナリティクスイベントがライブ、ステージングにデプロイ済み — ブロックチェーンプロダクトの場合：テストネット検証合格、セキュリティチェックリスト確認済み。チームの明示的な同意なしに例外なし。", "agile-scrum-2-h": "スリムなセレモニー", "agile-scrum-2-p": "プランニング：最大90分、ゴールから始める。デイリースタンドアップ：15分、3つの質問のみ。リファインメント：週60分、非同期の事前読み込み必須。レビュー/デモ：45分、可能であれば実際のステークホルダーが出席。レトロ：45分、アクション項目はオーナーが管理。合計オーバーヘッド：2週間スプリントあたり約5時間。決定を変えないセレモニーはすべて削除します。", "agile-scrum-3-h": "DatachainでのスクラムマスターマインドセットA", "agile-scrum-3-p": "DatachainのIBCブリッジプログラムのスクラムマスターとして、私の焦点はミーティングのファシリテーションではなく、障害の除去でした。ライブの障害ログを管理し、毎日見直し、ブロッカーの解決速度で自分のパフォーマンスを測定しました。平均解決時間：48時間以内。", "agile-scrum-4-h": "チーム横断のアジャイルスケーリング", "agile-scrum-4-p": "SmartNewsでは、軽量なスクラム・オブ・スクラムを使って5つのAdsプロダクトチームに同時にアジャイルプロセスを適用しました：週1回のクロスチーム同期 — 各チームのトップブロッカーと今後の依存関係のみ。ステータスレポートなし、決定事項とブロッカーのみ。2四半期でチームベロシティ+25%。Hakuhodoでは、アジャイル導入によりPechatの平均フィーチャーデリバリー時間が40%短縮されました。"}}};
+  var NAV = {"en": {"roadmap-strategy": "Roadmap Strategy", "execution-excellence": "Execution Excellence", "ab-testing": "A/B Testing", "experimentation": "Experimentation", "cross-functional-delivery": "Cross-functional Delivery", "stakeholder-management": "Stakeholder Management", "data-driven-growth": "Data-driven Growth", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "fr": {"roadmap-strategy": "Stratégie Roadmap", "execution-excellence": "Excellence d'Exécution", "ab-testing": "A/B Testing", "experimentation": "Expérimentation", "cross-functional-delivery": "Livraison Cross-fonctionnelle", "stakeholder-management": "Parties Prenantes", "data-driven-growth": "Croissance Data-driven", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "ja": {"roadmap-strategy": "ロードマップ戦略", "execution-excellence": "実行の卓越性", "ab-testing": "A/Bテスト", "experimentation": "実験フレームワーク", "cross-functional-delivery": "クロスファンクショナル", "stakeholder-management": "ステークホルダー管理", "data-driven-growth": "データドリブン成長", "go-to-market": "Go-to-Market", "agile-scrum": "アジャイル / スクラム", "okrs": "OKR"}};
   function detectLang() {
-    var saved = localStorage.getItem('al_lang');
-    if (saved && ['en','fr','ja'].indexOf(saved) > -1) return saved;
-    var browser = (navigator.language || 'en').toLowerCase();
-    if (browser.indexOf('fr') === 0) return 'fr';
-    if (browser.indexOf('ja') === 0) return 'ja';
+    var s = localStorage.getItem('al_lang');
+    if (s && ['en','fr','ja'].indexOf(s) > -1) return s;
+    var b = (navigator.language || 'en').toLowerCase();
+    if (b.indexOf('fr') === 0) return 'fr';
+    if (b.indexOf('ja') === 0) return 'ja';
     return 'en';
   }
   function applyLang(lang) {
-    if (!UI[lang]) lang = 'en';
-    var t = UI[lang];
-    var el;
-    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    if (!T[lang]) lang = 'en';
+    var t = T[lang];
+    // Hero
+    var el = document.getElementById('hero-title'); if(el) el.innerHTML = t.title;
+    el = document.getElementById('hero-tagline'); if(el) el.innerHTML = t.tagline;
     el = document.getElementById('how-i-work-text'); if(el) el.innerHTML = t.how_i_work;
-    el = document.getElementById('other-skills-text'); if(el) el.innerHTML = t.other_skills;
+    // Nav
+    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    el = document.getElementById('all-skills-text'); if(el) el.innerHTML = t.all_skills;
     el = document.getElementById('footer-text'); if(el) el.innerHTML = t.footer;
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    // Cards
+    Object.keys(t.cards).forEach(function(k) {
+      var isH = k.endsWith('-h');
+      var attr = isH ? 'data-card-h' : 'data-card-p';
+      var cardKey = k.slice(0,-2);
+      var cardEl = document.querySelector('[' + attr + '="' + cardKey + '"]');
+      if (cardEl) cardEl.innerHTML = t.cards[k];
+    });
+    // Nav skill links
+    document.querySelectorAll('.skill-nav-link[data-skill]').forEach(function(a) {
+      var skillId = a.getAttribute('data-skill');
+      if (NAV[lang] && NAV[lang][skillId]) a.textContent = NAV[lang][skillId];
+    });
+    // Lang buttons
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
     localStorage.setItem('al_lang', lang);
   }
@@ -246,6 +171,5 @@
   document.addEventListener('DOMContentLoaded', function() { applyLang(detectLang()); });
 })();
 </script>
-
 </body>
 </html>

@@ -1,244 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Go-to-Market — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VE4EQ9F8WT');
+</script>
 <style>
   :root {
-    --green: #1D9E75;
-    --green-dark: #0F6E56;
-    --green-light: #E1F5EE;
-    --dark: #1a1f2e;
-    --dark-panel: #14192a;
-    --text-primary: #1a1f2e;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-    --bg: #f9fafb;
-    --white: #ffffff;
-    --radius: 12px;
-    --radius-sm: 8px;
-    --accent: #0F6E56;
+    --green: #1D9E75; --green-dark: #0F6E56; --green-light: #E1F5EE;
+    --dark: #1a1f2e; --dark-panel: #14192a; --text-primary: #1a1f2e;
+    --text-muted: #6b7280; --border: #e5e7eb; --bg: #f9fafb;
+    --radius: 12px; --radius-sm: 8px; --accent: #0F6E56;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; }
   .nav-logo span { color: var(--green); }
-  .nav-back {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    font-weight: 500; transition: color 0.2s;
-  }
+  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-back:hover { color: var(--green); }
-
-  .hero {
-    background: var(--dark-panel);
-    padding: 7rem 2rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 760px; margin: 0 auto;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(29,158,117,0.15);
-    color: #5DCAA5;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(29,158,117,0.25);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; color: white;
-    letter-spacing: -1px; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .hero h1 span { color: var(--green); }
-  .hero-tagline {
-    font-size: 1.1rem; color: #9ca3af;
-    border-left: 3px solid rgba(29,158,117,0.5);
-    padding-left: 1rem; line-height: 1.6;
-    max-width: 560px;
-  }
-
-  main {
-    max-width: 760px; margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .section-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    border-left: 3px solid var(--accent);
-    transition: box-shadow 0.2s;
-  }
-  .section-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-card h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .section-card p {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  .nav-skills {
-    max-width: 760px; margin: 0 auto;
-    padding: 0 2rem 3rem;
-  }
-  .nav-skills h4 {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .skill-nav-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-nav-link {
-    font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 20px;
-    background: white; border: 1px solid var(--border);
-    color: var(--text-muted); text-decoration: none;
-    transition: all 0.2s;
-  }
-  .skill-nav-link:hover, .skill-nav-link.active {
-    background: var(--green-light);
-    border-color: var(--green);
-    color: var(--green-dark);
-  }
-
-  footer {
-    background: var(--dark-panel);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem; text-align: center;
-    color: #6b7280; font-size: 13px;
-  }
-  footer span { color: var(--green); }
-
   .lang-switcher { display: flex; gap: 4px; align-items: center; }
   .lang-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; transition: all 0.15s; opacity: 0.45; }
   .lang-btn:hover { opacity: 0.8; }
-  .lang-btn.active { opacity: 1; border-color: var(--border); background: rgba(255,255,255,0.08); }
-
+  .lang-btn.active { opacity: 1; border-color: var(--border); background: var(--bg); }
+  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--green); }
+  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
+  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
+  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
+  footer span { color: var(--green); }
+  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
 </style>
 </head>
 <body>
 <nav>
-  <a href="alexandre_leblanc_portfolio.html" class="nav-logo">AL<span>.</span></a>
-  <a href="alexandre_leblanc_portfolio.html#about" class="nav-back">
-    <i class="ti ti-arrow-left" aria-hidden="true"></i> <span id="nav-back-text">Back to portfolio</span>
+  <a href="index.html" class="nav-logo">AL<span>.</span></a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    <button class="lang-btn" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+  </div>
+  <a href="index.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i>
+    <span id="nav-back-text">Back to portfolio</span>
   </a>
 </nav>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-flag" aria-hidden="true"></i> <span id="how-i-work-text">How I work</span></div>
-    <h1><span>Go-to-Market</span></h1>
-    <p class="hero-tagline">Launching products that land</p>
+    <div class="hero-tag">
+      <i class="ti ti-flag" aria-hidden="true"></i>
+      <span id="how-i-work-text">How I work</span>
+    </div>
+    <h1><span id="hero-title">Go-to-Market</span></h1>
+    <p class="hero-tagline" id="hero-tagline">Launching products that land</p>
   </div>
 </div>
 
 <main>
 
         <div class="section-card">
-          <h3>GTM is a product problem</h3>
-          <p>Most GTM failures are not marketing failures — they're product-market fit failures or positioning failures. I treat GTM as a product workstream that starts at ideation, not at launch. Who is this for? What job does it do? Why now? Why us? These are product questions.</p>
+          <h3 data-card-h="go-to-market-0">GTM is a product problem</h3>
+          <p data-card-p="go-to-market-0">Most GTM failures are not marketing failures — they're product-market fit failures or positioning failures. I treat GTM as a product workstream that starts at ideation, not at launch. Who is this for? What job does it do? Why now? Why us? These are product questions.</p>
         </div>
         <div class="section-card">
-          <h3>The GTM brief</h3>
-          <p>Before any launch I produce a one-page GTM brief: target segment + persona, core value proposition (one sentence), key differentiators (max 3), launch channels and owner per channel, success metrics at 30 / 60 / 90 days, and risk register. Every function signs off before launch.</p>
+          <h3 data-card-h="go-to-market-1">The GTM brief</h3>
+          <p data-card-p="go-to-market-1">Before any launch I produce a one-page GTM brief: target segment + persona, core value proposition (one sentence), key differentiators (max 3), launch channels and owner per channel, success metrics at 30 / 60 / 90 days, and risk register. Every function signs off before launch.</p>
         </div>
         <div class="section-card">
-          <h3>Launch tiers</h3>
-          <p>Not all launches are equal. I use three tiers: Tier 1 (major launch, full GTM motion, all channels, press), Tier 2 (feature launch, in-product + email + partner channels), Tier 3 (silent ship, instrumented but no marketing push — monitor and iterate). Mis-tiering wastes team bandwidth.</p>
+          <h3 data-card-h="go-to-market-2">Launch tiers</h3>
+          <p data-card-p="go-to-market-2">Not all launches are equal. I use three tiers: Tier 1 (major launch, full GTM motion, all channels, press), Tier 2 (feature launch, in-product + email + partner channels), Tier 3 (silent ship, instrumented but no marketing push — monitor and iterate). Mis-tiering wastes team bandwidth.</p>
         </div>
         <div class="section-card">
-          <h3>International expansion</h3>
-          <p>For international GTM I add a localization layer: language, but also pricing, channel, and cultural context. A feature that resonates in Japan may require a completely different framing in the US — same product, different story.</p>
+          <h3 data-card-h="go-to-market-3">International expansion</h3>
+          <p data-card-p="go-to-market-3">For international GTM I add a localization layer: language, but also pricing, channel, and cultural context. A feature that resonates in Japan may require a completely different framing in the US — same product, different story.</p>
         </div>
         <div class="section-card">
-          <h3>Real example</h3>
-          <p>At Hakuhodo I-Studio, I led the international GTM for Pechat across the US and European markets. I adapted the positioning, pricing tier, and retail channel strategy per market. The US launch generated +15% revenue in 12 months. I also co-represented Wargaming's game titles at Tokyo Game Show, PAX, and Gamescom — large-scale B2C GTM events requiring tight coordination between PR, marketing, and product.</p>
+          <h3 data-card-h="go-to-market-4">Real example</h3>
+          <p data-card-p="go-to-market-4">At Hakuhodo I-Studio, I led the international GTM for Pechat across the US and European markets. I adapted the positioning, pricing tier, and retail channel strategy per market. The US launch generated +15% revenue in 12 months. I also co-represented Wargaming's game titles at Tokyo Game Show, PAX, and Gamescom — large-scale B2C GTM events requiring tight coordination between PR, marketing, and product.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4 id="other-skills-text">Other skills</h4>
+  <h4 id="all-skills-text">All skills</h4>
   <div class="skill-nav-grid">
-    <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
-    <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
-    <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
-    <a href="skill-experimentation.html" class="skill-nav-link ">Experimentation</a>
-    <a href="skill-cross-functional-delivery.html" class="skill-nav-link ">Cross-functional Delivery</a>
-    <a href="skill-stakeholder-management.html" class="skill-nav-link ">Stakeholder Management</a>
-    <a href="skill-data-driven-growth.html" class="skill-nav-link ">Data-driven Growth</a>
-    <a href="skill-go-to-market.html" class="skill-nav-link active">Go-to-Market</a>
-    <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
-    <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+    <a href="skill-ab-testing.html" class="skill-nav-link " data-skill="ab-testing">EN_NAME</a>
+    <a href="skill-agile-scrum.html" class="skill-nav-link " data-skill="agile-scrum">EN_NAME</a>
+    <a href="skill-cross-functional-delivery.html" class="skill-nav-link " data-skill="cross-functional-delivery">EN_NAME</a>
+    <a href="skill-data-driven-growth.html" class="skill-nav-link " data-skill="data-driven-growth">EN_NAME</a>
+    <a href="skill-execution-excellence.html" class="skill-nav-link " data-skill="execution-excellence">EN_NAME</a>
+    <a href="skill-experimentation.html" class="skill-nav-link " data-skill="experimentation">EN_NAME</a>
+    <a href="skill-go-to-market.html" class="skill-nav-link active" data-skill="go-to-market">EN_NAME</a>
+    <a href="skill-okrs.html" class="skill-nav-link " data-skill="okrs">EN_NAME</a>
+    <a href="skill-roadmap-strategy.html" class="skill-nav-link " data-skill="roadmap-strategy">EN_NAME</a>
+    <a href="skill-stakeholder-management.html" class="skill-nav-link " data-skill="stakeholder-management">EN_NAME</a>
   </div>
 </div>
 
 <footer>
-  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project &amp; Product Manager · 2026</p>
 </footer>
+
 
 <script>
 (function() {
-  var UI = {"en": {"back": "Back to portfolio", "how_i_work": "How I work", "other_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026"}, "fr": {"back": "Retour au portfolio", "how_i_work": "Ma méthode", "other_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026"}, "ja": {"back": "ポートフォリオに戻る", "how_i_work": "私の仕事の仕方", "other_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026"}};
+  var T = {"en": {"title": "Go-to-Market", "tagline": "Launching products that land", "how_i_work": "How I work", "back": "Back to portfolio", "all_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"go-to-market-0-h": "GTM is a product problem", "go-to-market-0-p": "Most GTM failures are not marketing failures — they're product-market fit failures or positioning failures. I treat GTM as a product workstream that starts at ideation, not at launch. Who is this for? What job does it do? Why now? Why us? These are product questions.", "go-to-market-1-h": "The GTM brief", "go-to-market-1-p": "Before any launch I produce a one-page GTM brief: target segment + persona, core value proposition (one sentence), key differentiators (max 3), launch channels and owner per channel, success metrics at 30 / 60 / 90 days, and risk register. Every function signs off before launch.", "go-to-market-2-h": "Launch tiers", "go-to-market-2-p": "Not all launches are equal. I use three tiers: Tier 1 (major launch, full GTM motion, all channels, press), Tier 2 (feature launch, in-product + email + partner channels), Tier 3 (silent ship, instrumented but no marketing push — monitor and iterate). Mis-tiering wastes team bandwidth.", "go-to-market-3-h": "International expansion", "go-to-market-3-p": "For international GTM I add a localization layer: language, but also pricing, channel, and cultural context. A feature that resonates in Japan may require a completely different framing in the US — same product, different story.", "go-to-market-4-h": "Real example", "go-to-market-4-p": "At Hakuhodo I-Studio, I led the international GTM for Pechat across the US and European markets. I adapted the positioning, pricing tier, and retail channel strategy per market. The US launch generated +15% revenue in 12 months. I also co-represented Wargaming's game titles at Tokyo Game Show, PAX, and Gamescom — large-scale B2C GTM events requiring tight coordination between PR, marketing, and product."}}, "fr": {"title": "Go-to-Market", "tagline": "Lancer des produits qui atterrissent — hardware, software, jeux et protocoles.", "how_i_work": "Ma méthode", "back": "Retour au portfolio", "all_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"go-to-market-0-h": "Le GTM est un problème produit", "go-to-market-0-p": "La plupart des échecs GTM sont des échecs de positionnement ou d'adéquation produit-marché déguisés en échecs marketing. Je traite le GTM comme un workstream produit qui commence à l'idéation : pour qui, quel travail accomplit-il, pourquoi nous, pourquoi maintenant. En Web3, c'est encore plus critique — un lancement de protocole sans positionnement clair dans un écosystème est ignoré quelle que soit la qualité technique.", "go-to-market-1-h": "Le brief GTM", "go-to-market-1-p": "Avant tout lancement je produis un brief GTM d'une page : segment cible + persona, proposition de valeur principale (une phrase), différenciateurs clés (max 3), canaux et propriétaire par canal, métriques de succès à 30/60/90 jours, et registre des risques. Chaque fonction — Engineering, Marketing, BD, Juridique — signe avant que la date de lancement soit fixée.", "go-to-market-2-h": "GTM Web3 / Protocole", "go-to-market-2-p": "Le GTM produit protocole et DeFi a des éléments uniques : relations développeurs dans l'écosystème, stratégie de lancement communautaire (Discord, Twitter/X, Telegram), impact de la conception token/incentive sur l'adoption, et divulgation coordonnée de sécurité si des vulnérabilités sont trouvées avant le lancement. Chez Datachain, le GTM du bridge IBC ciblait des partenaires bancaires et institutionnels — un mouvement enterprise B2B superposé à une blockchain publique.", "go-to-market-3-h": "GTM international et multi-marchés", "go-to-market-3-p": "Pour le GTM international j'ajoute une couche de localisation au-delà de la langue : modèle de tarification, canal et contexte culturel. Le lancement JP de Pechat utilisait des partenariats retail (Tokyu Hands, Loft) et des communautés de mamans blogueuses. Le lancement US s'est tourné vers l'e-commerce (Amazon) avec des influenceurs parentaux anglophones et une proposition de valeur repositionnée.", "go-to-market-4-h": "Exemple concret", "go-to-market-4-p": "Datachain (bridge IBC) : GTM institutionnel B2B — livre blanc technique + briefings partenaires + lancement mainnet par phases. Hakuhodo (Pechat) : expansion JP→US→EU, +15% de revenus en 12 mois sur le marché US, Good Design Award (グッドデザイン賞). Wargaming : représentation de World of Warships, World of Tanks et World of Warplanes au Tokyo Game Show, PAX et Gamescom. SmartNews Ads : GTM B2B enterprise pour l'acquisition annonceurs — refonte onboarding contribuant à +2M$/an de revenus potentiels."}}, "ja": {"title": "Go-to-Market", "tagline": "着地するプロダクトを立ち上げる — ハード、ソフト、ゲーム、プロトコル。", "how_i_work": "私の仕事の仕方", "back": "ポートフォリオに戻る", "all_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026", "cards": {"go-to-market-0-h": "GTMはプロダクトの問題", "go-to-market-0-p": "ほとんどのGTM失敗はポジショニングの失敗やプロダクト市場適合性の失敗がマーケティングの失敗に見せかけられたものです。私はGTMをアイデエーションから始まるプロダクトのワークストリームとして扱います：誰のため、どんな仕事をするのか、なぜ我々なのか、なぜ今なのか。Web3では、これがさらに重要です — エコシステム内での明確なポジショニングなしのプロトコルローンチは技術的な品質に関わらず無視されます。", "go-to-market-1-h": "GTMブリーフ", "go-to-market-1-p": "ローンチ前に1ページのGTMブリーフを作成：ターゲットセグメント+ペルソナ、コアバリュープロポジション（1文）、主要差別化要因（最大3つ）、チャネルとチャネルごとのオーナー、30/60/90日の成功指標、リスク登録簿。ローンチ日が決まる前に、Engineering、マーケティング、BD、法務のすべての機能がサインオフします。", "go-to-market-2-h": "Web3 / プロトコルGTM", "go-to-market-2-p": "プロトコルおよびDeFiプロダクトのGTMには独自の要素があります：エコシステムデベロッパーリレーション、コミュニティローンチ戦略（Discord、Twitter/X、Telegram）、トークン/インセンティブ設計が採用に与える影響、そしてローンチ前に脆弱性が発見された場合の協調的なセキュリティ開示。Datachainでは、IBCブリッジのGTMは銀行および機関パートナーに焦点を当てていました。", "go-to-market-3-h": "国際・マルチマーケットGTM", "go-to-market-3-p": "国際GTMには言語を超えたローカライゼーション層を追加します：価格モデル、チャネル、文化的コンテキスト。Pechatの日本ローンチはリテールパートナーシップ（東急ハンズ、ロフト）とママブロガーコミュニティを使いました。米国ローンチはeコマース（Amazon）に移行し、英語圏の子育てインフルエンサーと再ポジショニングされたバリュープロップを使いました。", "go-to-market-4-h": "実例", "go-to-market-4-p": "Datachain（IBCブリッジ）：B2B機関GTM — テクニカルホワイトペーパー + パートナーブリーフィング + 段階的メインネットローンチ。Hakuhodo（Pechat）：JP→US→EU展開、米国市場で12ヶ月で+15%収益、Good Design Award（グッドデザイン賞）受賞。Wargaming：東京ゲームショウ、PAX、GamescomでWorld of Warships、World of Tanks、World of Warplanesを代表。"}}};
+  var NAV = {"en": {"roadmap-strategy": "Roadmap Strategy", "execution-excellence": "Execution Excellence", "ab-testing": "A/B Testing", "experimentation": "Experimentation", "cross-functional-delivery": "Cross-functional Delivery", "stakeholder-management": "Stakeholder Management", "data-driven-growth": "Data-driven Growth", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "fr": {"roadmap-strategy": "Stratégie Roadmap", "execution-excellence": "Excellence d'Exécution", "ab-testing": "A/B Testing", "experimentation": "Expérimentation", "cross-functional-delivery": "Livraison Cross-fonctionnelle", "stakeholder-management": "Parties Prenantes", "data-driven-growth": "Croissance Data-driven", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "ja": {"roadmap-strategy": "ロードマップ戦略", "execution-excellence": "実行の卓越性", "ab-testing": "A/Bテスト", "experimentation": "実験フレームワーク", "cross-functional-delivery": "クロスファンクショナル", "stakeholder-management": "ステークホルダー管理", "data-driven-growth": "データドリブン成長", "go-to-market": "Go-to-Market", "agile-scrum": "アジャイル / スクラム", "okrs": "OKR"}};
   function detectLang() {
-    var saved = localStorage.getItem('al_lang');
-    if (saved && ['en','fr','ja'].indexOf(saved) > -1) return saved;
-    var browser = (navigator.language || 'en').toLowerCase();
-    if (browser.indexOf('fr') === 0) return 'fr';
-    if (browser.indexOf('ja') === 0) return 'ja';
+    var s = localStorage.getItem('al_lang');
+    if (s && ['en','fr','ja'].indexOf(s) > -1) return s;
+    var b = (navigator.language || 'en').toLowerCase();
+    if (b.indexOf('fr') === 0) return 'fr';
+    if (b.indexOf('ja') === 0) return 'ja';
     return 'en';
   }
   function applyLang(lang) {
-    if (!UI[lang]) lang = 'en';
-    var t = UI[lang];
-    var el;
-    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    if (!T[lang]) lang = 'en';
+    var t = T[lang];
+    // Hero
+    var el = document.getElementById('hero-title'); if(el) el.innerHTML = t.title;
+    el = document.getElementById('hero-tagline'); if(el) el.innerHTML = t.tagline;
     el = document.getElementById('how-i-work-text'); if(el) el.innerHTML = t.how_i_work;
-    el = document.getElementById('other-skills-text'); if(el) el.innerHTML = t.other_skills;
+    // Nav
+    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    el = document.getElementById('all-skills-text'); if(el) el.innerHTML = t.all_skills;
     el = document.getElementById('footer-text'); if(el) el.innerHTML = t.footer;
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    // Cards
+    Object.keys(t.cards).forEach(function(k) {
+      var isH = k.endsWith('-h');
+      var attr = isH ? 'data-card-h' : 'data-card-p';
+      var cardKey = k.slice(0,-2);
+      var cardEl = document.querySelector('[' + attr + '="' + cardKey + '"]');
+      if (cardEl) cardEl.innerHTML = t.cards[k];
+    });
+    // Nav skill links
+    document.querySelectorAll('.skill-nav-link[data-skill]').forEach(function(a) {
+      var skillId = a.getAttribute('data-skill');
+      if (NAV[lang] && NAV[lang][skillId]) a.textContent = NAV[lang][skillId];
+    });
+    // Lang buttons
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
     localStorage.setItem('al_lang', lang);
   }
@@ -246,6 +171,5 @@
   document.addEventListener('DOMContentLoaded', function() { applyLang(detectLang()); });
 })();
 </script>
-
 </body>
 </html>

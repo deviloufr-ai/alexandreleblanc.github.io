@@ -701,7 +701,8 @@
 
 
   .lang-switcher {
-    display: flex; gap: 4px; align-items: center;
+    display: flex; gap: 2px; align-items: center;
+    flex-shrink: 0;
   }
 
   .lang-btn {
@@ -734,11 +735,6 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">AL<span>.</span></a>
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
-    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
-    <button class="lang-btn" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
-  </div>
   <ul class="nav-links" id="nav-links">
     <li><a href="#about" onclick="closeMenu()"><i class="ti ti-user" aria-hidden="true"></i> <span data-i18n="nav_about">About</span></a></li>
     <li><a href="#experience" onclick="closeMenu()"><i class="ti ti-briefcase" aria-hidden="true"></i> <span data-i18n="nav_experience">Experience</span></a></li>
@@ -747,6 +743,11 @@
     <li><a href="#press" onclick="closeMenu()"><i class="ti ti-news" aria-hidden="true"></i> <span data-i18n="nav_press">Press</span></a></li>
     <li><a href="#testimonials" onclick="closeMenu()"><i class="ti ti-quote" aria-hidden="true"></i> <span data-i18n="nav_testimonials">Testimonials</span></a></li>
   </ul>
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    <button class="lang-btn" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+  </div>
   <a href="#cv" class="btn btn-primary" style="font-size:13px; padding:8px 18px;"><i class="ti ti-download" aria-hidden="true"></i> <span data-i18n="nav_download">Download CV</span></a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <i class="ti ti-menu-2" id="hamburger-icon"></i>
@@ -990,13 +991,13 @@
           </div>
           <span class="job-badge">Web3 / DeFi</span>
         </div>
-        <p class="job-desc">Led deployment of the first IBC inter-chain bridge (Eth & BnB), delivered in 12 months with 0 critical incidents. Defined 12 & 24-month roadmap, wrote 90+ user stories, coordinated 3 teams across 2 timezones. Reduced time-to-market from 6 to 3 weeks.</p>
+        <p class="job-desc" data-i18n="dc_desc">Led deployment of the first IBC inter-chain bridge (Eth & BnB), delivered in 12 months with 0 critical incidents. Defined 12 & 24-month roadmap, wrote 90+ user stories, coordinated 3 teams across 2 timezones. Reduced time-to-market from 6 to 3 weeks.</p>
         <div class="job-tags">
-          <span class="job-tag">Scrum Master</span>
-          <span class="job-tag">Product Owner</span>
-          <span class="job-tag">Web3 / IBC</span>
-          <span class="job-tag">Cross-functional</span>
-          <span class="job-tag">Agile</span>
+          <span class="job-tag" data-i18n="tag_scrum">Scrum Master</span>
+          <span class="job-tag" data-i18n="tag_po">Product Owner</span>
+          <span class="job-tag" data-i18n="tag_web3">Web3 / IBC</span>
+          <span class="job-tag" data-i18n="tag_crossfunc">Cross-functional</span>
+          <span class="job-tag" data-i18n="tag_agile">Agile</span>
         </div>
       </div>
     </div>
@@ -1014,12 +1015,12 @@
           </div>
           <span class="job-badge">AdTech</span>
         </div>
-        <p class="job-desc">Managed 2 global Ads product programs with +$2M/year revenue potential. Rolled out PDLC, DACI/RAPID and OKR processes across 5 teams (18 people), boosting velocity by 25% in 2 quarters. Cut onboarding time from 4 weeks to 10 days.</p>
+        <p class="job-desc" data-i18n="sn_desc">Managed 2 global Ads product programs with +$2M/year revenue potential. Rolled out PDLC, DACI/RAPID and OKR processes across 5 teams (18 people), boosting velocity by 25% in 2 quarters. Cut onboarding time from 4 weeks to 10 days.</p>
         <div class="job-tags">
-          <span class="job-tag">OKRs</span>
-          <span class="job-tag">DACI / RAPID</span>
-          <span class="job-tag">Ads Business</span>
-          <span class="job-tag">Stakeholder Mgmt</span>
+          <span class="job-tag" data-i18n="tag_okrs">OKRs</span>
+          <span class="job-tag" data-i18n="tag_daci">DACI / RAPID</span>
+          <span class="job-tag" data-i18n="tag_ads">Ads Business</span>
+          <span class="job-tag" data-i18n="tag_stakeholders">Stakeholder Mgmt</span>
         </div>
       </div>
     </div>
@@ -1039,11 +1040,11 @@
         </div>
         <p class="job-desc">Led Pechat (connected IoT toy): vision, KPIs, roadmap. Managed ¥100M R&D budget and 5-person offshore team. International expansion US & Europe, feature delivery time −40%.</p>
         <div class="job-tags">
-          <span class="job-tag">0→1 Product</span>
-          <span class="job-tag">IoT</span>
-          <span class="job-tag">Go-to-Market</span>
-          <span class="job-tag">Offshore Team</span>
-          <span class="job-tag">Agile</span>
+          <span class="job-tag" data-i18n="tag_01">0→1 Product</span>
+          <span class="job-tag" data-i18n="tag_iot">IoT</span>
+          <span class="job-tag" data-i18n="tag_gtm">Go-to-Market</span>
+          <span class="job-tag" data-i18n="tag_offshore">Offshore Team</span>
+          <span class="job-tag" data-i18n="tag_agile">Agile</span>
         </div>
       </div>
     </div>
@@ -1061,11 +1062,11 @@
           </div>
           <span class="job-badge">Mobile</span>
         </div>
-        <p class="job-desc">Coordinated local and offshore teams. Led development of the Rakuten Mobile SDK integrated across all Rakuten apps. Managed Agile/Scrum processes, budgets, deliverables and stakeholder reporting.</p>
+        <p class="job-desc" data-i18n="rk_desc">Coordinated local and offshore teams. Led development of the Rakuten Mobile SDK integrated across all Rakuten apps. Managed Agile/Scrum processes, budgets, deliverables and stakeholder reporting.</p>
         <div class="job-tags">
-          <span class="job-tag">Mobile SDK</span>
+          <span class="job-tag" data-i18n="tag_mobile_sdk">Mobile SDK</span>
           <span class="job-tag">Agile / Scrum</span>
-          <span class="job-tag">Budget Mgmt</span>
+          <span class="job-tag" data-i18n="tag_budget">Budget Mgmt</span>
           <span class="job-tag">Offshore</span>
         </div>
       </div>
@@ -1084,11 +1085,11 @@
           </div>
           <span class="job-badge">Gaming</span>
         </div>
-        <p class="job-desc">Supervised publication cycle for World of Warships, World of Tanks and World of Warplanes. Coordinated between HQ and regional teams (marketing, PR, support). Represented the company at Tokyo Game Show, PAX and Gamescom.</p>
+        <p class="job-desc" data-i18n="wg_desc">Supervised publication cycle for World of Warships, World of Tanks and World of Warplanes. Coordinated between HQ and regional teams (marketing, PR, support). Represented the company at Tokyo Game Show, PAX and Gamescom.</p>
         <div class="job-tags">
-          <span class="job-tag">Game Publishing</span>
-          <span class="job-tag">Cross-regional</span>
-          <span class="job-tag">Events</span>
+          <span class="job-tag" data-i18n="tag_publishing">Game Publishing</span>
+          <span class="job-tag" data-i18n="tag_crossregional">Cross-regional</span>
+          <span class="job-tag" data-i18n="tag_events">Events</span>
           <span class="job-tag">Stakeholders</span>
         </div>
       </div>
@@ -1102,17 +1103,17 @@
       <div class="job-card">
         <div class="job-header">
           <div>
-            <div class="job-title">Chargé d'Affaire / Product / Developer</div>
+            <div class="job-title" data-i18n="ss_title">Chargé d'Affaire / Product / Developer</div>
             <div class="job-company"><img src="https://logo.clearbit.com/siliconstudio.co.jp" alt="Silicon Studio" style="width:18px;height:18px;object-fit:contain;border-radius:3px;" onerror="this.style.display='none'"> Silicon Studio · Digicraft · Grévin et Cie</div>
           </div>
           <span class="job-badge">Gaming / Tech</span>
         </div>
-        <p class="job-desc">Managed multicultural dev teams (Square Enix, Ubisoft, GREE). Created and led an international indie game licensing division. Developed intranet tools and internal software (.NET, SQL).</p>
+        <p class="job-desc" data-i18n="ss_desc">Managed multicultural dev teams (Square Enix, Ubisoft, GREE). Created and led an international indie game licensing division. Developed intranet tools and internal software (.NET, SQL).</p>
         <div class="job-tags">
-          <span class="job-tag">Team Management</span>
-          <span class="job-tag">Licensing</span>
-          <span class="job-tag">.NET / SQL</span>
-          <span class="job-tag">Gaming</span>
+          <span class="job-tag" data-i18n="tag_team">Team Management</span>
+          <span class="job-tag" data-i18n="tag_licensing">Licensing</span>
+          <span class="job-tag" data-i18n="tag_dotnet">.NET / SQL</span>
+          <span class="job-tag" data-i18n="tag_gaming">Gaming</span>
         </div>
       </div>
     </div>
@@ -1125,7 +1126,7 @@
   <div class="inner">
     <div class="section-label"><i class="ti ti-apps" aria-hidden="true"></i> <span data-i18n="products_label">Portfolio</span></div>
     <h2 class="section-title" data-i18n="products_title">Products I've worked on</h2>
-    <p class="section-desc">A selection of products I've contributed to as Product Manager — from conception to launch.</p>
+    <p class="section-desc" data-i18n="products_desc">A selection of products I've contributed to as Product Manager — from conception to launch.</p>
 
     <div class="products-grid" id="products-grid">
 
@@ -1141,7 +1142,7 @@
   <div class="inner">
     <div class="section-label"><i class="ti ti-file-cv" aria-hidden="true"></i> <span data-i18n="cv_label">Resume</span></div>
     <h2 class="section-title" data-i18n="cv_title">Download my CV</h2>
-    <p class="section-desc">My full resume detailing experience, skills, and accomplishments.</p>
+    <p class="section-desc" data-i18n="cv_desc">My full resume detailing experience, skills, and accomplishments.</p>
 
     <div class="cv-download-card">
       <div class="cv-meta">
@@ -1191,8 +1192,8 @@
 <section id="press" style="background:white;max-width:100%;padding:4rem 2rem;">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-label"><i class="ti ti-news" aria-hidden="true"></i> <span data-i18n="press_label">Featured work</span></div>
-    <h2 class="section-title">In the press & publications</h2>
-    <p class="section-desc">Selected external coverage and academic references linked to products I worked on.</p>
+    <h2 class="section-title" data-i18n="press_title">In the press &amp; publications</h2>
+    <p class="section-desc" data-i18n="press_desc">Selected external coverage and academic references linked to products I worked on.</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;">
 
@@ -1262,7 +1263,7 @@
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-label"><i class="ti ti-quote" aria-hidden="true"></i> <span data-i18n="testimonials_label">Testimonials</span></div>
     <h2 class="section-title" data-i18n="testimonials_title">What colleagues say</h2>
-    <p class="section-desc">Recommendations from managers, peers, and collaborators across my career.</p>
+    <p class="section-desc" data-i18n="testimonials_desc">Recommendations from managers, peers, and collaborators across my career.</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;">
 

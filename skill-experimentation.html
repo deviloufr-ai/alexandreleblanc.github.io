@@ -1,244 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Experimentation Frameworks — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VE4EQ9F8WT');
+</script>
 <style>
   :root {
-    --green: #1D9E75;
-    --green-dark: #0F6E56;
-    --green-light: #E1F5EE;
-    --dark: #1a1f2e;
-    --dark-panel: #14192a;
-    --text-primary: #1a1f2e;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-    --bg: #f9fafb;
-    --white: #ffffff;
-    --radius: 12px;
-    --radius-sm: 8px;
-    --accent: #0F6E56;
+    --green: #1D9E75; --green-dark: #0F6E56; --green-light: #E1F5EE;
+    --dark: #1a1f2e; --dark-panel: #14192a; --text-primary: #1a1f2e;
+    --text-muted: #6b7280; --border: #e5e7eb; --bg: #f9fafb;
+    --radius: 12px; --radius-sm: 8px; --accent: #0F6E56;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; }
   .nav-logo span { color: var(--green); }
-  .nav-back {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    font-weight: 500; transition: color 0.2s;
-  }
+  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-back:hover { color: var(--green); }
-
-  .hero {
-    background: var(--dark-panel);
-    padding: 7rem 2rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 760px; margin: 0 auto;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(29,158,117,0.15);
-    color: #5DCAA5;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(29,158,117,0.25);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; color: white;
-    letter-spacing: -1px; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .hero h1 span { color: var(--green); }
-  .hero-tagline {
-    font-size: 1.1rem; color: #9ca3af;
-    border-left: 3px solid rgba(29,158,117,0.5);
-    padding-left: 1rem; line-height: 1.6;
-    max-width: 560px;
-  }
-
-  main {
-    max-width: 760px; margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .section-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    border-left: 3px solid var(--accent);
-    transition: box-shadow 0.2s;
-  }
-  .section-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-card h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .section-card p {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  .nav-skills {
-    max-width: 760px; margin: 0 auto;
-    padding: 0 2rem 3rem;
-  }
-  .nav-skills h4 {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .skill-nav-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-nav-link {
-    font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 20px;
-    background: white; border: 1px solid var(--border);
-    color: var(--text-muted); text-decoration: none;
-    transition: all 0.2s;
-  }
-  .skill-nav-link:hover, .skill-nav-link.active {
-    background: var(--green-light);
-    border-color: var(--green);
-    color: var(--green-dark);
-  }
-
-  footer {
-    background: var(--dark-panel);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem; text-align: center;
-    color: #6b7280; font-size: 13px;
-  }
-  footer span { color: var(--green); }
-
   .lang-switcher { display: flex; gap: 4px; align-items: center; }
   .lang-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; transition: all 0.15s; opacity: 0.45; }
   .lang-btn:hover { opacity: 0.8; }
-  .lang-btn.active { opacity: 1; border-color: var(--border); background: rgba(255,255,255,0.08); }
-
+  .lang-btn.active { opacity: 1; border-color: var(--border); background: var(--bg); }
+  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--green); }
+  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
+  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
+  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
+  footer span { color: var(--green); }
+  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
 </style>
 </head>
 <body>
 <nav>
-  <a href="alexandre_leblanc_portfolio.html" class="nav-logo">AL<span>.</span></a>
-  <a href="alexandre_leblanc_portfolio.html#about" class="nav-back">
-    <i class="ti ti-arrow-left" aria-hidden="true"></i> <span id="nav-back-text">Back to portfolio</span>
+  <a href="index.html" class="nav-logo">AL<span>.</span></a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    <button class="lang-btn" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+  </div>
+  <a href="index.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i>
+    <span id="nav-back-text">Back to portfolio</span>
   </a>
 </nav>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-flask" aria-hidden="true"></i> <span id="how-i-work-text">How I work</span></div>
-    <h1><span>Experimentation Frameworks</span></h1>
-    <p class="hero-tagline">Building a culture of learning at scale</p>
+    <div class="hero-tag">
+      <i class="ti ti-flask" aria-hidden="true"></i>
+      <span id="how-i-work-text">How I work</span>
+    </div>
+    <h1><span id="hero-title">Experimentation Frameworks</span></h1>
+    <p class="hero-tagline" id="hero-tagline">Building a culture of learning at scale</p>
   </div>
 </div>
 
 <main>
 
         <div class="section-card">
-          <h3>Beyond A/B tests</h3>
-          <p>Experimentation at scale is more than running tests — it's building a system where every team can make evidence-based decisions quickly. That means a shared infrastructure, a common language, and a culture where 'the test lost' is never a failure, it's information.</p>
+          <h3 data-card-h="experimentation-0">Beyond A/B tests</h3>
+          <p data-card-p="experimentation-0">Experimentation at scale is more than running tests — it's building a system where every team can make evidence-based decisions quickly. That means a shared infrastructure, a common language, and a culture where 'the test lost' is never a failure, it's information.</p>
         </div>
         <div class="section-card">
-          <h3>Framework components</h3>
-          <p>1. Hypothesis backlog: a prioritized list of bets ranked by expected impact and testability. 2. Experiment calendar: visibility on what's running, what's shipping, and what's in analysis. 3. Results repository: every experiment documented with setup, results, learnings, and follow-up actions. 4. Guardrail metrics: metrics that must never move negatively, regardless of test outcome.</p>
+          <h3 data-card-h="experimentation-1">Framework components</h3>
+          <p data-card-p="experimentation-1">1. Hypothesis backlog: a prioritized list of bets ranked by expected impact and testability. 2. Experiment calendar: visibility on what's running, what's shipping, and what's in analysis. 3. Results repository: every experiment documented with setup, results, learnings, and follow-up actions. 4. Guardrail metrics: metrics that must never move negatively, regardless of test outcome.</p>
         </div>
         <div class="section-card">
-          <h3>Governance</h3>
-          <p>I run a weekly experiment review with PM, data analyst, and engineering leads. New experiments require a one-page spec (hypothesis, metrics, sample size, duration). Results are reviewed at 50% of expected runtime to catch anomalies early and at full runtime for final decisions. No 'peeking' at results mid-test without a pre-registered analysis plan.</p>
+          <h3 data-card-h="experimentation-2">Governance</h3>
+          <p data-card-p="experimentation-2">I run a weekly experiment review with PM, data analyst, and engineering leads. New experiments require a one-page spec (hypothesis, metrics, sample size, duration). Results are reviewed at 50% of expected runtime to catch anomalies early and at full runtime for final decisions. No 'peeking' at results mid-test without a pre-registered analysis plan.</p>
         </div>
         <div class="section-card">
-          <h3>Scaling across teams</h3>
-          <p>At SmartNews, I applied PDLC (Product Development Lifecycle) and DACI frameworks across 5 product teams to standardize how experiments were proposed, approved, and analyzed. This reduced the average time from hypothesis to test launch from 3 weeks to 5 days.</p>
+          <h3 data-card-h="experimentation-3">Scaling across teams</h3>
+          <p data-card-p="experimentation-3">At SmartNews, I applied PDLC (Product Development Lifecycle) and DACI frameworks across 5 product teams to standardize how experiments were proposed, approved, and analyzed. This reduced the average time from hypothesis to test launch from 3 weeks to 5 days.</p>
         </div>
         <div class="section-card">
-          <h3>Tools and stack</h3>
-          <p>Feature flagging: LaunchDarkly or custom-built flags. Analysis: Mixpanel, Amplitude, or internal BI tools. Documentation: Confluence or Notion experiment log. Statistical methods: frequentist t-tests for most tests, Bayesian methods for sequential testing or early stopping.</p>
+          <h3 data-card-h="experimentation-4">Tools and stack</h3>
+          <p data-card-p="experimentation-4">Feature flagging: LaunchDarkly or custom-built flags. Analysis: Mixpanel, Amplitude, or internal BI tools. Documentation: Confluence or Notion experiment log. Statistical methods: frequentist t-tests for most tests, Bayesian methods for sequential testing or early stopping.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4 id="other-skills-text">Other skills</h4>
+  <h4 id="all-skills-text">All skills</h4>
   <div class="skill-nav-grid">
-    <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
-    <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
-    <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
-    <a href="skill-experimentation.html" class="skill-nav-link active">Experimentation</a>
-    <a href="skill-cross-functional-delivery.html" class="skill-nav-link ">Cross-functional Delivery</a>
-    <a href="skill-stakeholder-management.html" class="skill-nav-link ">Stakeholder Management</a>
-    <a href="skill-data-driven-growth.html" class="skill-nav-link ">Data-driven Growth</a>
-    <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
-    <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
-    <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+    <a href="skill-ab-testing.html" class="skill-nav-link " data-skill="ab-testing">EN_NAME</a>
+    <a href="skill-agile-scrum.html" class="skill-nav-link " data-skill="agile-scrum">EN_NAME</a>
+    <a href="skill-cross-functional-delivery.html" class="skill-nav-link " data-skill="cross-functional-delivery">EN_NAME</a>
+    <a href="skill-data-driven-growth.html" class="skill-nav-link " data-skill="data-driven-growth">EN_NAME</a>
+    <a href="skill-execution-excellence.html" class="skill-nav-link " data-skill="execution-excellence">EN_NAME</a>
+    <a href="skill-experimentation.html" class="skill-nav-link active" data-skill="experimentation">EN_NAME</a>
+    <a href="skill-go-to-market.html" class="skill-nav-link " data-skill="go-to-market">EN_NAME</a>
+    <a href="skill-okrs.html" class="skill-nav-link " data-skill="okrs">EN_NAME</a>
+    <a href="skill-roadmap-strategy.html" class="skill-nav-link " data-skill="roadmap-strategy">EN_NAME</a>
+    <a href="skill-stakeholder-management.html" class="skill-nav-link " data-skill="stakeholder-management">EN_NAME</a>
   </div>
 </div>
 
 <footer>
-  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project &amp; Product Manager · 2026</p>
 </footer>
+
 
 <script>
 (function() {
-  var UI = {"en": {"back": "Back to portfolio", "how_i_work": "How I work", "other_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026"}, "fr": {"back": "Retour au portfolio", "how_i_work": "Ma méthode", "other_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026"}, "ja": {"back": "ポートフォリオに戻る", "how_i_work": "私の仕事の仕方", "other_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026"}};
+  var T = {"en": {"title": "Experimentation Frameworks", "tagline": "Building a culture of learning at scale", "how_i_work": "How I work", "back": "Back to portfolio", "all_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"experimentation-0-h": "Beyond A/B tests", "experimentation-0-p": "Experimentation at scale is more than running tests — it's building a system where every team can make evidence-based decisions quickly. That means a shared infrastructure, a common language, and a culture where 'the test lost' is never a failure, it's information.", "experimentation-1-h": "Framework components", "experimentation-1-p": "1. Hypothesis backlog: a prioritized list of bets ranked by expected impact and testability. 2. Experiment calendar: visibility on what's running, what's shipping, and what's in analysis. 3. Results repository: every experiment documented with setup, results, learnings, and follow-up actions. 4. Guardrail metrics: metrics that must never move negatively, regardless of test outcome.", "experimentation-2-h": "Governance", "experimentation-2-p": "I run a weekly experiment review with PM, data analyst, and engineering leads. New experiments require a one-page spec (hypothesis, metrics, sample size, duration). Results are reviewed at 50% of expected runtime to catch anomalies early and at full runtime for final decisions. No 'peeking' at results mid-test without a pre-registered analysis plan.", "experimentation-3-h": "Scaling across teams", "experimentation-3-p": "At SmartNews, I applied PDLC (Product Development Lifecycle) and DACI frameworks across 5 product teams to standardize how experiments were proposed, approved, and analyzed. This reduced the average time from hypothesis to test launch from 3 weeks to 5 days.", "experimentation-4-h": "Tools and stack", "experimentation-4-p": "Feature flagging: LaunchDarkly or custom-built flags. Analysis: Mixpanel, Amplitude, or internal BI tools. Documentation: Confluence or Notion experiment log. Statistical methods: frequentist t-tests for most tests, Bayesian methods for sequential testing or early stopping."}}, "fr": {"title": "Cadres d'Expérimentation", "tagline": "Construire une culture d'apprentissage à l'échelle — AdTech, IoT et au-delà.", "how_i_work": "Ma méthode", "back": "Retour au portfolio", "all_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"experimentation-0-h": "Au-delà des A/B tests", "experimentation-0-p": "L'expérimentation à l'échelle est une capacité organisationnelle, pas un outil de test. Cela signifie que chaque équipe peut prendre des décisions basées sur des preuves rapidement avec une infrastructure partagée, un langage commun, et une culture où un test échoué est de l'information, pas un échec. J'ai construit ou adapté des cadres d'expérimentation en AdTech (SmartNews), produits IoT grand public (Hakuhodo/Pechat), et infrastructure blockchain (Datachain).", "experimentation-1-h": "Composantes du cadre", "experimentation-1-p": "1. Backlog d'hypothèses : paris priorisés par impact attendu et testabilité. 2. Calendrier d'expériences : visibilité sur ce qui tourne, ce qui est livré, ou en analyse. 3. Référentiel de résultats : chaque expérience documentée avec setup, résultats, enseignements et suivi. 4. Métriques de garde-fous : métriques non négociables qui ne peuvent jamais bouger négativement. En Web3, les métriques garde-fous incluent la fiabilité on-chain et la sécurité des smart contracts.", "experimentation-2-h": "Gouvernance", "experimentation-2-p": "J'anime une revue d'expérience hebdomadaire avec PM, analyste data et Engineering leads. Les nouvelles expériences nécessitent une spec d'une page. Les résultats sont revus à 50% du temps d'exécution prévu pour détecter les anomalies tôt et au temps complet pour les décisions finales. Pas de 'peek' aux résultats en cours de test sans plan d'analyse pré-enregistré.", "experimentation-3-h": "Mise à l'échelle entre équipes", "experimentation-3-p": "Chez SmartNews, j'ai déployé PDLC, DACI et OKR simultanément sur 5 équipes produit pour standardiser comment les expériences étaient proposées, approuvées et analysées. Cela a réduit le temps moyen de l'hypothèse au lancement du test de 3 semaines à 5 jours.", "experimentation-4-h": "Exemple concret", "experimentation-4-p": "SmartNews : hypothèse-to-launch réduit de 3 semaines à 5 jours sur 5 équipes. Hakuhodo (Pechat) : expérimentation sur le flux d'onboarding a identifié l'étape d'activation avec impact 3× sur rétention J30. Datachain : modèle de release mainnet par phases (testnet → limité → complet) appliqué comme cadre d'expérimentation pour la livraison protocole — 0 incident critique au lancement mainnet du premier bridge IBC."}}, "ja": {"title": "実験フレームワーク", "tagline": "スケールで学習文化を構築する — AdTech、IoTなど。", "how_i_work": "私の仕事の仕方", "back": "ポートフォリオに戻る", "all_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026", "cards": {"experimentation-0-h": "A/Bテストを超えて", "experimentation-0-p": "スケールでの実験は組織能力であり、テストツールではありません。共有インフラ、共通言語、そして失敗したテストが失敗ではなく情報である文化を持つことで、すべてのチームが迅速に証拠に基づく決定を下せることを意味します。AdTech（SmartNews）、コンシューマーIoTプロダクト（Hakuhodo/Pechat）、ブロックチェーンインフラ（Datachain）で実験フレームワークを構築または適応してきました。", "experimentation-1-h": "フレームワークのコンポーネント", "experimentation-1-p": "1. 仮説バックログ：期待されるインパクトとテスト可能性でランク付けされた賭けの優先リスト。2. 実験カレンダー：何が実行中、出荷済み、分析中かの可視性。3. 結果リポジトリ：セットアップ、結果、学習、フォローアップアクションとともにすべての実験を文書化。4. ガードレールメトリクス：テスト結果に関わらず決してネガティブに動いてはならない指標。Web3では、オンチェーン信頼性とスマートコントラクトセキュリティが含まれます。", "experimentation-2-h": "ガバナンス", "experimentation-2-p": "PM、データアナリスト、エンジニアリングリードとの週次実験レビューを実施。新しい実験には1ページの仕様が必要。結果は予想される実行時間の50%で異常を早期に検出し、最終決定のために完全な実行時間で確認。事前登録された分析計画なしにテスト中に結果を「覗き見」しない。", "experimentation-3-h": "チーム横断のスケーリング", "experimentation-3-p": "SmartNewsでは、実験がどのように提案、承認、分析されるかを標準化するために、5つのプロダクトチームに同時にPDLC、DACI、OKRフレームワークを展開しました。仮説からテストローンチまでの平均時間を3週間から5日に短縮しました。", "experimentation-4-h": "実例", "experimentation-4-p": "SmartNews：5チームにわたって仮説からローンチまでを3週間から5日に短縮。Hakuhodo（Pechat）：オンボーディングフローの実験でD30リテンションに3倍のインパクトを持つアクティベーションステップを特定。Datachain：段階的メインネットリリースモデル（テストネット→限定→完全）をプロトコルデリバリーの実験フレームワークとして適用 — 最初のIBCブリッジメインネットローンチでインシデント0件。"}}};
+  var NAV = {"en": {"roadmap-strategy": "Roadmap Strategy", "execution-excellence": "Execution Excellence", "ab-testing": "A/B Testing", "experimentation": "Experimentation", "cross-functional-delivery": "Cross-functional Delivery", "stakeholder-management": "Stakeholder Management", "data-driven-growth": "Data-driven Growth", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "fr": {"roadmap-strategy": "Stratégie Roadmap", "execution-excellence": "Excellence d'Exécution", "ab-testing": "A/B Testing", "experimentation": "Expérimentation", "cross-functional-delivery": "Livraison Cross-fonctionnelle", "stakeholder-management": "Parties Prenantes", "data-driven-growth": "Croissance Data-driven", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "ja": {"roadmap-strategy": "ロードマップ戦略", "execution-excellence": "実行の卓越性", "ab-testing": "A/Bテスト", "experimentation": "実験フレームワーク", "cross-functional-delivery": "クロスファンクショナル", "stakeholder-management": "ステークホルダー管理", "data-driven-growth": "データドリブン成長", "go-to-market": "Go-to-Market", "agile-scrum": "アジャイル / スクラム", "okrs": "OKR"}};
   function detectLang() {
-    var saved = localStorage.getItem('al_lang');
-    if (saved && ['en','fr','ja'].indexOf(saved) > -1) return saved;
-    var browser = (navigator.language || 'en').toLowerCase();
-    if (browser.indexOf('fr') === 0) return 'fr';
-    if (browser.indexOf('ja') === 0) return 'ja';
+    var s = localStorage.getItem('al_lang');
+    if (s && ['en','fr','ja'].indexOf(s) > -1) return s;
+    var b = (navigator.language || 'en').toLowerCase();
+    if (b.indexOf('fr') === 0) return 'fr';
+    if (b.indexOf('ja') === 0) return 'ja';
     return 'en';
   }
   function applyLang(lang) {
-    if (!UI[lang]) lang = 'en';
-    var t = UI[lang];
-    var el;
-    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    if (!T[lang]) lang = 'en';
+    var t = T[lang];
+    // Hero
+    var el = document.getElementById('hero-title'); if(el) el.innerHTML = t.title;
+    el = document.getElementById('hero-tagline'); if(el) el.innerHTML = t.tagline;
     el = document.getElementById('how-i-work-text'); if(el) el.innerHTML = t.how_i_work;
-    el = document.getElementById('other-skills-text'); if(el) el.innerHTML = t.other_skills;
+    // Nav
+    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    el = document.getElementById('all-skills-text'); if(el) el.innerHTML = t.all_skills;
     el = document.getElementById('footer-text'); if(el) el.innerHTML = t.footer;
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    // Cards
+    Object.keys(t.cards).forEach(function(k) {
+      var isH = k.endsWith('-h');
+      var attr = isH ? 'data-card-h' : 'data-card-p';
+      var cardKey = k.slice(0,-2);
+      var cardEl = document.querySelector('[' + attr + '="' + cardKey + '"]');
+      if (cardEl) cardEl.innerHTML = t.cards[k];
+    });
+    // Nav skill links
+    document.querySelectorAll('.skill-nav-link[data-skill]').forEach(function(a) {
+      var skillId = a.getAttribute('data-skill');
+      if (NAV[lang] && NAV[lang][skillId]) a.textContent = NAV[lang][skillId];
+    });
+    // Lang buttons
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
     localStorage.setItem('al_lang', lang);
   }
@@ -246,6 +171,5 @@
   document.addEventListener('DOMContentLoaded', function() { applyLang(detectLang()); });
 })();
 </script>
-
 </body>
 </html>

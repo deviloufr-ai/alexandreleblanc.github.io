@@ -1,244 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data-driven Growth — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VE4EQ9F8WT');
+</script>
 <style>
   :root {
-    --green: #1D9E75;
-    --green-dark: #0F6E56;
-    --green-light: #E1F5EE;
-    --dark: #1a1f2e;
-    --dark-panel: #14192a;
-    --text-primary: #1a1f2e;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-    --bg: #f9fafb;
-    --white: #ffffff;
-    --radius: 12px;
-    --radius-sm: 8px;
-    --accent: #1D9E75;
+    --green: #1D9E75; --green-dark: #0F6E56; --green-light: #E1F5EE;
+    --dark: #1a1f2e; --dark-panel: #14192a; --text-primary: #1a1f2e;
+    --text-muted: #6b7280; --border: #e5e7eb; --bg: #f9fafb;
+    --radius: 12px; --radius-sm: 8px; --accent: #1D9E75;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; }
   .nav-logo span { color: var(--green); }
-  .nav-back {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    font-weight: 500; transition: color 0.2s;
-  }
+  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-back:hover { color: var(--green); }
-
-  .hero {
-    background: var(--dark-panel);
-    padding: 7rem 2rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 760px; margin: 0 auto;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(29,158,117,0.15);
-    color: #5DCAA5;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(29,158,117,0.25);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; color: white;
-    letter-spacing: -1px; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .hero h1 span { color: var(--green); }
-  .hero-tagline {
-    font-size: 1.1rem; color: #9ca3af;
-    border-left: 3px solid rgba(29,158,117,0.5);
-    padding-left: 1rem; line-height: 1.6;
-    max-width: 560px;
-  }
-
-  main {
-    max-width: 760px; margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .section-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    border-left: 3px solid var(--accent);
-    transition: box-shadow 0.2s;
-  }
-  .section-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-card h3::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .section-card p {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  .nav-skills {
-    max-width: 760px; margin: 0 auto;
-    padding: 0 2rem 3rem;
-  }
-  .nav-skills h4 {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .skill-nav-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-nav-link {
-    font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 20px;
-    background: white; border: 1px solid var(--border);
-    color: var(--text-muted); text-decoration: none;
-    transition: all 0.2s;
-  }
-  .skill-nav-link:hover, .skill-nav-link.active {
-    background: var(--green-light);
-    border-color: var(--green);
-    color: var(--green-dark);
-  }
-
-  footer {
-    background: var(--dark-panel);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem; text-align: center;
-    color: #6b7280; font-size: 13px;
-  }
-  footer span { color: var(--green); }
-
   .lang-switcher { display: flex; gap: 4px; align-items: center; }
   .lang-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; transition: all 0.15s; opacity: 0.45; }
   .lang-btn:hover { opacity: 0.8; }
-  .lang-btn.active { opacity: 1; border-color: var(--border); background: rgba(255,255,255,0.08); }
-
+  .lang-btn.active { opacity: 1; border-color: var(--border); background: var(--bg); }
+  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--green); }
+  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
+  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
+  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
+  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
+  footer span { color: var(--green); }
+  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
 </style>
 </head>
 <body>
 <nav>
-  <a href="alexandre_leblanc_portfolio.html" class="nav-logo">AL<span>.</span></a>
-  <a href="alexandre_leblanc_portfolio.html#about" class="nav-back">
-    <i class="ti ti-arrow-left" aria-hidden="true"></i> <span id="nav-back-text">Back to portfolio</span>
+  <a href="index.html" class="nav-logo">AL<span>.</span></a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    <button class="lang-btn" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+  </div>
+  <a href="index.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i>
+    <span id="nav-back-text">Back to portfolio</span>
   </a>
 </nav>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-chart-line" aria-hidden="true"></i> <span id="how-i-work-text">How I work</span></div>
-    <h1><span>Data-driven Growth</span></h1>
-    <p class="hero-tagline">Using numbers to ask better questions</p>
+    <div class="hero-tag">
+      <i class="ti ti-chart-line" aria-hidden="true"></i>
+      <span id="how-i-work-text">How I work</span>
+    </div>
+    <h1><span id="hero-title">Data-driven Growth</span></h1>
+    <p class="hero-tagline" id="hero-tagline">Using numbers to ask better questions</p>
   </div>
 </div>
 
 <main>
 
         <div class="section-card">
-          <h3>Data as a tool, not a crutch</h3>
-          <p>Data tells you what is happening. It rarely tells you why. I use quantitative data to identify the problem and prioritize urgency, and qualitative data (interviews, usability tests, support tickets) to understand the cause. The best product decisions combine both.</p>
+          <h3 data-card-h="data-driven-growth-0">Data as a tool, not a crutch</h3>
+          <p data-card-p="data-driven-growth-0">Data tells you what is happening. It rarely tells you why. I use quantitative data to identify the problem and prioritize urgency, and qualitative data (interviews, usability tests, support tickets) to understand the cause. The best product decisions combine both.</p>
         </div>
         <div class="section-card">
-          <h3>North Star and supporting metrics</h3>
-          <p>Every product I work on has one North Star metric that captures the core value exchange. Around it I build a metrics tree: 2-3 input metrics per level that drive the North Star, down to team-level leading indicators. This prevents metric proliferation and keeps every team connected to outcomes.</p>
+          <h3 data-card-h="data-driven-growth-1">North Star and supporting metrics</h3>
+          <p data-card-p="data-driven-growth-1">Every product I work on has one North Star metric that captures the core value exchange. Around it I build a metrics tree: 2-3 input metrics per level that drive the North Star, down to team-level leading indicators. This prevents metric proliferation and keeps every team connected to outcomes.</p>
         </div>
         <div class="section-card">
-          <h3>Growth loops, not funnels</h3>
-          <p>I think in growth loops: acquisition → activation → retention → referral → revenue, each feeding the next. For each loop I identify the weakest link and concentrate experimentation there. A 10% improvement in retention typically has 5× the impact of a 10% improvement in acquisition.</p>
+          <h3 data-card-h="data-driven-growth-2">Growth loops, not funnels</h3>
+          <p data-card-p="data-driven-growth-2">I think in growth loops: acquisition → activation → retention → referral → revenue, each feeding the next. For each loop I identify the weakest link and concentrate experimentation there. A 10% improvement in retention typically has 5× the impact of a 10% improvement in acquisition.</p>
         </div>
         <div class="section-card">
-          <h3>Instrumenting for insight</h3>
-          <p>I write the analytics spec before features go to engineering. Every event has a name, properties, trigger, and business question it answers. Without this, teams ship features they can't measure — which means they can't learn from them.</p>
+          <h3 data-card-h="data-driven-growth-3">Instrumenting for insight</h3>
+          <p data-card-p="data-driven-growth-3">I write the analytics spec before features go to engineering. Every event has a name, properties, trigger, and business question it answers. Without this, teams ship features they can't measure — which means they can't learn from them.</p>
         </div>
         <div class="section-card">
-          <h3>Real example</h3>
-          <p>At Hakuhodo I-Studio, I defined KPIs and a measurement framework for the Pechat IoT product from day one. By tracking activation rate (pairing within 24h), engagement (sessions per week), and retention (D7/D30), we identified that users who completed a specific onboarding step had 3× better D30 retention — which became a core focus of the next product cycle.</p>
+          <h3 data-card-h="data-driven-growth-4">Real example</h3>
+          <p data-card-p="data-driven-growth-4">At Hakuhodo I-Studio, I defined KPIs and a measurement framework for the Pechat IoT product from day one. By tracking activation rate (pairing within 24h), engagement (sessions per week), and retention (D7/D30), we identified that users who completed a specific onboarding step had 3× better D30 retention — which became a core focus of the next product cycle.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4 id="other-skills-text">Other skills</h4>
+  <h4 id="all-skills-text">All skills</h4>
   <div class="skill-nav-grid">
-    <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
-    <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
-    <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
-    <a href="skill-experimentation.html" class="skill-nav-link ">Experimentation</a>
-    <a href="skill-cross-functional-delivery.html" class="skill-nav-link ">Cross-functional Delivery</a>
-    <a href="skill-stakeholder-management.html" class="skill-nav-link ">Stakeholder Management</a>
-    <a href="skill-data-driven-growth.html" class="skill-nav-link active">Data-driven Growth</a>
-    <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
-    <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
-    <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
+    <a href="skill-ab-testing.html" class="skill-nav-link " data-skill="ab-testing">EN_NAME</a>
+    <a href="skill-agile-scrum.html" class="skill-nav-link " data-skill="agile-scrum">EN_NAME</a>
+    <a href="skill-cross-functional-delivery.html" class="skill-nav-link " data-skill="cross-functional-delivery">EN_NAME</a>
+    <a href="skill-data-driven-growth.html" class="skill-nav-link active" data-skill="data-driven-growth">EN_NAME</a>
+    <a href="skill-execution-excellence.html" class="skill-nav-link " data-skill="execution-excellence">EN_NAME</a>
+    <a href="skill-experimentation.html" class="skill-nav-link " data-skill="experimentation">EN_NAME</a>
+    <a href="skill-go-to-market.html" class="skill-nav-link " data-skill="go-to-market">EN_NAME</a>
+    <a href="skill-okrs.html" class="skill-nav-link " data-skill="okrs">EN_NAME</a>
+    <a href="skill-roadmap-strategy.html" class="skill-nav-link " data-skill="roadmap-strategy">EN_NAME</a>
+    <a href="skill-stakeholder-management.html" class="skill-nav-link " data-skill="stakeholder-management">EN_NAME</a>
   </div>
 </div>
 
 <footer>
-  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project &amp; Product Manager · 2026</p>
 </footer>
+
 
 <script>
 (function() {
-  var UI = {"en": {"back": "Back to portfolio", "how_i_work": "How I work", "other_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026"}, "fr": {"back": "Retour au portfolio", "how_i_work": "Ma méthode", "other_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026"}, "ja": {"back": "ポートフォリオに戻る", "how_i_work": "私の仕事の仕方", "other_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026"}};
+  var T = {"en": {"title": "Data-driven Growth", "tagline": "Using numbers to ask better questions", "how_i_work": "How I work", "back": "Back to portfolio", "all_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"data-driven-growth-0-h": "Data as a tool, not a crutch", "data-driven-growth-0-p": "Data tells you what is happening. It rarely tells you why. I use quantitative data to identify the problem and prioritize urgency, and qualitative data (interviews, usability tests, support tickets) to understand the cause. The best product decisions combine both.", "data-driven-growth-1-h": "North Star and supporting metrics", "data-driven-growth-1-p": "Every product I work on has one North Star metric that captures the core value exchange. Around it I build a metrics tree: 2-3 input metrics per level that drive the North Star, down to team-level leading indicators. This prevents metric proliferation and keeps every team connected to outcomes.", "data-driven-growth-2-h": "Growth loops, not funnels", "data-driven-growth-2-p": "I think in growth loops: acquisition → activation → retention → referral → revenue, each feeding the next. For each loop I identify the weakest link and concentrate experimentation there. A 10% improvement in retention typically has 5× the impact of a 10% improvement in acquisition.", "data-driven-growth-3-h": "Instrumenting for insight", "data-driven-growth-3-p": "I write the analytics spec before features go to engineering. Every event has a name, properties, trigger, and business question it answers. Without this, teams ship features they can't measure — which means they can't learn from them.", "data-driven-growth-4-h": "Real example", "data-driven-growth-4-p": "At Hakuhodo I-Studio, I defined KPIs and a measurement framework for the Pechat IoT product from day one. By tracking activation rate (pairing within 24h), engagement (sessions per week), and retention (D7/D30), we identified that users who completed a specific onboarding step had 3× better D30 retention — which became a core focus of the next product cycle."}}, "fr": {"title": "Croissance Data-driven", "tagline": "Utiliser les données pour poser de meilleures questions — on-chain et off-chain.", "how_i_work": "Ma méthode", "back": "Retour au portfolio", "all_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026", "cards": {"data-driven-growth-0-h": "La data comme outil, pas comme béquille", "data-driven-growth-0-p": "Les données vous disent ce qui se passe. Elles vous disent rarement pourquoi. Je combine données quantitatives (quoi, combien, quand) avec données qualitatives (interviews, feedback utilisateurs, tickets support, analyse comportementale on-chain) pour comprendre la cause. En Web3, les données on-chain ajoutent une couche de transparence indisponible dans les produits traditionnels.", "data-driven-growth-1-h": "North Star et arbre de métriques", "data-driven-growth-1-p": "Chaque produit sur lequel je travaille a une métrique North Star qui capture l'échange de valeur fondamental. Chez Datachain : volume de transactions bridge. Chez SmartNews Ads : taux d'activation des annonceurs. Chez Hakuhodo/Pechat : sessions d'association actives hebdomadaires. Autour de chaque North Star je construis un arbre de métriques : 2–3 métriques d'input par niveau, jusqu'aux indicateurs avancés au niveau équipe.", "data-driven-growth-2-h": "Boucles de croissance, pas entonnoirs", "data-driven-growth-2-p": "Je pense en boucles de croissance : acquisition → activation → rétention → référral → revenus, chacune alimentant la suivante. Pour chaque boucle j'identifie le maillon le plus faible et y concentre l'expérimentation. Une amélioration de 10% de la rétention a généralement 5× l'impact d'une amélioration de 10% de l'acquisition.", "data-driven-growth-3-h": "Instrumenter pour l'insight", "data-driven-growth-3-p": "J'écris la spécification analytics avant que les features partent en engineering. Chaque événement a un nom, des propriétés, un déclencheur et une question business à laquelle il répond. Sans cette discipline, les équipes livrent des features qu'elles ne peuvent pas mesurer — ce qui signifie qu'elles ne peuvent pas en tirer des enseignements.", "data-driven-growth-4-h": "Exemple concret", "data-driven-growth-4-p": "Hakuhodo (Pechat) : identification de l'étape d'onboarding avec un impact 3× sur la rétention J30 dès le premier sprint post-lancement. SmartNews : les métriques d'activation Ads ont guidé la conception du processus PDLC — délai avant première campagne réduit de 4 semaines à 10 jours. Datachain : les KPIs on-chain du bridge (rétention wallets, taux de succès des transactions par paire de chaînes) utilisés comme input principal de la roadmap."}}, "ja": {"title": "データドリブン成長", "tagline": "より良い問いを立てるために数字を使う — オンチェーンとオフチェーンで。", "how_i_work": "私の仕事の仕方", "back": "ポートフォリオに戻る", "all_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026", "cards": {"data-driven-growth-0-h": "道具としてのデータ、松葉杖としてではなく", "data-driven-growth-0-p": "データは何が起きているかを教えてくれます。なぜかを教えてくれることはほとんどない。定量データ（何が、どれだけ、いつ）と定性データ（インタビュー、ユーザーフィードバック、サポートチケット、オンチェーン行動分析）を組み合わせて原因を理解します。Web3では、オンチェーンデータが従来のプロダクトでは得られない透明性の層を追加します。", "data-driven-growth-1-h": "ノーススターとメトリクスツリー", "data-driven-growth-1-p": "私が取り組むすべてのプロダクトには、コアな価値交換を捉えるノーススターメトリクスが1つあります。Datachain：ブリッジ取引量。SmartNews Ads：広告主アクティベーション率。Hakuhodo/Pechat：週次アクティブペアリングセッション。各ノーススターの周りにメトリクスツリーを構築します：各レベルに2〜3つのインプットメトリクス、チームレベルの先行指標まで。", "data-driven-growth-2-h": "ファネルではなく成長ループ", "data-driven-growth-2-p": "成長ループで考えます：獲得→アクティベーション→リテンション→紹介→収益、それぞれが次を養う。各ループで最も弱いリンクを特定し、そこに実験を集中させます。リテンションの10%改善は通常、獲得の10%改善の5倍のインパクトを持ちます。", "data-driven-growth-3-h": "インサイトのためのインストルメンテーション", "data-driven-growth-3-p": "フィーチャーがエンジニアリングに渡る前にアナリティクス仕様を書きます。すべてのイベントには名前、プロパティ、トリガー、そして答えるべきビジネスの問いがあります。この規律なしに、チームは測定できないフィーチャーを出荷します — つまりそこから学べない。", "data-driven-growth-4-h": "実例", "data-driven-growth-4-p": "Hakuhodo（Pechat）：ローンチ後初スプリントでD30リテンションに3倍のインパクトを持つオンボーディングステップを特定。SmartNews：Adsアクティベーションメトリクスがプロセス設計を導き、初回キャンペーンまでの時間を4週間から10日に短縮。Datachain：オンチェーンブリッジKPI（ウォレットリテンション、チェーンペア別取引成功率）をロードマップの主要インプットとして使用。"}}};
+  var NAV = {"en": {"roadmap-strategy": "Roadmap Strategy", "execution-excellence": "Execution Excellence", "ab-testing": "A/B Testing", "experimentation": "Experimentation", "cross-functional-delivery": "Cross-functional Delivery", "stakeholder-management": "Stakeholder Management", "data-driven-growth": "Data-driven Growth", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "fr": {"roadmap-strategy": "Stratégie Roadmap", "execution-excellence": "Excellence d'Exécution", "ab-testing": "A/B Testing", "experimentation": "Expérimentation", "cross-functional-delivery": "Livraison Cross-fonctionnelle", "stakeholder-management": "Parties Prenantes", "data-driven-growth": "Croissance Data-driven", "go-to-market": "Go-to-Market", "agile-scrum": "Agile / Scrum", "okrs": "OKRs"}, "ja": {"roadmap-strategy": "ロードマップ戦略", "execution-excellence": "実行の卓越性", "ab-testing": "A/Bテスト", "experimentation": "実験フレームワーク", "cross-functional-delivery": "クロスファンクショナル", "stakeholder-management": "ステークホルダー管理", "data-driven-growth": "データドリブン成長", "go-to-market": "Go-to-Market", "agile-scrum": "アジャイル / スクラム", "okrs": "OKR"}};
   function detectLang() {
-    var saved = localStorage.getItem('al_lang');
-    if (saved && ['en','fr','ja'].indexOf(saved) > -1) return saved;
-    var browser = (navigator.language || 'en').toLowerCase();
-    if (browser.indexOf('fr') === 0) return 'fr';
-    if (browser.indexOf('ja') === 0) return 'ja';
+    var s = localStorage.getItem('al_lang');
+    if (s && ['en','fr','ja'].indexOf(s) > -1) return s;
+    var b = (navigator.language || 'en').toLowerCase();
+    if (b.indexOf('fr') === 0) return 'fr';
+    if (b.indexOf('ja') === 0) return 'ja';
     return 'en';
   }
   function applyLang(lang) {
-    if (!UI[lang]) lang = 'en';
-    var t = UI[lang];
-    var el;
-    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    if (!T[lang]) lang = 'en';
+    var t = T[lang];
+    // Hero
+    var el = document.getElementById('hero-title'); if(el) el.innerHTML = t.title;
+    el = document.getElementById('hero-tagline'); if(el) el.innerHTML = t.tagline;
     el = document.getElementById('how-i-work-text'); if(el) el.innerHTML = t.how_i_work;
-    el = document.getElementById('other-skills-text'); if(el) el.innerHTML = t.other_skills;
+    // Nav
+    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    el = document.getElementById('all-skills-text'); if(el) el.innerHTML = t.all_skills;
     el = document.getElementById('footer-text'); if(el) el.innerHTML = t.footer;
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    // Cards
+    Object.keys(t.cards).forEach(function(k) {
+      var isH = k.endsWith('-h');
+      var attr = isH ? 'data-card-h' : 'data-card-p';
+      var cardKey = k.slice(0,-2);
+      var cardEl = document.querySelector('[' + attr + '="' + cardKey + '"]');
+      if (cardEl) cardEl.innerHTML = t.cards[k];
+    });
+    // Nav skill links
+    document.querySelectorAll('.skill-nav-link[data-skill]').forEach(function(a) {
+      var skillId = a.getAttribute('data-skill');
+      if (NAV[lang] && NAV[lang][skillId]) a.textContent = NAV[lang][skillId];
+    });
+    // Lang buttons
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
     localStorage.setItem('al_lang', lang);
   }
@@ -246,6 +171,5 @@
   document.addEventListener('DOMContentLoaded', function() { applyLang(detectLang()); });
 })();
 </script>
-
 </body>
 </html>
