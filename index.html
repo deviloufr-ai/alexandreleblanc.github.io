@@ -193,9 +193,10 @@
   }
 
   .co-logo {
-    width: 18px; height: 18px;
+    height: 16px;
+    width: auto;
+    max-width: 80px;
     object-fit: contain;
-    border-radius: 3px;
     flex-shrink: 0;
     filter: brightness(0) invert(1);
     opacity: 0.7;
@@ -444,7 +445,13 @@
   .job-company {
     font-size: 14px; color: var(--green); font-weight: 500;
     margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 6px;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .job-company img {
+    display: inline-block;
+    vertical-align: middle;
   }
 
   .job-badge {
@@ -987,7 +994,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="dc_title">Senior Project Manager</div>
-            <div class="job-company"><img src="https://cdn.prod.website-files.com/640a6452eb4eeb64282ec4c2/65b27ae179a68121ea5145cd_datachain-logo-black.svg" alt="Datachain" style="height:16px;object-fit:contain;" onerror="this.style.display='none'"> Datachain · Tokyo (Remote)</div>
+            <div class="job-company"><img src="https://cdn.prod.website-files.com/640a6452eb4eeb64282ec4c2/65b27ae179a68121ea5145cd_datachain-logo-black.svg" alt="Datachain" style="height:18px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> Datachain · Tokyo (Remote)</div>
           </div>
           <span class="job-badge">Web3 / DeFi</span>
         </div>
@@ -1011,7 +1018,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="sn_title">Program Manager</div>
-            <div class="job-company"><img src="https://logo.clearbit.com/smartnews.com" alt="SmartNews" style="width:18px;height:18px;object-fit:contain;border-radius:3px;" onerror="this.style.display='none'"> SmartNews · Tokyo (Remote)</div>
+            <div class="job-company"><img src="logos/smartnews.png" alt="SmartNews" style="height:22px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> SmartNews · Tokyo (Remote)</div>
           </div>
           <span class="job-badge">AdTech</span>
         </div>
@@ -1034,11 +1041,11 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="hk_title">Product Manager / Product Owner</div>
-            <div class="job-company"><img src="https://logo.clearbit.com/hakuhodo.co.jp" alt="Hakuhodo" style="width:18px;height:18px;object-fit:contain;border-radius:3px;" onerror="this.style.display='none'"> Hakuhodo I-Studio · Tokyo</div>
+            <div class="job-company"><img src="logos/hakuhodo.jpg" alt="Hakuhodo" style="height:26px;object-fit:contain;border-radius:3px;flex-shrink:0;" onerror="this.style.display='none'"> Hakuhodo I-Studio · Tokyo</div>
           </div>
           <span class="job-badge">IoT / Mobile</span>
         </div>
-        <p class="job-desc">Led Pechat (connected IoT toy): vision, KPIs, roadmap. Managed ¥100M R&D budget and 5-person offshore team. International expansion US & Europe, feature delivery time −40%.</p>
+        <p class="job-desc" data-i18n="hk_desc">Led Pechat (connected IoT toy): vision, KPIs, roadmap. Managed ¥100M R&amp;D budget and 5-person offshore team. International expansion US &amp; Europe, feature delivery time −40%.</p>
         <div class="job-tags">
           <span class="job-tag" data-i18n="tag_01">0→1 Product</span>
           <span class="job-tag" data-i18n="tag_iot">IoT</span>
@@ -1058,7 +1065,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="rk_title">Project Manager</div>
-            <div class="job-company"><img src="https://logo.clearbit.com/rakuten.co.jp" alt="Rakuten" style="width:18px;height:18px;object-fit:contain;border-radius:3px;" onerror="this.style.display='none'"> Rakuten · Tokyo</div>
+            <div class="job-company"><img src="logos/rakuten.jpg" alt="Rakuten" style="height:20px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> Rakuten · Tokyo</div>
           </div>
           <span class="job-badge">Mobile</span>
         </div>
@@ -1081,7 +1088,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="wg_title">Producer</div>
-            <div class="job-company"><img src="https://logo.clearbit.com/wargaming.net" alt="Wargaming" style="width:18px;height:18px;object-fit:contain;border-radius:3px;" onerror="this.style.display='none'"> Wargaming · Tokyo</div>
+            <div class="job-company"><img src="logos/wargaming.png" alt="Wargaming" style="height:26px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> Wargaming · Tokyo</div>
           </div>
           <span class="job-badge">Gaming</span>
         </div>
@@ -1104,7 +1111,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="ss_title">Chargé d'Affaire / Product / Developer</div>
-            <div class="job-company"><img src="https://logo.clearbit.com/siliconstudio.co.jp" alt="Silicon Studio" style="width:18px;height:18px;object-fit:contain;border-radius:3px;" onerror="this.style.display='none'"> Silicon Studio · Digicraft · Grévin et Cie</div>
+            <div class="job-company"><img src="logos/silicon-studio.png" alt="Silicon Studio" style="height:18px;object-fit:contain;filter:brightness(0.3);flex-shrink:0;" onerror="this.style.display='none'"> Silicon Studio · Digicraft · Grévin et Cie</div>
           </div>
           <span class="job-badge">Gaming / Tech</span>
         </div>
