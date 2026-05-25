@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data-driven Growth — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VE4EQ9F8WT');
-</script>
 <style>
   :root {
     --green: #1D9E75;
@@ -31,48 +23,154 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
-  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
   .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
   .nav-logo span { color: var(--green); }
-  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-back {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-muted); text-decoration: none;
+    font-weight: 500; transition: color 0.2s;
+  }
   .nav-back:hover { color: var(--green); }
-  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
-  .hero-inner { max-width: 760px; margin: 0 auto; }
-  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
-  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
+
+  .hero {
+    background: var(--dark-panel);
+    padding: 7rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 760px; margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(29,158,117,0.15);
+    color: #5DCAA5;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(29,158,117,0.25);
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; color: white;
+    letter-spacing: -1px; line-height: 1.1;
+    margin-bottom: 1rem;
+  }
   .hero h1 span { color: var(--green); }
-  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
-  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
-  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
-  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
-  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
-  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
-  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
-  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
-  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
+  .hero-tagline {
+    font-size: 1.1rem; color: #9ca3af;
+    border-left: 3px solid rgba(29,158,117,0.5);
+    padding-left: 1rem; line-height: 1.6;
+    max-width: 560px;
+  }
+
+  main {
+    max-width: 760px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .section-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+    border-left: 3px solid var(--accent);
+    transition: box-shadow 0.2s;
+  }
+  .section-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .section-card h3 {
+    font-size: 1rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-card h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .section-card p {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .nav-skills {
+    max-width: 760px; margin: 0 auto;
+    padding: 0 2rem 3rem;
+  }
+  .nav-skills h4 {
+    font-size: 11px; font-weight: 600;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 1rem;
+  }
+  .skill-nav-grid {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .skill-nav-link {
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    background: white; border: 1px solid var(--border);
+    color: var(--text-muted); text-decoration: none;
+    transition: all 0.2s;
+  }
+  .skill-nav-link:hover, .skill-nav-link.active {
+    background: var(--green-light);
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  footer {
+    background: var(--dark-panel);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem; text-align: center;
+    color: #6b7280; font-size: 13px;
+  }
   footer span { color: var(--green); }
-  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
+
+  .lang-switcher { display: flex; gap: 4px; align-items: center; }
+  .lang-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; transition: all 0.15s; opacity: 0.45; }
+  .lang-btn:hover { opacity: 0.8; }
+  .lang-btn.active { opacity: 1; border-color: var(--border); background: rgba(255,255,255,0.08); }
+
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">AL<span>.</span></a>
-  <a href="index.html#about" class="nav-back">
-    <i class="ti ti-arrow-left" aria-hidden="true"></i> Back to portfolio
+  <a href="alexandre_leblanc_portfolio.html" class="nav-logo">AL<span>.</span></a>
+  <a href="alexandre_leblanc_portfolio.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> <span id="nav-back-text">Back to portfolio</span>
   </a>
 </nav>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-chart-line" aria-hidden="true"></i> How I work</div>
+    <div class="hero-tag"><i class="ti ti-chart-line" aria-hidden="true"></i> <span id="how-i-work-text">How I work</span></div>
     <h1><span>Data-driven Growth</span></h1>
-    <p class="hero-tagline">Using numbers to ask better questions — on-chain and off-chain.</p>
+    <p class="hero-tagline">Using numbers to ask better questions</p>
   </div>
 </div>
 
@@ -80,29 +178,29 @@
 
         <div class="section-card">
           <h3>Data as a tool, not a crutch</h3>
-          <p>Data tells you what is happening. It rarely tells you why. I combine quantitative data (what, how much, when) with qualitative data (interviews, user feedback, support tickets, on-chain behavior analysis) to understand cause. In Web3, on-chain data adds a layer of transparency unavailable in traditional products — every transaction, every wallet interaction is auditable. But raw on-chain data is noisy; the skill is asking the right questions.</p>
+          <p>Data tells you what is happening. It rarely tells you why. I use quantitative data to identify the problem and prioritize urgency, and qualitative data (interviews, usability tests, support tickets) to understand the cause. The best product decisions combine both.</p>
         </div>
         <div class="section-card">
-          <h3>North Star and metrics trees</h3>
-          <p>Every product I work on has one North Star metric capturing the core value exchange. At Datachain: bridge transaction volume (value transferred cross-chain). At SmartNews Ads: advertiser activation rate (first campaign live within 30 days). At Hakuhodo/Pechat: weekly active pairing sessions (toy + app engagement). Around each North Star I build a metrics tree: 2–3 input metrics per level, down to team-level leading indicators. This prevents metric proliferation and keeps every team connected to outcomes.</p>
+          <h3>North Star and supporting metrics</h3>
+          <p>Every product I work on has one North Star metric that captures the core value exchange. Around it I build a metrics tree: 2-3 input metrics per level that drive the North Star, down to team-level leading indicators. This prevents metric proliferation and keeps every team connected to outcomes.</p>
         </div>
         <div class="section-card">
-          <h3>On-chain analytics (Web3)</h3>
-          <p>In blockchain products, on-chain data provides unique growth signals: wallet retention (wallets active after 30/90 days), transaction frequency, contract interaction depth, and cross-chain flow analysis. At Datachain, I defined on-chain KPIs for the IBC bridge: daily active wallets, bridge volume by chain pair, and transaction success rate. These fed directly into the roadmap — low success rates on specific chain pairs triggered protocol-level investigation, not just UI fixes.</p>
+          <h3>Growth loops, not funnels</h3>
+          <p>I think in growth loops: acquisition → activation → retention → referral → revenue, each feeding the next. For each loop I identify the weakest link and concentrate experimentation there. A 10% improvement in retention typically has 5× the impact of a 10% improvement in acquisition.</p>
         </div>
         <div class="section-card">
           <h3>Instrumenting for insight</h3>
-          <p>I write the analytics spec before features go to engineering. Every event has a name, properties, trigger, and business question it answers. Without this discipline, teams ship features they can't measure. At Hakuhodo, I defined the Pechat activation funnel (app download → pairing → first story → D7 return) before the app launched, which enabled us to identify the retention-driving step within the first sprint post-launch.</p>
+          <p>I write the analytics spec before features go to engineering. Every event has a name, properties, trigger, and business question it answers. Without this, teams ship features they can't measure — which means they can't learn from them.</p>
         </div>
         <div class="section-card">
           <h3>Real example</h3>
-          <p>Hakuhodo (Pechat): identified onboarding step with 3× D30 retention impact within first sprint post-launch. SmartNews: Ads activation metrics drove PDLC process design — time-to-first-campaign reduced from 4 weeks to 10 days. Datachain: on-chain bridge KPIs (wallet retention, transaction success rate by chain pair) used as primary roadmap input — resulted in 0 critical incidents on mainnet launch by catching integration issues in testnet monitoring phase.</p>
+          <p>At Hakuhodo I-Studio, I defined KPIs and a measurement framework for the Pechat IoT product from day one. By tracking activation rate (pairing within 24h), engagement (sessions per week), and retention (D7/D30), we identified that users who completed a specific onboarding step had 3× better D30 retention — which became a core focus of the next product cycle.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4>All skills</h4>
-      <div class="skill-nav-grid">
+  <h4 id="other-skills-text">Other skills</h4>
+  <div class="skill-nav-grid">
     <a href="skill-roadmap-strategy.html" class="skill-nav-link ">Roadmap Strategy</a>
     <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
     <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
@@ -113,13 +211,41 @@
     <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
     <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
     <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
-    <a href="skill-web3-product.html" class="skill-nav-link ">Web3 Product Management</a>
-    <a href="skill-defi-delivery.html" class="skill-nav-link ">DeFi / Protocol Delivery</a>
   </div>
 </div>
 
 <footer>
-  <p>Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
 </footer>
+
+<script>
+(function() {
+  var UI = {"en": {"back": "Back to portfolio", "how_i_work": "How I work", "other_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026"}, "fr": {"back": "Retour au portfolio", "how_i_work": "Ma méthode", "other_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026"}, "ja": {"back": "ポートフォリオに戻る", "how_i_work": "私の仕事の仕方", "other_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026"}};
+  function detectLang() {
+    var saved = localStorage.getItem('al_lang');
+    if (saved && ['en','fr','ja'].indexOf(saved) > -1) return saved;
+    var browser = (navigator.language || 'en').toLowerCase();
+    if (browser.indexOf('fr') === 0) return 'fr';
+    if (browser.indexOf('ja') === 0) return 'ja';
+    return 'en';
+  }
+  function applyLang(lang) {
+    if (!UI[lang]) lang = 'en';
+    var t = UI[lang];
+    var el;
+    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    el = document.getElementById('how-i-work-text'); if(el) el.innerHTML = t.how_i_work;
+    el = document.getElementById('other-skills-text'); if(el) el.innerHTML = t.other_skills;
+    el = document.getElementById('footer-text'); if(el) el.innerHTML = t.footer;
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    localStorage.setItem('al_lang', lang);
+  }
+  window.setLang = function(lang) { applyLang(lang); };
+  document.addEventListener('DOMContentLoaded', function() { applyLang(detectLang()); });
+})();
+</script>
+
 </body>
 </html>

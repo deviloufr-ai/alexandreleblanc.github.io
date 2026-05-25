@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roadmap Strategy — Alexandre Leblanc</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VE4EQ9F8WT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VE4EQ9F8WT');
-</script>
 <style>
   :root {
     --green: #1D9E75;
@@ -31,48 +23,154 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; }
-  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
   .nav-logo { font-weight: 600; font-size: 17px; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
   .nav-logo span { color: var(--green); }
-  .nav-back { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-back {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-muted); text-decoration: none;
+    font-weight: 500; transition: color 0.2s;
+  }
   .nav-back:hover { color: var(--green); }
-  .hero { background: var(--dark-panel); padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%); pointer-events: none; }
-  .hero-inner { max-width: 760px; margin: 0 auto; }
-  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.15); color: #5DCAA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(29,158,117,0.25); }
-  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: white; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; }
+
+  .hero {
+    background: var(--dark-panel);
+    padding: 7rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 760px; margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(29,158,117,0.15);
+    color: #5DCAA5;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(29,158,117,0.25);
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; color: white;
+    letter-spacing: -1px; line-height: 1.1;
+    margin-bottom: 1rem;
+  }
   .hero h1 span { color: var(--green); }
-  .hero-tagline { font-size: 1.1rem; color: #9ca3af; border-left: 3px solid rgba(29,158,117,0.5); padding-left: 1rem; line-height: 1.6; max-width: 560px; }
-  main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
-  .section-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); transition: box-shadow 0.2s; }
-  .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-  .section-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
-  .section-card h3::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .section-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
-  .nav-skills { max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem; }
-  .nav-skills h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-  .skill-nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-nav-link { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
-  .skill-nav-link:hover, .skill-nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green-dark); }
-  footer { background: var(--dark-panel); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; color: #6b7280; font-size: 13px; }
+  .hero-tagline {
+    font-size: 1.1rem; color: #9ca3af;
+    border-left: 3px solid rgba(29,158,117,0.5);
+    padding-left: 1rem; line-height: 1.6;
+    max-width: 560px;
+  }
+
+  main {
+    max-width: 760px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .section-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+    border-left: 3px solid var(--accent);
+    transition: box-shadow 0.2s;
+  }
+  .section-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .section-card h3 {
+    font-size: 1rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-card h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .section-card p {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .nav-skills {
+    max-width: 760px; margin: 0 auto;
+    padding: 0 2rem 3rem;
+  }
+  .nav-skills h4 {
+    font-size: 11px; font-weight: 600;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 1rem;
+  }
+  .skill-nav-grid {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .skill-nav-link {
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    background: white; border: 1px solid var(--border);
+    color: var(--text-muted); text-decoration: none;
+    transition: all 0.2s;
+  }
+  .skill-nav-link:hover, .skill-nav-link.active {
+    background: var(--green-light);
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  footer {
+    background: var(--dark-panel);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem; text-align: center;
+    color: #6b7280; font-size: 13px;
+  }
   footer span { color: var(--green); }
-  @media (max-width: 600px) { main { padding: 2rem 1.25rem 3rem; } .hero { padding: 5rem 1.25rem 3rem; } .hero h1 { font-size: 1.8rem; } .section-card { padding: 1.25rem; } }
+
+  .lang-switcher { display: flex; gap: 4px; align-items: center; }
+  .lang-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; transition: all 0.15s; opacity: 0.45; }
+  .lang-btn:hover { opacity: 0.8; }
+  .lang-btn.active { opacity: 1; border-color: var(--border); background: rgba(255,255,255,0.08); }
+
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">AL<span>.</span></a>
-  <a href="index.html#about" class="nav-back">
-    <i class="ti ti-arrow-left" aria-hidden="true"></i> Back to portfolio
+  <a href="alexandre_leblanc_portfolio.html" class="nav-logo">AL<span>.</span></a>
+  <a href="alexandre_leblanc_portfolio.html#about" class="nav-back">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> <span id="nav-back-text">Back to portfolio</span>
   </a>
 </nav>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-map-2" aria-hidden="true"></i> How I work</div>
+    <div class="hero-tag"><i class="ti ti-map-2" aria-hidden="true"></i> <span id="how-i-work-text">How I work</span></div>
     <h1><span>Roadmap Strategy</span></h1>
-    <p class="hero-tagline">Building the right plan for the right reasons — from IBC bridges to IoT toys.</p>
+    <p class="hero-tagline">Building the right plan for the right reasons</p>
   </div>
 </div>
 
@@ -80,29 +178,29 @@
 
         <div class="section-card">
           <h3>My philosophy</h3>
-          <p>A roadmap is not a backlog — it's a strategic communication tool. The question it answers: what bets are we making, why now, and what are we explicitly not doing? In Web3 and DeFi contexts this matters even more: protocol timelines affect partner integrations, investor confidence, and on-chain launch windows. I build roadmaps around outcomes, not features.</p>
+          <p>A roadmap is not a backlog. It's a strategic communication tool that answers one question: what bets are we making and why? I build roadmaps around outcomes, not features — each item ties back to a measurable business or user objective.</p>
         </div>
         <div class="section-card">
           <h3>How I build a roadmap</h3>
-          <p>I use a Now / Next / Later framework. Each item ties to a measurable outcome — not 'build X' but 'enable Y'. I score with a simplified RICE model (Reach × Impact / Effort) then adjust for strategic weight. At Datachain, the IBC bridge roadmap balanced a hard 12-month integration commitment to banking partners against a 24-month directional horizon for the DeFi expansion. In Web3, a missed release window can mean losing a protocol partnership to a competitor — so precision and stakeholder trust are non-negotiable.</p>
-        </div>
-        <div class="section-card">
-          <h3>Web3-specific considerations</h3>
-          <p>Blockchain product roadmaps have constraints traditional SaaS ones don't: smart contract audit timelines (typically 4–8 weeks), testnet phases, mainnet deployment windows, and dependency on external protocol upgrades (e.g. IBC spec changes). I build these into the roadmap as hard gates, not estimates. I also maintain a parallel 'protocol risk register' — forks, governance votes, or external chain upgrades that could invalidate planned work.</p>
+          <p>I start with a Now / Next / Later framework to give teams the right level of clarity without locking in false precision. Each horizon is driven by: company OKRs at the top, user pain points from research and support data in the middle, and technical debt or platform needs at the bottom. I score items using a simplified RICE model (Reach × Impact / Effort) and adjust for strategic weight — some bets matter because of their strategic position, not their raw score.</p>
         </div>
         <div class="section-card">
           <h3>Stakeholder alignment</h3>
-          <p>Before any roadmap review I run individual alignment sessions with Engineering leads, token holders (in Web3), Sales, and senior stakeholders. I use a one-pager format — one row per quarter, each item with a 'why now' rationale. At SmartNews, I aligned 5 product teams across the Ads business using quarterly OKR cascades. At Hakuhodo I-Studio, I presented a 3-year Pechat roadmap to Japanese and international executive teams across different cultural communication norms.</p>
+          <p>Before presenting a roadmap, I run individual alignment sessions with Engineering leads, Sales, and senior stakeholders. Surprises in a roadmap review kill trust. I use a one-pager format — one slide per quarter, each item with a 'why now' rationale — so reviewers engage with strategy, not just a list.</p>
         </div>
         <div class="section-card">
-          <h3>Real examples</h3>
-          <p>Datachain: 12 + 24-month IBC bridge roadmap, delivered in 12 months with 0 critical incidents. SmartNews: Ads program roadmap across 5 teams, +$2M/year revenue potential unlocked. Hakuhodo: Pechat 3-year roadmap, 0→120K units sold, US & EU market expansion. Wargaming: game title release calendar coordinated across Tokyo HQ, marketing, PR and regional support teams.</p>
+          <h3>Real example</h3>
+          <p>At Datachain, I defined a 12-month and 24-month roadmap for the IBC bridge project. The 12-month plan had hard commitments tied to integration milestones with banking partners. The 24-month horizon was directional — it communicated strategic intent to investors and internal leadership without creating false promises to engineering teams.</p>
+        </div>
+        <div class="section-card">
+          <h3>Tools I use</h3>
+          <p>Notion for lightweight roadmaps, Jira for sprint-level execution, Confluence for documentation. For exec presentations I use a visual timeline in Figma or Google Slides. I avoid tools that add process overhead without clarity gain.</p>
         </div>
 </main>
 
 <div class="nav-skills">
-  <h4>All skills</h4>
-      <div class="skill-nav-grid">
+  <h4 id="other-skills-text">Other skills</h4>
+  <div class="skill-nav-grid">
     <a href="skill-roadmap-strategy.html" class="skill-nav-link active">Roadmap Strategy</a>
     <a href="skill-execution-excellence.html" class="skill-nav-link ">Execution Excellence</a>
     <a href="skill-ab-testing.html" class="skill-nav-link ">A/B Testing</a>
@@ -113,13 +211,41 @@
     <a href="skill-go-to-market.html" class="skill-nav-link ">Go-to-Market</a>
     <a href="skill-agile-scrum.html" class="skill-nav-link ">Agile / Scrum</a>
     <a href="skill-okrs.html" class="skill-nav-link ">OKRs</a>
-    <a href="skill-web3-product.html" class="skill-nav-link ">Web3 Product Management</a>
-    <a href="skill-defi-delivery.html" class="skill-nav-link ">DeFi / Protocol Delivery</a>
   </div>
 </div>
 
 <footer>
-  <p>Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
+  <p id="footer-text">Alexandre <span>Leblanc</span> · Senior Project & Product Manager · 2026</p>
 </footer>
+
+<script>
+(function() {
+  var UI = {"en": {"back": "Back to portfolio", "how_i_work": "How I work", "other_skills": "All skills", "footer": "Senior Project &amp; Product Manager · 2026"}, "fr": {"back": "Retour au portfolio", "how_i_work": "Ma méthode", "other_skills": "Toutes les compétences", "footer": "Senior Project &amp; Product Manager · 2026"}, "ja": {"back": "ポートフォリオに戻る", "how_i_work": "私の仕事の仕方", "other_skills": "全スキル", "footer": "シニアプロジェクト &amp; プロダクトマネージャー · 2026"}};
+  function detectLang() {
+    var saved = localStorage.getItem('al_lang');
+    if (saved && ['en','fr','ja'].indexOf(saved) > -1) return saved;
+    var browser = (navigator.language || 'en').toLowerCase();
+    if (browser.indexOf('fr') === 0) return 'fr';
+    if (browser.indexOf('ja') === 0) return 'ja';
+    return 'en';
+  }
+  function applyLang(lang) {
+    if (!UI[lang]) lang = 'en';
+    var t = UI[lang];
+    var el;
+    el = document.getElementById('nav-back-text'); if(el) el.innerHTML = t.back;
+    el = document.getElementById('how-i-work-text'); if(el) el.innerHTML = t.how_i_work;
+    el = document.getElementById('other-skills-text'); if(el) el.innerHTML = t.other_skills;
+    el = document.getElementById('footer-text'); if(el) el.innerHTML = t.footer;
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    localStorage.setItem('al_lang', lang);
+  }
+  window.setLang = function(lang) { applyLang(lang); };
+  document.addEventListener('DOMContentLoaded', function() { applyLang(detectLang()); });
+})();
+</script>
+
 </body>
 </html>
