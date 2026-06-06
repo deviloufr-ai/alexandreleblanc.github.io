@@ -1138,7 +1138,7 @@
     <div class="products-grid" id="products-grid">
 
       <!-- JobTrackr — Personal project -->
-      <a href="jobtrackr.html" class="product-card" style="border-left: 3px solid var(--green);">
+      <div class="product-card" style="border-left: 3px solid var(--green); cursor:pointer;" onclick="window.location='jobtrackr.html'">
         <div class="product-icon">🤖</div>
         <div class="product-name">JobTrackr</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -1155,14 +1155,14 @@
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Firefox Extension</span>
         </div>
         <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-          <a href="https://jobtracking-three.vercel.app" target="_blank" rel="noopener" class="product-link">
+          <a href="https://jobtracking-three.vercel.app" target="_blank" rel="noopener" class="product-link" onclick="event.stopPropagation()">
             <i class="ti ti-external-link"></i> Live app
           </a>
-          <a href="https://github.com/deviloufr-ai/jobtracking" target="_blank" rel="noopener" class="product-link" style="color:var(--text-muted);">
+          <a href="https://github.com/deviloufr-ai/jobtracking" target="_blank" rel="noopener" class="product-link" style="color:var(--text-muted);" onclick="event.stopPropagation()">
             <i class="ti ti-brand-github"></i> GitHub
           </a>
         </div>
-      </a>
+      </div>
 
     </div>
   </div>
