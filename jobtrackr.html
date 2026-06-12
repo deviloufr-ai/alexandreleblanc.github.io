@@ -3,262 +3,713 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JobTrackr — Product One Pager · Alexandre Leblanc</title>
+<title>JobTrackr — Manage Your Job Search Like a Pipeline</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{height:100%;}
-  body{font-family:'Inter',Arial,sans-serif;background:#e8edf2;display:flex;flex-direction:column;align-items:center;padding:20px 16px;gap:16px;}
+  :root {
+    --bg: #0c0f16;
+    --surface: #161b26;
+    --surface-2: #1f2533;
+    --border: #2b3242;
+    --text: #eef0f6;
+    --text-dim: #9aa3ba;
+    --text-faint: #6b7488;
+    --indigo: #7b7bf7;
+    --indigo-soft: rgba(123,123,247,0.14);
+    --amber: #f4a73c;
+    --amber-soft: rgba(244,167,60,0.14);
+    --emerald: #36d399;
+    --emerald-soft: rgba(54,211,153,0.14);
 
-  /* BACK LINK */
-  .back-bar{width:210mm;max-width:100%;}
-  .back-link{
-    display:inline-flex;align-items:center;gap:6px;
-    text-decoration:none;color:#1a3558;font-size:13px;font-weight:500;
-    background:#fff;border:1px solid #d0dcea;border-radius:8px;padding:7px 14px;
-    transition:all 0.15s;
-  }
-  .back-link:hover{background:#f0f4f9;border-color:#1a3558;}
-  .back-link::before{content:"←";}
-
-  .page{
-    background:#fff;
-    width:210mm;
-    max-width:100%;
-    min-height:297mm;
-    overflow:hidden;
-    box-shadow:0 6px 40px rgba(0,0,0,.18);
-    display:flex;
-    flex-direction:column;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
   }
 
-  /* HEADER */
-  .hd{background:linear-gradient(135deg,#1a3558 0%,#1e4a7a 100%);padding:14px 22px 12px;flex-shrink:0;}
-  .hd-top{display:flex;align-items:center;gap:8px;}
-  .hd h1{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;}
-  .hd-tag{background:#ffffff22;color:#a8cce8;font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:20px;letter-spacing:.4px;}
-  .hd-sub{margin-top:3px;font-size:11px;color:#7fb3d4;font-style:italic;}
-  .hd-meta{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;}
-  .hd-pill{background:#ffffff18;border:1px solid #ffffff22;color:#c0d8f0;font-size:9px;padding:2px 7px;border-radius:20px;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* BODY */
-  .body{padding:11px 22px 0;flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;}
+  html { scroll-behavior: smooth; }
 
-  /* SECTION TITLE */
-  .st{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
-  .st-icon{font-size:11px;}
-  .st-label{font-size:9px;font-weight:700;color:#1a3558;text-transform:uppercase;letter-spacing:.8px;border-bottom:2px solid #2d5986;padding-bottom:2px;flex:1;}
-
-  /* PAIN POINTS */
-  .pain-box{background:#f0f4f9;border-left:3px solid #2d5986;border-radius:0 4px 4px 0;padding:9px 13px;}
-  .pain-intro{font-size:10.5px;color:#556;font-style:italic;margin-bottom:6px;}
-  .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;}
-  .pain-item{font-size:10.5px;color:#333;padding-left:13px;position:relative;line-height:1.45;}
-  .pain-item::before{content:"✕";color:#c0392b;font-size:8px;font-weight:700;position:absolute;left:1px;top:1px;}
-  .pain-item strong{color:#1a3558;font-weight:600;}
-
-  /* OVERVIEW */
-  .overview{font-size:11px;color:#444;line-height:1.6;}
-  .overview strong{color:#1a3558;}
-
-  /* FEATURES */
-  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-  .feat-card{background:#f7f9fc;border:1px solid #dde6f0;border-radius:5px;padding:8px 9px;}
-  .feat-card-title{font-size:10px;font-weight:700;color:#1a3558;margin-bottom:3px;display:flex;align-items:center;gap:4px;}
-  .feat-card-icon{font-size:12px;}
-  .feat-card-body{font-size:9.5px;color:#555;line-height:1.45;}
-
-  /* AI LAYER */
-  .ai-strip{background:linear-gradient(135deg,#eef3f9,#e4edf8);border:1px solid #c5d8ef;border-radius:5px;padding:9px 13px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;}
-  .ai-strip-icon{font-size:20px;}
-  .ai-strip-body{font-size:10.5px;color:#334;line-height:1.5;}
-  .ai-strip-body strong{color:#1a3558;}
-  .ai-tags{margin-top:5px;display:flex;flex-wrap:wrap;gap:4px;}
-  .ai-tag{background:#1a3558;color:#c0d8f0;font-size:9px;padding:2px 7px;border-radius:20px;font-weight:500;}
-
-  /* WHO */
-  .who-box{background:#fff8e6;border-left:3px solid #e8a020;border-radius:0 4px 4px 0;padding:8px 13px;font-size:10.5px;color:#444;line-height:1.55;}
-  .who-box strong{color:#7a4a00;}
-
-  /* FOOTER */
-  .footer{display:grid;grid-template-columns:1.2fr 1fr;flex-shrink:0;}
-  .f-left{background:#1a3558;padding:11px 18px;}
-  .f-right{background:#2d5986;padding:11px 18px;}
-  .f-label{font-size:8.5px;font-weight:700;color:#7fb3d4;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;}
-  .f-left p,.f-right p{font-size:10px;color:#fff;line-height:1.6;}
-  .f-right a{color:#aed1f0;text-decoration:none;}
-
-  @media print{
-    body{background:#fff;padding:0;}
-    .back-bar{display:none;}
-    .page{box-shadow:none;width:100%;min-height:100vh;}
+  body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
 
-  @media (max-width:220mm){
-    .feat-grid{grid-template-columns:repeat(2,1fr);}
-    .pain-grid{grid-template-columns:1fr;}
-    .footer{grid-template-columns:1fr;}
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav .wordmark {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav .wordmark .dot {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    background: var(--indigo);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  .nav .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 64px 0 56px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--indigo);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 26px; height: 1px;
+    background: var(--indigo);
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -1px;
+    max-width: 760px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--indigo);
+  }
+  .hero .lede {
+    margin-top: 20px;
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 560px;
+  }
+  .hero .ctas {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .btn-primary {
+    background: var(--indigo);
+    color: #0c0f16;
+  }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--indigo); }
+
+  /* ============ PIPELINE (signature element) ============ */
+  .pipeline {
+    margin-top: 56px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 28px 22px;
+    overflow: hidden;
+    position: relative;
+  }
+  .pipeline .pipeline-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 24px;
+  }
+  .pipeline-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .pipeline-track::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border) 0%, var(--border) 100%);
+    z-index: 0;
+  }
+  .stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stage .node {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+  }
+  .stage.active .node {
+    border-color: var(--indigo);
+    color: var(--indigo);
+    background: var(--indigo-soft);
+  }
+  .stage.warn .node {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: var(--amber-soft);
+  }
+  .stage.win .node {
+    border-color: var(--emerald);
+    color: var(--emerald);
+    background: var(--emerald-soft);
+  }
+  .stage .stage-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .stage .stage-desc {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    line-height: 1.45;
+    max-width: 180px;
+  }
+
+  /* moving "candidature" dots along the track */
+  .runner {
+    position: absolute;
+    top: 13px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--indigo);
+    box-shadow: 0 0 0 4px rgba(123,123,247,0.12);
+    animation: run 9s linear infinite;
+  }
+  .runner.r2 { background: var(--amber); box-shadow: 0 0 0 4px rgba(244,167,60,0.12); animation-duration: 11s; animation-delay: -3s; }
+  .runner.r3 { background: var(--emerald); box-shadow: 0 0 0 4px rgba(54,211,153,0.12); animation-duration: 13s; animation-delay: -7s; }
+
+  @keyframes run {
+    0%   { left: 5%; opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { left: 95%; opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .runner { animation: none; opacity: 0; }
+  }
+
+  /* ============ SECTION SHELL ============ */
+  section { padding: 56px 0; }
+  .section-head {
+    margin-bottom: 32px;
+  }
+  .section-head .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+  }
+  .section-head h2 {
+    font-family: var(--display);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .section-head p {
+    margin-top: 10px;
+    color: var(--text-dim);
+    max-width: 600px;
+    font-size: 15px;
+  }
+  .rule {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ============ PROBLEM ============ */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .problem-item {
+    background: var(--surface);
+    padding: 22px;
+  }
+  .problem-item .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .problem-item h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .problem-item p {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* ============ FEATURES ============ */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color .15s ease;
+  }
+  .feature:hover { border-color: var(--indigo); }
+  .feature .icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: var(--indigo-soft);
+    color: var(--indigo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .feature .icon svg { width: 18px; height: 18px; }
+  .feature h3 {
+    font-size: 14.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .feature p {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ============ AI BAND ============ */
+  .ai-band {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .ai-band .ai-copy .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--indigo);
+    margin-bottom: 10px;
+  }
+  .ai-band .ai-copy h3 {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 12px;
+  }
+  .ai-band .ai-copy p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .ai-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ai-task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .ai-task .tick {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--emerald-soft);
+    color: var(--emerald);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+  .ai-task .label-step {
+    font-family: var(--mono);
+    color: var(--text-faint);
+    font-size: 11px;
+  }
+
+  /* ============ NUMBERS STRIP ============ */
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .number-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 20px;
+    text-align: left;
+  }
+  .number-card .value {
+    font-family: var(--mono);
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--indigo);
+    margin-bottom: 6px;
+  }
+  .number-card .label {
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0 48px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 36px;
+  }
+  .footer-grid h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 12px;
+  }
+  .footer-grid .origin {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 420px;
+  }
+  .footer-grid .origin b { color: var(--text); }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; }
+  .footer-links a { color: var(--text); text-decoration: none; }
+  .footer-links a:hover { color: var(--indigo); }
+  .stack-list { font-size: 13.5px; color: var(--text-dim); line-height: 1.9; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 800px) {
+    .hero h1 { font-size: 36px; }
+    .pipeline-track { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .pipeline-track::before { display: none; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .ai-band { grid-template-columns: 1fr; }
+    .numbers { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   }
 </style>
 </head>
 <body>
-
-<div class="back-bar">
-  <a href="index.html" class="back-link">Back to portfolio</a>
-</div>
-
 <div class="page">
 
-  <!-- HEADER -->
-  <div class="hd">
-    <div class="hd-top">
-      <h1>JobTrackr</h1>
-      <span class="hd-tag">Product One Pager · June 2026</span>
-    </div>
-    <p class="hd-sub">Centralize, automate and pilot your job search — with AI as co-pilot</p>
-    <div class="hd-meta">
-      <span class="hd-pill">🌐 React web app + Vite</span>
-      <span class="hd-pill">🤖 Claude Haiku (Anthropic)</span>
-      <span class="hd-pill">📧 Gmail OAuth</span>
-      <span class="hd-pill">📅 Google Calendar</span>
-      <span class="hd-pill">☁️ Vercel · localStorage → Supabase v1.0</span>
-      <span class="hd-pill">🦊 Firefox Extension</span>
-    </div>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wordmark"><span class="dot"></span>JobTrackr</div>
+    <div class="meta">Product one-pager · June 2026</div>
   </div>
 
-  <div class="body">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">AI co-pilot for job search</div>
+    <h1>Your job search deserves a <em>pipeline</em>, not a spreadsheet breaking at row 30.</h1>
+    <p class="lede">JobTrackr syncs your emails, detects statuses, prioritizes follow-ups and preps interviews — so you stay in control of 15 to 50 concurrent applications without burning out.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://jobtracking-three.vercel.app" target="_blank">View live demo</a>
+      <a class="btn btn-secondary" href="https://github.com/deviloufr-ai/jobtracking" target="_blank">Source code on GitHub</a>
+    </div>
 
-    <!-- PROBLEM -->
-    <div>
-      <div class="st"><span class="st-icon">⚠️</span><span class="st-label">The Problem — Managing a job search without proper tools is chaos</span></div>
-      <div class="pain-box">
-        <p class="pain-intro">After 20+ concurrent applications, every serious job seeker hits the same roadblocks:</p>
-        <div class="pain-grid">
-          <div class="pain-item"><strong>Fragmentation</strong> — LinkedIn, Indeed, WTTJ, emails, networks: zero centralized hub.</div>
-          <div class="pain-item"><strong>Loss of context</strong> — Impossible to track where you are, who to follow up with, what was said.</div>
-          <div class="pain-item"><strong>Invisible emails</strong> — Rejections, confirmations and follow-ups drown in the inbox.</div>
-          <div class="pain-item"><strong>No priorities</strong> — What to do today? Who to call back? What's dead?</div>
-          <div class="pain-item"><strong>Rigid CV</strong> — Same CV sent everywhere, no adaptation to job descriptions.</div>
-          <div class="pain-item"><strong>Wrong tools</strong> — Heavy CRMs, unmanageable Excel beyond 30 rows.</div>
+    <!-- SIGNATURE PIPELINE -->
+    <div class="pipeline">
+      <div class="pipeline-label">Core of the product — each application follows this pipeline, automatically kept up-to-date</div>
+      <div class="pipeline-track">
+        <div class="runner r1"></div>
+        <div class="runner r2"></div>
+        <div class="runner r3"></div>
+
+        <div class="stage active">
+          <div class="node">01</div>
+          <div class="stage-title">Submitted</div>
+          <div class="stage-desc">Detected and created automatically from Gmail, zero manual input.</div>
+        </div>
+        <div class="stage active">
+          <div class="node">02</div>
+          <div class="stage-title">In progress</div>
+          <div class="stage-desc">Status updated at each exchange — confirmations, follow-ups, ATS rejections.</div>
+        </div>
+        <div class="stage warn">
+          <div class="node">03</div>
+          <div class="stage-title">Interview</div>
+          <div class="stage-desc">STAR prep generated, meeting detected, D-1 reminder.</div>
+        </div>
+        <div class="stage win">
+          <div class="node">04</div>
+          <div class="stage-title">Offer</div>
+          <div class="stage-desc">Goal reached — the pipeline did its job.</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- OVERVIEW -->
-    <div>
-      <div class="st"><span class="st-icon">🎯</span><span class="st-label">What is JobTrackr</span></div>
-      <p class="overview">
-        <strong>Full-stack web application</strong> that centralizes application tracking and automates repetitive tasks with AI. A single dashboard — statuses, timelines, priorities, prep tools — automatically powered by Gmail sync. Built for the active job seeker managing <strong>15 to 50+ concurrent applications</strong> who needs rigor without friction.
-      </p>
+  <hr class="rule">
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="section-head">
+      <div class="kicker">The Problem</div>
+      <h2>Job searching without the right tools is a second job.</h2>
+      <p>Beyond 20 active applications, standard tools don't scale — and the candidate pays the price.</p>
     </div>
-
-    <!-- FEATURES -->
-    <div>
-      <div class="st"><span class="st-icon">⚙️</span><span class="st-label">Features</span></div>
-      <div class="feat-grid">
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">📋</span>Dashboard</div>
-          <div class="feat-card-body">Unified view of all applications. Filter by status/period/keyword. Multi-column sorting. 4 stat cards + activity sparklines.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">📧</span>Auto Gmail import</div>
-          <div class="feat-card-body">Google OAuth. 12 parallel requests. AI parses emails and creates or updates each application — zero manual entry. Auto-refresh on load.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">🔄</span>Statuses & timeline</div>
-          <div class="feat-card-body">10 business statuses. Auto-detect ATS rejections (Greenhouse, Lever, Ashby…). Complete per-app timeline with dates and sources.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">⚡</span>Next actions</div>
-          <div class="feat-card-body">Rule engine: applications to follow up on, imminent interviews, use-case deadlines. Differentiated urgent alerts, session-dismissable.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">📅</span>Calendar & meetings</div>
-          <div class="feat-card-body">Google Calendar integration (OAuth). Agenda widget, date grouping, today/tomorrow detection. View upcoming interviews.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">📨</span>Follow-up email</div>
-          <div class="feat-card-body">AI-generated contextualized follow-up draft. Direct send via Gmail if true recruiter detected — never to ATS no-reply addresses.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">⭐</span>STAR generator</div>
-          <div class="feat-card-body">3 contextualized STAR answers (Situation/Task/Action/Result) generated by AI. Interview prep in 1 click, quick copy per block.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">📄</span>Adaptive CV</div>
-          <div class="feat-card-body">Upload PDF. AI rewrites CV based on job description. Markdown editor + PDF export. Side-by-side before/after view.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">📦</span>Use case & deliverables</div>
-          <div class="feat-card-body">Technical test tracking: deadline, deliverables (GitHub, Notion, Figma, App…), item status, countdown. Auto-surfaces in urgent actions.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">🎯</span>Goals & KPIs</div>
-          <div class="feat-card-body">3 configurable KPIs: applications/week, response rate, interviews/month. Real-time progress bars.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">🔍</span>Job search</div>
-          <div class="feat-card-body">Integrated search via Adzuna API. Location + keyword filters. Direct add to applications from results.</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title"><span class="feat-card-icon">🦊</span>Firefox extension</div>
-          <div class="feat-card-body">Capture a job offer from any page. Analysis by Claude Vision. Pre-fill form via URL params. 1-click install.</div>
-        </div>
-
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="num">01 / Fragmentation</div>
+        <h3>Five channels, zero hub</h3>
+        <p>LinkedIn, job boards, direct emails, networks, cold applications — no single view.</p>
+      </div>
+      <div class="problem-item">
+        <div class="num">02 / Lost context</div>
+        <h3>"Where was I with them?"</h3>
+        <p>Impossible to find an application's history without reopening 10 emails.</p>
+      </div>
+      <div class="problem-item">
+        <div class="num">03 / Hidden emails</div>
+        <h3>Invisible ATS rejections</h3>
+        <p>Confirmations, follow-ups and auto-rejections drown in the inbox.</p>
+      </div>
+      <div class="problem-item">
+        <div class="num">04 / No priorities</div>
+        <h3>What to do today?</h3>
+        <p>No signal for who to follow up with, which interview to prep, what's dead.</p>
+      </div>
+      <div class="problem-item">
+        <div class="num">05 / Rigid CV</div>
+        <h3>Same CV everywhere</h3>
+        <p>Sent as-is, no adaptation to job descriptions — hurts response rates.</p>
+      </div>
+      <div class="problem-item">
+        <div class="num">06 / Wrong tools</div>
+        <h3>Heavy CRM or broken Excel</h3>
+        <p>CRMs are built for sales teams. Excel breaks past row 30.</p>
       </div>
     </div>
+  </section>
 
-    <!-- AI LAYER -->
-    <div class="ai-strip">
-      <div class="ai-strip-icon">🤖</div>
-      <div class="ai-strip-body">
-        <strong>AI layer — Claude Haiku (Anthropic) via Vercel Serverless proxy</strong> — API key never exposed client-side. AI operates at 6 levels:
-        <div class="ai-tags">
-          <span class="ai-tag">Email parsing (batch 15)</span>
-          <span class="ai-tag">Status & company detection</span>
-          <span class="ai-tag">STAR generation</span>
-          <span class="ai-tag">Follow-up email draft</span>
-          <span class="ai-tag">Personalized CV rewriting</span>
-          <span class="ai-tag">Job offer analysis via extension (Vision)</span>
-        </div>
+  <hr class="rule">
+
+  <!-- FEATURES -->
+  <section>
+    <div class="section-head">
+      <div class="kicker">Features</div>
+      <h2>A single cockpit, powered by your emails.</h2>
+      <p>Everything you need to manage an active search, without ever opening a spreadsheet.</p>
+    </div>
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg></div>
+        <h3>Unified dashboard</h3>
+        <p>All your applications, filtered by status, period or keyword. Stats and activity trends at a glance.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <h3>Auto Gmail sync</h3>
+        <p>12 parallel requests on startup. AI reads your emails in batches and updates each application, zero manual entry.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Statuses & timeline</h3>
+        <p>10 business statuses, auto-detect ATS rejections, dated timeline merged per application.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke-linejoin="round"/></svg></div>
+        <h3>Next actions</h3>
+        <p>Rule engine: overdue follow-ups, imminent interviews, prioritized urgent alerts.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+        <h3>Calendar & meetings</h3>
+        <p>Google Calendar integration. Detect upcoming interviews, video call links one click away.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.3-1.1a8.5 8.5 0 1 1 4.3-8.4z"/></svg></div>
+        <h3>AI-powered follow-ups</h3>
+        <p>Contextualized draft ready to send — never sent to a dead ATS mailbox.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" stroke-linejoin="round"/></svg></div>
+        <h3>Interview prep</h3>
+        <p>3 STAR answers generated per application. Fast copy, ready for the big talk.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+        <h3>Adaptive CV</h3>
+        <p>Upload PDF, AI rewrites per job description, export in a click — before/after side-by-side.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- AI BAND -->
+  <section>
+    <div class="ai-band">
+      <div class="ai-copy">
+        <div class="kicker">Under the hood</div>
+        <h3>An AI co-pilot, never a data risk</h3>
+        <p>All AI flows through a Vercel Serverless proxy — Claude API key never exposed client-side. AI proposes, you decide: nothing is written without your sign-off.</p>
+      </div>
+      <div class="ai-tasks">
+        <div class="ai-task"><span class="tick">✓</span> Parse emails in batches of 15 <span class="label-step">— level 1</span></div>
+        <div class="ai-task"><span class="tick">✓</span> Status & company detection <span class="label-step">— level 2</span></div>
+        <div class="ai-task"><span class="tick">✓</span> STAR answer generation <span class="label-step">— level 3</span></div>
+        <div class="ai-task"><span class="tick">✓</span> Follow-up email draft <span class="label-step">— level 4</span></div>
+        <div class="ai-task"><span class="tick">✓</span> Personalized CV rewriting <span class="label-step">— level 5</span></div>
+        <div class="ai-task"><span class="tick">✓</span> Job offer analysis via extension <span class="label-step">— level 6</span></div>
       </div>
     </div>
+  </section>
 
-    <!-- ORIGIN -->
-    <div class="who-box">
-      <strong>Project origin.</strong> Built by Alexandre Leblanc — Senior PM with 18 years experience, trilingual FR/EN/JP — to solve his own frustrations during active job search. JobTrackr demonstrates what a PM can ship solo at the intersection of <em>product thinking</em>, no-code/low-code, and generative AI. Personal project in continuous development since April 2026, now v0.5 and production-ready.
+  <hr class="rule">
+
+  <!-- NUMBERS -->
+  <section>
+    <div class="section-head">
+      <div class="kicker">By the numbers</div>
+      <h2>Built for the real load of active job search.</h2>
     </div>
-
-  </div>
+    <div class="numbers">
+      <div class="number-card">
+        <div class="value">40+</div>
+        <div class="label">concurrent applications tracked without losing context</div>
+      </div>
+      <div class="number-card">
+        <div class="value">12</div>
+        <div class="label">Gmail requests synced on every app open</div>
+      </div>
+      <div class="number-card">
+        <div class="value">6</div>
+        <div class="label">AI-powered tasks, from email to interview</div>
+      </div>
+      <div class="number-card">
+        <div class="value">1 click</div>
+        <div class="label">to a follow-up, a STAR answer, or an adapted CV</div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <div class="footer">
-    <div class="f-left">
-      <div class="f-label">Tech stack</div>
-      <p>React · Tailwind · Vite · Vercel Serverless · Claude Haiku (Anthropic)<br>Gmail API · Google Calendar API · Adzuna API · localStorage → Supabase (v1.0)</p>
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Project origin</h4>
+        <p class="origin">Built by <b>Alexandre Leblanc</b> — Senior PM, 18 years experience (gaming, AdTech, Web3, mobile), trilingual FR/EN/JP. JobTrackr was born from personal frustration during active job search, and became the best proof of what a PM can ship solo at the intersection of product thinking, no-code/low-code, and generative AI. Personal project, continuous development since April 2026, production-ready since v0.5.</p>
+      </div>
+      <div>
+        <h4>Tech stack</h4>
+        <div class="stack-list">
+          React · Tailwind · Vite<br>
+          Vercel Serverless<br>
+          Claude Haiku (Anthropic)<br>
+          Gmail & Calendar API<br>
+          Adzuna API<br>
+          localStorage → Supabase
+        </div>
+      </div>
+      <div>
+        <h4>Access</h4>
+        <div class="footer-links">
+          <a href="https://jobtracking-three.vercel.app" target="_blank">→ jobtracking-three.vercel.app</a>
+          <a href="https://github.com/deviloufr-ai/jobtracking" target="_blank">→ github.com/deviloufr-ai/jobtracking</a>
+          <span style="color: var(--text-faint);">Notion · Backlog · Roadmap on request</span>
+        </div>
+      </div>
     </div>
-    <div class="f-right">
-      <div class="f-label">Access</div>
-      <p>
-        🌐 <a href="https://jobtracking-three.vercel.app" target="_blank" rel="noopener">jobtracking-three.vercel.app</a><br>
-        💻 <a href="https://github.com/deviloufr-ai/jobtracking" target="_blank" rel="noopener">github.com/deviloufr-ai/jobtracking</a><br>
-        📋 Notion · Backlog · Roadmap on request
-      </p>
-    </div>
-  </div>
+  </footer>
 
 </div>
 </body>
