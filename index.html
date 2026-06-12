@@ -1138,7 +1138,7 @@
     <div class="products-grid" id="products-grid">
 
       <!-- JobTrackr — Personal project -->
-      <div class="product-card" style="border-left: 3px solid var(--green); cursor:pointer;" onclick="window.location='jobtrackr.html'">
+      <div class="product-card" style="border-left: 3px solid var(--green); cursor:pointer;" onclick="openJobTrackrOnePager()">
         <div class="product-icon">🤖</div>
         <div class="product-name">JobTrackr</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -1429,6 +1429,18 @@ function closeMenu() {
 
   window.setLang = function(lang) {
     applyLang(lang);
+  };
+
+  // Language-aware JobTrackr onepager routing
+  window.openJobTrackrOnePager = function() {
+    const currentLang = localStorage.getItem('al_lang') || 'en';
+    const urls = {
+      'en': 'https://deviloufr-ai.github.io/alexandreleblanc.github.io/jobtrackr.html',
+      'fr': 'https://deviloufr-ai.github.io/alexandreleblanc.github.io/jobtrackr.html',
+      'ja': 'https://deviloufr-ai.github.io/alexandreleblanc.github.io/jobtrackr_ja.html'
+    };
+    const url = urls[currentLang] || urls['en'];
+    window.location = url;
   };
 
   // Auto-detect on load

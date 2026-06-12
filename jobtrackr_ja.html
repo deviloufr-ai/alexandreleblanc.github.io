@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobTrackr — プロダクト概要書 · Alexandre Leblanc</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{font-family:'Inter','Hiragino Sans',sans-serif;background:#e8edf2;display:flex;flex-direction:column;align-items:center;padding:20px 16px;gap:16px;}
+
+  /* BACK LINK */
+  .back-bar{width:210mm;max-width:100%;}
+  .back-link{
+    display:inline-flex;align-items:center;gap:6px;
+    text-decoration:none;color:#1a3558;font-size:13px;font-weight:500;
+    background:#fff;border:1px solid #d0dcea;border-radius:8px;padding:7px 14px;
+    transition:all 0.15s;
+  }
+  .back-link:hover{background:#f0f4f9;border-color:#1a3558;}
+  .back-link::before{content:"←";}
+
+  .page{
+    background:#fff;
+    width:210mm;
+    max-width:100%;
+    min-height:297mm;
+    overflow:hidden;
+    box-shadow:0 6px 40px rgba(0,0,0,.18);
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* HEADER */
+  .hd{background:linear-gradient(135deg,#1a3558 0%,#1e4a7a 100%);padding:14px 22px 12px;flex-shrink:0;}
+  .hd-top{display:flex;align-items:center;gap:8px;}
+  .hd h1{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;}
+  .hd-tag{background:#ffffff22;color:#a8cce8;font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:20px;letter-spacing:.4px;}
+  .hd-sub{margin-top:3px;font-size:11px;color:#7fb3d4;font-style:italic;}
+  .hd-meta{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;}
+  .hd-pill{background:#ffffff18;border:1px solid #ffffff22;color:#c0d8f0;font-size:9px;padding:2px 7px;border-radius:20px;}
+
+  /* BODY */
+  .body{padding:11px 22px 0;flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;}
+
+  /* SECTION TITLE */
+  .st{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+  .st-icon{font-size:11px;}
+  .st-label{font-size:9px;font-weight:700;color:#1a3558;text-transform:uppercase;letter-spacing:.8px;border-bottom:2px solid #2d5986;padding-bottom:2px;flex:1;}
+
+  /* PAIN POINTS */
+  .pain-box{background:#f0f4f9;border-left:3px solid #2d5986;border-radius:0 4px 4px 0;padding:9px 13px;}
+  .pain-intro{font-size:10.5px;color:#556;font-style:italic;margin-bottom:6px;}
+  .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;}
+  .pain-item{font-size:10.5px;color:#333;padding-left:13px;position:relative;line-height:1.45;}
+  .pain-item::before{content:"✕";color:#c0392b;font-size:8px;font-weight:700;position:absolute;left:1px;top:1px;}
+  .pain-item strong{color:#1a3558;font-weight:600;}
+
+  /* OVERVIEW */
+  .overview{font-size:11px;color:#444;line-height:1.6;}
+  .overview strong{color:#1a3558;}
+
+  /* FEATURES */
+  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+  .feat-card{background:#f7f9fc;border:1px solid #dde6f0;border-radius:5px;padding:8px 9px;}
+  .feat-card-title{font-size:10px;font-weight:700;color:#1a3558;margin-bottom:3px;display:flex;align-items:center;gap:4px;}
+  .feat-card-icon{font-size:12px;}
+  .feat-card-body{font-size:9.5px;color:#555;line-height:1.45;}
+
+  /* AI LAYER */
+  .ai-strip{background:linear-gradient(135deg,#eef3f9,#e4edf8);border:1px solid #c5d8ef;border-radius:5px;padding:9px 13px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;}
+  .ai-strip-icon{font-size:20px;}
+  .ai-strip-body{font-size:10.5px;color:#334;line-height:1.5;}
+  .ai-strip-body strong{color:#1a3558;}
+  .ai-tags{margin-top:5px;display:flex;flex-wrap:wrap;gap:4px;}
+  .ai-tag{background:#1a3558;color:#c0d8f0;font-size:9px;padding:2px 7px;border-radius:20px;font-weight:500;}
+
+  /* WHO */
+  .who-box{background:#fff8e6;border-left:3px solid #e8a020;border-radius:0 4px 4px 0;padding:8px 13px;font-size:10.5px;color:#444;line-height:1.55;}
+  .who-box strong{color:#7a4a00;}
+
+  /* FOOTER */
+  .footer{display:grid;grid-template-columns:1.2fr 1fr;flex-shrink:0;}
+  .f-left{background:#1a3558;padding:11px 18px;}
+  .f-right{background:#2d5986;padding:11px 18px;}
+  .f-label{font-size:8.5px;font-weight:700;color:#7fb3d4;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;}
+  .f-left p,.f-right p{font-size:10px;color:#fff;line-height:1.6;}
+  .f-right a{color:#aed1f0;text-decoration:none;}
+
+  @media print{
+    body{background:#fff;padding:0;}
+    .back-bar{display:none;}
+    .page{box-shadow:none;width:100%;min-height:100vh;}
+  }
+
+  @media (max-width:220mm){
+    .feat-grid{grid-template-columns:repeat(2,1fr);}
+    .pain-grid{grid-template-columns:1fr;}
+    .footer{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html" class="back-link">ポートフォリオに戻る</a>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="hd">
+    <div class="hd-top">
+      <h1>JobTrackr</h1>
+      <span class="hd-tag">プロダクト概要書 · 2026年6月</span>
+    </div>
+    <p class="hd-sub">就職活動を一元管理・自動化し、AIがあなたのコパイロット — 効率と精度を両立</p>
+    <div class="hd-meta">
+      <span class="hd-pill">🌐 React ウェブアプリ + Vite</span>
+      <span class="hd-pill">🤖 Claude Haiku (Anthropic)</span>
+      <span class="hd-pill">📧 Gmail OAuth</span>
+      <span class="hd-pill">📅 Google Calendar</span>
+      <span class="hd-pill">☁️ Vercel · localStorage → Supabase v1.0</span>
+      <span class="hd-pill">🦊 Firefox 拡張機能</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- PROBLEM -->
+    <div>
+      <div class="st"><span class="st-icon">⚠️</span><span class="st-label">課題 — 適切なツールなしの就職活動は混乱の元</span></div>
+      <div class="pain-box">
+        <p class="pain-intro">20社以上の並行応募を経験すると、誰もが同じ課題に直面します：</p>
+        <div class="pain-grid">
+          <div class="pain-item"><strong>情報の分散</strong> — LinkedIn、Indeed、WTTJ、メール、SNS…一元管理できるハブがない。</div>
+          <div class="pain-item"><strong>コンテキストの喪失</strong> — 今どの企業がどの段階か、誰にフォローすべきか分からなくなる。</div>
+          <div class="pain-item"><strong>メールの埋没</strong> — 不合格通知、確認メール、フォローアップはメールボックスに消える。</div>
+          <div class="pain-item"><strong>優先順位が不明</strong> — 今日何をすべき？誰にコンタクト？どれが終わった？</div>
+          <div class="pain-item"><strong>CVが一律</strong> — 同じCVを全社に送信、職務経歴書への適応がない。</div>
+          <div class="pain-item"><strong>ツールが不適切</strong> — CRMは重すぎ、Excelは30行を超えると管理不可。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div>
+      <div class="st"><span class="st-icon">🎯</span><span class="st-label">JobTrackr とは</span></div>
+      <p class="overview">
+        <strong>フルスタック ウェブアプリケーション</strong>で、応募管理を一元化し、AI が反復的なタスクを自動化します。単一ダッシュボード — 応募状況、タイムライン、優先順位、面接準備ツール — すべて Gmail 同期で自動更新。<strong>15～50+社の並行応募</strong>を管理する求職者向けに設計され、効率と精度の両立を実現します。
+      </p>
+    </div>
+
+    <!-- FEATURES -->
+    <div>
+      <div class="st"><span class="st-icon">⚙️</span><span class="st-label">機能</span></div>
+      <div class="feat-grid">
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">📋</span>ダッシュボード</div>
+          <div class="feat-card-body">全応募の一覧表示。ステータス・期間・キーワードでフィルタ。複数列でソート可能。4つの統計カード + アクティビティチャート。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">📧</span>自動 Gmail インポート</div>
+          <div class="feat-card-body">Google OAuth。12並行リクエスト。AI がメールを解析し、各応募を自動作成・更新。手作業不要。アプリ起動時に自動更新。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">🔄</span>ステータス & タイムライン</div>
+          <div class="feat-card-body">10のビジネスステータス。ATS 拒否メール自動検出（Greenhouse、Lever、Ashby など）。応募ごとにタイムラインを完全表示。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">⚡</span>次のアクション</div>
+          <div class="feat-card-body">ルールエンジン：フォローすべき応募、間近の面接、期限。優先度別のアラート、セッション内で無視可。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">📅</span>カレンダー & ミーティング</div>
+          <div class="feat-card-body">Google Calendar 統合（OAuth）。カレンダーウィジェット、日付でグループ化、今日・明日を自動検出。面接予定を表示。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">📨</span>フォローアップ メール</div>
+          <div class="feat-card-body">AI が文脈に合わせたフォローアップ案を生成。実際の採用担当者と検知できれば Gmail で直送 — 決して自動返信 ATS には送らない。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">⭐</span>STAR ジェネレータ</div>
+          <div class="feat-card-body">AI が文脈に応じた 3つの STAR 回答（状況・タスク・アクション・結果）を生成。面接対策が 1 クリック、ブロック単位で高速コピー。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">📄</span>適応的 CV</div>
+          <div class="feat-card-body">PDF アップロード。AI が職務経歴書を応募企業の要件に合わせて改稿。Markdown エディタ + PDF エクスポート。改稿前後の比較表示。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">📦</span>テスト課題 & 成果物</div>
+          <div class="feat-card-body">技術試験トラッキング：期限、成果物（GitHub、Notion、Figma、App など）、各項目のステータス、カウントダウン。緊急アクションに自動浮上。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">🎯</span>目標 & KPI</div>
+          <div class="feat-card-body">カスタマイズ可能な 3つの KPI：週次応募数、返信率、月次面接数。リアルタイムプログレスバー。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">🔍</span>求人検索</div>
+          <div class="feat-card-body">Adzuna API を使った統合検索。地域 + キーワードでフィルタ。検索結果から直接応募リストに追加。</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-card-title"><span class="feat-card-icon">🦊</span>Firefox 拡張機能</div>
+          <div class="feat-card-body">任意のページから求人情報をキャプチャ。Claude Vision が解析（テキスト + スクリーンショット）。URL パラメータでフォーム事前入力。1 クリックインストール。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- AI LAYER -->
+    <div class="ai-strip">
+      <div class="ai-strip-icon">🤖</div>
+      <div class="ai-strip-body">
+        <strong>AI レイヤー — Claude Haiku (Anthropic) を Vercel Serverless 経由で実行</strong> — API キーはクライアント側に一切露出しません。AI は 6 段階で動作：
+        <div class="ai-tags">
+          <span class="ai-tag">メール解析（バッチ 15）</span>
+          <span class="ai-tag">ステータス & 企業検出</span>
+          <span class="ai-tag">STAR 生成</span>
+          <span class="ai-tag">フォローアップメール案</span>
+          <span class="ai-tag">個別対応 CV 改稿</span>
+          <span class="ai-tag">求人分析（拡張機能 Vision）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORIGIN -->
+    <div class="who-box">
+      <strong>プロジェクト発足の背景。</strong>構築者は Alexandre Leblanc — シニア PM、18 年の国際経験、日本語対応（JLPT N2） — 自身の就職活動の課題を解決するため開発。JobTrackr は PM が <em>product thinking</em>、ノーコード/ローコード、生成 AI の交点で単独で実装できることを実証します。2026 年 4 月から継続開発中、現在 v0.5、本番環境で稼働中。
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="f-left">
+      <div class="f-label">技術スタック</div>
+      <p>React · Tailwind · Vite · Vercel Serverless · Claude Haiku (Anthropic)<br>Gmail API · Google Calendar API · Adzuna API · localStorage → Supabase (v1.0)</p>
+    </div>
+    <div class="f-right">
+      <div class="f-label">アクセス</div>
+      <p>
+        🌐 <a href="https://jobtracking-three.vercel.app" target="_blank" rel="noopener">jobtracking-three.vercel.app</a><br>
+        💻 <a href="https://github.com/deviloufr-ai/jobtracking" target="_blank" rel="noopener">github.com/deviloufr-ai/jobtracking</a><br>
+        📋 Notion · Backlog · Roadmap （リクエスト時）
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
