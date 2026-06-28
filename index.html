@@ -750,6 +750,7 @@
     <li><a href="#about" onclick="closeMenu()"><i class="ti ti-user" aria-hidden="true"></i> <span data-i18n="nav_about">About</span></a></li>
     <li><a href="#experience" onclick="closeMenu()"><i class="ti ti-briefcase" aria-hidden="true"></i> <span data-i18n="nav_experience">Experience</span></a></li>
     <li><a href="#products" onclick="closeMenu()"><i class="ti ti-apps" aria-hidden="true"></i> <span data-i18n="nav_products">Products</span></a></li>
+    <li><a href="#ai-tools" onclick="closeMenu()"><i class="ti ti-sparkles" aria-hidden="true"></i> <span data-i18n="nav_ai">AI &amp; Tools</span></a></li>
     <li><a href="#cv" onclick="closeMenu()"><i class="ti ti-file-cv" aria-hidden="true"></i> <span data-i18n="nav_resume">Resume</span></a></li>
     <li><a href="#press" onclick="closeMenu()"><i class="ti ti-news" aria-hidden="true"></i> <span data-i18n="nav_press">Press</span></a></li>
     <li><a href="#testimonials" onclick="closeMenu()"><i class="ti ti-quote" aria-hidden="true"></i> <span data-i18n="nav_testimonials">Testimonials</span></a></li>
@@ -770,6 +771,7 @@
   <a href="#about" onclick="closeMenu()"><i class="ti ti-user"></i> <span data-i18n="nav_about">About</span></a>
   <a href="#experience" onclick="closeMenu()"><i class="ti ti-briefcase"></i> <span data-i18n="nav_experience">Experience</span></a>
   <a href="#products" onclick="closeMenu()"><i class="ti ti-apps"></i> <span data-i18n="nav_products">Products</span></a>
+  <a href="#ai-tools" onclick="closeMenu()"><i class="ti ti-sparkles"></i> <span data-i18n="nav_ai">AI &amp; Tools</span></a>
   <a href="#cv" onclick="closeMenu()"><i class="ti ti-file-cv"></i> <span data-i18n="nav_resume">Resume</span></a>
   <a href="#press" onclick="closeMenu()"><i class="ti ti-news"></i> <span data-i18n="nav_press">Press</span></a>
   <a href="#testimonials" onclick="closeMenu()"><i class="ti ti-quote"></i> <span data-i18n="nav_testimonials">Testimonials</span></a>
@@ -1166,6 +1168,61 @@
             <i class="ti ti-brand-github"></i> GitHub
           </a>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI & TOOLS -->
+<section id="ai-tools">
+  <div class="inner">
+    <div class="section-label"><i class="ti ti-sparkles" aria-hidden="true"></i> <span data-i18n="ai_label">AI-augmented</span></div>
+    <h2 class="section-title" data-i18n="ai_title">Building with AI</h2>
+    <p class="section-desc" data-i18n="ai_desc">As a PM who also ships, I use AI as a daily co-pilot — from spec to production. JobTrackr was designed, coded and deployed solo using the stack below.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+
+      <div class="product-card">
+        <div class="product-icon" style="background:#f3ede7;"><i class="ti ti-terminal-2" style="font-size:22px;color:#d97757;" aria-hidden="true"></i></div>
+        <div class="product-name">Claude Code</div>
+        <div class="product-company" style="margin-bottom:0.5rem;">Anthropic · Agentic coding</div>
+        <p class="product-desc" data-i18n="ai_t_claudecode">My primary build agent — scaffolding, refactors, debugging and multi-file changes straight from the terminal. Built most of JobTrackr this way.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon" style="background:#ececec;"><i class="ti ti-cursor-text" style="font-size:22px;color:#111;" aria-hidden="true"></i></div>
+        <div class="product-name">Cursor</div>
+        <div class="product-company" style="margin-bottom:0.5rem;">AI code editor</div>
+        <p class="product-desc" data-i18n="ai_t_cursor">In-editor AI pair programming for fast inline edits, tab completion and reasoning over the whole codebase.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon" style="background:#e1f5ee;"><i class="ti ti-sparkles" style="font-size:22px;color:#d97757;" aria-hidden="true"></i></div>
+        <div class="product-name">Claude API</div>
+        <div class="product-company" style="margin-bottom:0.5rem;">Claude Haiku · In-product AI</div>
+        <p class="product-desc" data-i18n="ai_t_claudeapi">Powers JobTrackr's email parsing, STAR-story generator and adaptive CV rewriter — prompt design, structured outputs and cost-aware model selection.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon" style="background:#111;"><i class="ti ti-triangle-filled" style="font-size:18px;color:#fff;" aria-hidden="true"></i></div>
+        <div class="product-name">Vercel</div>
+        <div class="product-company" style="margin-bottom:0.5rem;">Deploy · Serverless</div>
+        <p class="product-desc" data-i18n="ai_t_vercel">Hosting, serverless functions and CI previews. From git push to a live URL in minutes, with zero infra to manage.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon" style="background:#f0f0f0;"><i class="ti ti-brand-github" style="font-size:22px;color:#111;" aria-hidden="true"></i></div>
+        <div class="product-name">GitHub</div>
+        <div class="product-company" style="margin-bottom:0.5rem;">Version control · CI/CD</div>
+        <p class="product-desc" data-i18n="ai_t_github">Source control, branching, PR workflows and Actions — the backbone connecting code to automated deploys.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon" style="background:var(--green-light);"><i class="ti ti-stack-2" style="font-size:22px;color:var(--green);" aria-hidden="true"></i></div>
+        <div class="product-name">Modern web stack</div>
+        <div class="product-company" style="margin-bottom:0.5rem;">React · Vite · Tailwind · Node</div>
+        <p class="product-desc" data-i18n="ai_t_stack">Comfortable reading and shaping a modern JS/TS stack — enough to direct the AI, review its output and ship production code.</p>
       </div>
 
     </div>
