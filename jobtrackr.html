@@ -76,6 +76,49 @@
     letter-spacing: 1px;
     text-transform: uppercase;
   }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-login {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-login:hover {
+    border-color: var(--indigo);
+    color: var(--indigo);
+  }
+  .nav-signup {
+    background: var(--indigo);
+    color: #0c0f16;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-signup:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(123,123,247,0.3);
+  }
 
   /* ============ HERO ============ */
   .hero {
@@ -484,6 +527,10 @@
   <div class="nav">
     <div class="wordmark"><span class="dot"></span>JobTrackr</div>
     <div class="meta">Product one-pager · June 2026</div>
+    <div class="nav-actions">
+      <a href="https://jobtracking-three.vercel.app/login" class="nav-login">Sign in</a>
+      <a href="https://jobtracking-three.vercel.app/signup" class="nav-signup">Get started</a>
+    </div>
   </div>
 
   <!-- HERO -->
@@ -492,7 +539,8 @@
     <h1>Your job search deserves a <em>pipeline</em>, not a spreadsheet breaking at row 30.</h1>
     <p class="lede">JobTrackr syncs your emails, detects statuses, prioritizes follow-ups and preps interviews — so you stay in control of 15 to 50 concurrent applications without burning out.</p>
     <div class="ctas">
-      <a class="btn btn-primary" href="https://jobtracking-three.vercel.app" target="_blank">View live demo</a>
+      <a class="btn btn-primary" href="https://jobtracking-three.vercel.app/signup" target="_blank">Start for free</a>
+      <a class="btn btn-secondary" href="https://jobtracking-three.vercel.app/login" target="_blank">Sign in</a>
       <a class="btn btn-secondary" href="https://github.com/deviloufr-ai/jobtracking" target="_blank">Source code on GitHub</a>
     </div>
 
