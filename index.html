@@ -212,31 +212,6 @@
     align-self: stretch;
   }
 
-  .stats-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 8px; margin-bottom: 4px;
-  }
-
-  .stat-card {
-    background: white;
-    border-radius: var(--radius-sm);
-    padding: 1rem;
-    border: 1px solid #e5e7eb;
-  }
-
-  .stat-card .number {
-    font-size: 1.75rem; font-weight: 700;
-    color: var(--dark); line-height: 1;
-    margin-bottom: 3px;
-  }
-
-  .stat-card .number span { color: var(--green); }
-
-  .stat-card .label {
-    font-size: 10px; color: var(--text-muted);
-    font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
-  }
-
   .location-badge {
     display: flex; align-items: center; gap: 8px;
     color: var(--text-muted); font-size: 12px;
@@ -598,7 +573,6 @@
     .timeline-left { flex-direction: row; align-items: center; gap: 8px; }
     .timeline-date { text-align: left; padding: 0; }
     nav .nav-links { display: none; }
-    .stats-grid { grid-template-columns: repeat(4,1fr); }
   }
 
   /* ── MOBILE ── */
@@ -621,8 +595,6 @@
 
     /* Right panel */
     .hero-right { padding: 1.5rem 1.25rem; border-top: 1px solid #e5e7eb; }
-    .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .stat-card .number { font-size: 1.4rem; }
 
     /* Sections */
     section { padding: 3rem 1.25rem; }
@@ -811,7 +783,7 @@
         <i class="ti ti-briefcase" aria-hidden="true"></i> <span data-i18n="hero_cta_experience">View experience</span>
       </a>
       <a href="#cv" class="btn btn-outline">
-        <i class="ti ti-download" aria-hidden="true"></i> Download CV
+        <i class="ti ti-download" aria-hidden="true"></i> <span data-i18n="hero_cta_cv">Download CV</span>
       </a>
     </div>
 
@@ -847,26 +819,6 @@
   </div>
 
   <div class="hero-right">
-    <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;" data-i18n="hero_right_numbers">Key numbers</div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="number">18<span>+</span></div>
-        <div class="label">Years exp.</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">3</div>
-        <div class="label">Languages</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">6</div>
-        <div class="label">Industries</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">2</div>
-        <div class="label">Continents</div>
-      </div>
-    </div>
-
     <div class="location-badge" style="margin: 4px 0;">
       <i class="ti ti-map-pin" style="font-size:14px;color:#1D9E75;" aria-hidden="true"></i>
       <span data-i18n="loc_beauvais">Beauvais, France · Open to remote</span>
@@ -876,15 +828,15 @@
 
     <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;" data-i18n="hero_right_skills">Core skills</div>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;">
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Product & Project Mgmt</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Agile / Scrum</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Program Manager</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Product Owner</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">OKRs / KPIs</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Risk Management</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Mobile & Gaming</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">Cybersecurity</span>
-      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);">AI Workflows</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_pm">Product & Project Mgmt</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_agile">Agile / Scrum</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_program">Program Manager</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_po">Product Owner</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_okrs">OKRs / KPIs</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_risk">Risk Management</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_mobile">Mobile & Gaming</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_cyber">Cybersecurity</span>
+      <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:var(--green-light);border:1px solid rgba(29,158,117,0.2);color:var(--green-dark);" data-i18n="hchip_ai">AI Workflows</span>
     </div>
 
     <div style="height:1px;background:#e5e7eb;margin:4px 0;"></div>
@@ -914,72 +866,72 @@
     <h2 class="section-title" data-i18n="about_title">Product leader focused on impact</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Senior Product Manager with a track record of delivering high-impact digital products from discovery to launch. I specialize in aligning cross-functional teams around a shared roadmap, driving execution excellence, and leveraging A/B testing and experimentation frameworks to optimize outcomes.</p>
-        <p>I bring strong expertise in stakeholder management, data-driven decision making, and building scalable products that balance user needs with business goals.</p>
+        <p data-i18n="about_p1">Senior Product Manager with a track record of delivering high-impact digital products from discovery to launch. I specialize in aligning cross-functional teams around a shared roadmap, driving execution excellence, and leveraging A/B testing and experimentation frameworks to optimize outcomes.</p>
+        <p data-i18n="about_p2">I bring strong expertise in stakeholder management, data-driven decision making, and building scalable products that balance user needs with business goals.</p>
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem;" data-i18n="about_skills_intro">Click any skill to read how I think and execute.</p>
         <div class="skills-list">
           <span class="skill-tag">
-            <i class="ti ti-clipboard-list" aria-hidden="true"></i> Product & Project Management
+            <i class="ti ti-clipboard-list" aria-hidden="true"></i> <span data-i18n="askill_pm">Product & Project Management</span>
           </span>
           <a href="skill-agile-scrum.html" class="skill-tag skill-link">
-            <i class="ti ti-refresh" aria-hidden="true"></i> Agile / Scrum
+            <i class="ti ti-refresh" aria-hidden="true"></i> <span data-i18n="askill_agile">Agile / Scrum</span>
           </a>
           <span class="skill-tag">
-            <i class="ti ti-world" aria-hidden="true"></i> Multicultural Leadership
+            <i class="ti ti-world" aria-hidden="true"></i> <span data-i18n="askill_multicultural">Multicultural Leadership</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-user-star" aria-hidden="true"></i> Product Owner
+            <i class="ti ti-user-star" aria-hidden="true"></i> <span data-i18n="askill_po">Product Owner</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-timeline" aria-hidden="true"></i> Program Management
+            <i class="ti ti-timeline" aria-hidden="true"></i> <span data-i18n="askill_program">Program Management</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-shield-check" aria-hidden="true"></i> Risk Management
+            <i class="ti ti-shield-check" aria-hidden="true"></i> <span data-i18n="askill_risk">Risk Management</span>
           </span>
           <a href="skill-roadmap-strategy.html" class="skill-tag skill-link">
-            <i class="ti ti-map-2" aria-hidden="true"></i> Roadmap & Product Vision
+            <i class="ti ti-map-2" aria-hidden="true"></i> <span data-i18n="askill_roadmap">Roadmap & Product Vision</span>
           </a>
           <a href="skill-stakeholder-management.html" class="skill-tag skill-link">
-            <i class="ti ti-hierarchy-2" aria-hidden="true"></i> Stakeholder Communication
+            <i class="ti ti-hierarchy-2" aria-hidden="true"></i> <span data-i18n="askill_stakeholder">Stakeholder Communication</span>
           </a>
           <a href="skill-cross-functional-delivery.html" class="skill-tag skill-link">
-            <i class="ti ti-users-group" aria-hidden="true"></i> Cross-functional Coordination
+            <i class="ti ti-users-group" aria-hidden="true"></i> <span data-i18n="askill_crossfunc">Cross-functional Coordination</span>
           </a>
           <span class="skill-tag">
-            <i class="ti ti-ticket" aria-hidden="true"></i> Jira
+            <i class="ti ti-ticket" aria-hidden="true"></i> <span data-i18n="askill_jira">Jira</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-notebook" aria-hidden="true"></i> Confluence
+            <i class="ti ti-notebook" aria-hidden="true"></i> <span data-i18n="askill_confluence">Confluence</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-layout-list" aria-hidden="true"></i> Linear
+            <i class="ti ti-layout-list" aria-hidden="true"></i> <span data-i18n="askill_linear">Linear</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-gauge" aria-hidden="true"></i> KPIs
+            <i class="ti ti-gauge" aria-hidden="true"></i> <span data-i18n="askill_kpis">KPIs</span>
           </span>
           <a href="skill-okrs.html" class="skill-tag skill-link">
-            <i class="ti ti-target" aria-hidden="true"></i> OKRs
+            <i class="ti ti-target" aria-hidden="true"></i> <span data-i18n="askill_okrs">OKRs</span>
           </a>
           <span class="skill-tag">
-            <i class="ti ti-checklist" aria-hidden="true"></i> DACI / RAPID
+            <i class="ti ti-checklist" aria-hidden="true"></i> <span data-i18n="askill_daci">DACI / RAPID</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-coin" aria-hidden="true"></i> Budget Management
+            <i class="ti ti-coin" aria-hidden="true"></i> <span data-i18n="askill_budget">Budget Management</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-device-gamepad-2" aria-hidden="true"></i> Mobile & Gaming
+            <i class="ti ti-device-gamepad-2" aria-hidden="true"></i> <span data-i18n="askill_mobile">Mobile & Gaming</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-shield-lock" aria-hidden="true"></i> Cybersecurity (CSIRT)
+            <i class="ti ti-shield-lock" aria-hidden="true"></i> <span data-i18n="askill_cyber">Cybersecurity (CSIRT)</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-robot" aria-hidden="true"></i> AI Workflows
+            <i class="ti ti-robot" aria-hidden="true"></i> <span data-i18n="askill_ai_workflows">AI Workflows</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-sparkles" aria-hidden="true"></i> AI Tools (Claude, Cursor)
+            <i class="ti ti-sparkles" aria-hidden="true"></i> <span data-i18n="askill_ai_tools">AI Tools (Claude, Cursor)</span>
           </span>
           <span class="skill-tag">
-            <i class="ti ti-vector" aria-hidden="true"></i> Prototyping
+            <i class="ti ti-vector" aria-hidden="true"></i> <span data-i18n="askill_prototyping">Prototyping</span>
           </span>
         </div>
       </div>
@@ -987,7 +939,7 @@
         <a href="mailto:deviloufr@gmail.com" class="contact-card">
           <div class="contact-icon"><i class="ti ti-mail" style="font-size:20px;" aria-hidden="true"></i></div>
           <div>
-            <div class="contact-label">Email</div>
+            <div class="contact-label" data-i18n="contact_email">Email</div>
             <div class="contact-value">deviloufr@gmail.com</div>
           </div>
         </a>
@@ -1001,7 +953,7 @@
         <a href="tel:+33744723658" class="contact-card">
           <div class="contact-icon"><i class="ti ti-phone" style="font-size:20px;" aria-hidden="true"></i></div>
           <div>
-            <div class="contact-label">Phone</div>
+            <div class="contact-label" data-i18n="contact_phone">Phone</div>
             <div class="contact-value">+33 7 44 72 36 58</div>
           </div>
         </a>
@@ -1027,7 +979,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="dc_title">Senior Project Manager</div>
-            <div class="job-company"><img src="https://cdn.prod.website-files.com/640a6452eb4eeb64282ec4c2/65b27ae179a68121ea5145cd_datachain-logo-black.svg" alt="Datachain" style="height:18px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> Datachain · Tokyo (Remote)</div>
+            <div class="job-company"><img src="https://cdn.prod.website-files.com/640a6452eb4eeb64282ec4c2/65b27ae179a68121ea5145cd_datachain-logo-black.svg" alt="Datachain" style="height:18px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> <span data-i18n="dc_company">Datachain · Tokyo (Remote)</span></div>
           </div>
           <span class="job-badge">Web3 / DeFi</span>
         </div>
@@ -1051,7 +1003,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="sn_title">Program Manager</div>
-            <div class="job-company"><img src="logos/smartnews.png" alt="SmartNews" style="height:22px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> SmartNews · Tokyo (Remote)</div>
+            <div class="job-company"><img src="logos/smartnews.png" alt="SmartNews" style="height:22px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> <span data-i18n="sn_company">SmartNews · Tokyo (Remote)</span></div>
           </div>
           <span class="job-badge">AdTech</span>
         </div>
@@ -1074,7 +1026,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="hk_title">Product Manager / Product Owner</div>
-            <div class="job-company"><img src="logos/hakuhodo.jpg" alt="Hakuhodo" style="height:26px;object-fit:contain;border-radius:3px;flex-shrink:0;" onerror="this.style.display='none'"> Hakuhodo I-Studio · Tokyo</div>
+            <div class="job-company"><img src="logos/hakuhodo.jpg" alt="Hakuhodo" style="height:26px;object-fit:contain;border-radius:3px;flex-shrink:0;" onerror="this.style.display='none'"> <span data-i18n="hk_company">Hakuhodo I-Studio · Tokyo</span></div>
           </div>
           <span class="job-badge">IoT / Mobile</span>
         </div>
@@ -1098,7 +1050,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="rk_title">Project Manager</div>
-            <div class="job-company"><img src="logos/rakuten.jpg" alt="Rakuten" style="height:20px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> Rakuten · Tokyo</div>
+            <div class="job-company"><img src="logos/rakuten.jpg" alt="Rakuten" style="height:20px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'"> <span data-i18n="rk_company">Rakuten · Tokyo</span></div>
           </div>
           <span class="job-badge">Mobile</span>
         </div>
@@ -1121,7 +1073,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="wg_title">Producer</div>
-            <div class="job-company"><img src="logos/wargaming.png" alt="Wargaming" style="height:26px;object-fit:contain;flex-shrink:0;background:white;padding:3px;" onerror="this.style.display='none'"> Wargaming · Tokyo</div>
+            <div class="job-company"><img src="logos/wargaming.png" alt="Wargaming" style="height:26px;object-fit:contain;flex-shrink:0;background:white;padding:3px;" onerror="this.style.display='none'"> <span data-i18n="wg_company">Wargaming · Tokyo</span></div>
           </div>
           <span class="job-badge">Gaming</span>
         </div>
@@ -1144,7 +1096,7 @@
         <div class="job-header">
           <div>
             <div class="job-title" data-i18n="ss_title">Chargé d'Affaire / Product / Developer</div>
-            <div class="job-company"><img src="logos/silicon-studio.png" alt="Silicon Studio" style="height:18px;object-fit:contain;flex-shrink:0;background:white;padding:3px;" onerror="this.style.display='none'"> Silicon Studio · Digicraft · Grévin et Cie</div>
+            <div class="job-company"><img src="logos/silicon-studio.png" alt="Silicon Studio" style="height:18px;object-fit:contain;flex-shrink:0;background:white;padding:3px;" onerror="this.style.display='none'"> <span data-i18n="ss_company">Silicon Studio · Digicraft · Grévin et Cie</span></div>
           </div>
           <span class="job-badge">Gaming / Tech</span>
         </div>
@@ -1175,10 +1127,10 @@
         <div class="product-icon">🤖</div>
         <div class="product-name">JobTrackr</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          Personal project · 2026
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--green-light);color:var(--green-dark);border:1px solid rgba(29,158,117,0.2);font-weight:600;">Solo-built</span>
+          <span data-i18n="pcm_jobtrackr">Personal project · 2026</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--green-light);color:var(--green-dark);border:1px solid rgba(29,158,117,0.2);font-weight:600;" data-i18n="badge_solo">Solo-built</span>
         </div>
-        <p class="product-desc">Full-stack web app to centralize, automate and pilot a job search with AI as co-pilot. Gmail OAuth sync, AI-parsed emails, STAR generator, adaptive CV rewriter, Google Calendar integration, Firefox extension, and more. Built to manage 15–50+ concurrent applications without friction.</p>
+        <p class="product-desc" data-i18n="pd_jobtrackr">Full-stack web app to centralize, automate and pilot a job search with AI as co-pilot. Gmail OAuth sync, AI-parsed emails, STAR generator, adaptive CV rewriter, Google Calendar integration, Firefox extension, and more. Built to manage 15–50+ concurrent applications without friction.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">React · Vite</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Tailwind</span>
@@ -1189,7 +1141,7 @@
         </div>
         <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
           <a href="https://jobtracking-three.vercel.app" target="_blank" rel="noopener" class="product-link" onclick="event.stopPropagation()">
-            <i class="ti ti-external-link"></i> Live app
+            <i class="ti ti-external-link"></i> <span data-i18n="link_live_app">Live app</span>
           </a>
           <a href="https://github.com/deviloufr-ai/jobtracking" target="_blank" rel="noopener" class="product-link" style="color:var(--text-muted);" onclick="event.stopPropagation()">
             <i class="ti ti-brand-github"></i> GitHub
@@ -1203,9 +1155,9 @@
         <div class="product-name">IBC Inter-chain Bridge</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Datachain · 2023–2025
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;">Product Owner</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;" data-i18n="badge_po">Product Owner</span>
         </div>
-        <p class="product-desc">First production IBC inter-chain bridge connecting Ethereum &amp; BNB Chain. As Product Owner / Scrum Master: defined the 12 &amp; 24-month roadmap, wrote 90+ user stories, and shipped in 12 months with 0 critical incidents.</p>
+        <p class="product-desc" data-i18n="pd_ibc">First production IBC inter-chain bridge connecting Ethereum &amp; BNB Chain. As Product Owner / Scrum Master: defined the 12 &amp; 24-month roadmap, wrote 90+ user stories, and shipped in 12 months with 0 critical incidents.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Web3 / DeFi</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">IBC Protocol</span>
@@ -1219,9 +1171,9 @@
         <div class="product-name">Pechat</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Hakuhodo I-Studio · 2017–2020
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;">Product Manager</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;" data-i18n="badge_pm">Product Manager</span>
         </div>
-        <p class="product-desc">Connected IoT button-speaker that lets parents talk and play sounds through a child's plush toy via a mobile app. Owned vision, KPIs and the 3-year roadmap — grew it from 0 → 120K units, launched in the US, and won a Good Design Award.</p>
+        <p class="product-desc" data-i18n="pd_pechat">Connected IoT button-speaker that lets parents talk and play sounds through a child's plush toy via a mobile app. Owned vision, KPIs and the 3-year roadmap — grew it from 0 → 120K units, launched in the US, and won a Good Design Award.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">IoT Hardware</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Mobile App</span>
@@ -1238,9 +1190,9 @@
         <div class="product-name">Rakuten Mobile SDK</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Rakuten · 2015–2016
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;">Project Manager</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;" data-i18n="badge_projm">Project Manager</span>
         </div>
-        <p class="product-desc">Shared mobile SDK integrated across every Rakuten app (50M+ users). Coordinated local and offshore teams (12 people) to ship 5 major releases with 100% of deliverables on time.</p>
+        <p class="product-desc" data-i18n="pd_rakuten_sdk">Shared mobile SDK integrated across every Rakuten app (50M+ users). Coordinated local and offshore teams (12 people) to ship 5 major releases with 100% of deliverables on time.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Mobile SDK</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">iOS / Android</span>
@@ -1254,17 +1206,17 @@
         <div class="product-name">World of Warships</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Wargaming · 2013–2015
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;">Producer</span>
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;" data-i18n="badge_producer">Producer</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">AAA free-to-play naval-combat MMO. Supervised the Asia-Pacific publication cycle — regional launch, localization and live-ops between HQ and local teams. Presented the title at Tokyo Game Show 2014.</p>
+        <p class="product-desc" data-i18n="pd_wows">AAA free-to-play naval-combat MMO. Supervised the Asia-Pacific publication cycle — regional launch, localization and live-ops between HQ and local teams. Presented the title at Tokyo Game Show 2014.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">AAA Game</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Publishing</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">APAC Launch</span>
         </div>
         <a href="https://www.4gamer.net/games/138/G013889/20140921039/" target="_blank" rel="noopener" class="product-link">
-          <i class="ti ti-external-link"></i> TGS 2014 coverage
+          <i class="ti ti-external-link"></i> <span data-i18n="link_tgs2014">TGS 2014 coverage</span>
         </a>
       </div>
 
@@ -1274,9 +1226,9 @@
         <div class="product-name">World of Tanks</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Wargaming · 2013–2015
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;">Producer</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;" data-i18n="badge_producer">Producer</span>
         </div>
-        <p class="product-desc">The flagship AAA tank-combat MMO with tens of millions of players. Coordinated Asia-Pacific publishing, marketing, PR and community operations across 5 countries.</p>
+        <p class="product-desc" data-i18n="pd_wot">The flagship AAA tank-combat MMO with tens of millions of players. Coordinated Asia-Pacific publishing, marketing, PR and community operations across 5 countries.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">AAA Game</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Live Ops</span>
@@ -1290,10 +1242,10 @@
         <div class="product-name">World of Warplanes</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Wargaming · 2013–2015
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;">Producer</span>
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;" data-i18n="badge_producer">Producer</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">AAA aerial-combat MMO. Owned regional release coordination, PR and player-support alignment between the global HQ and Asia-Pacific teams.</p>
+        <p class="product-desc" data-i18n="pd_wowp">AAA aerial-combat MMO. Owned regional release coordination, PR and player-support alignment between the global HQ and Asia-Pacific teams.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">AAA Game</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Publishing</span>
@@ -1307,10 +1259,10 @@
         <div class="product-name">World of Tanks: Generals</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Wargaming · 2014
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;">Producer</span>
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#fff8e1;color:#d97706;border:1px solid rgba(217,119,6,0.2);font-weight:600;" data-i18n="badge_producer">Producer</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">Turn-based strategy card game spin-off of World of Tanks. Supported the regional launch and cross-team coordination.</p>
+        <p class="product-desc" data-i18n="pd_wotg">Turn-based strategy card game spin-off of World of Tanks. Supported the regional launch and cross-team coordination.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Strategy / CCG</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Publishing</span>
@@ -1323,9 +1275,9 @@
         <div class="product-name">Chaos Rings Σ</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · Square Enix · 2012–2013
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;">Project Manager</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;" data-i18n="badge_projm">Project Manager</span>
         </div>
-        <p class="product-desc">Managed the social/online development (Server⇄Client) and the relationship between Square Enix and the dev team — scheduling, milestones and specs.</p>
+        <p class="product-desc" data-i18n="pd_chaosrings">Managed the social/online development (Server⇄Client) and the relationship between Square Enix and the dev team — scheduling, milestones and specs.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Mobile RPG</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Client / Server</span>
@@ -1338,9 +1290,9 @@
         <div class="product-name">Assassin's Creed Utopia</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · Ubisoft · 2012
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Cancelled</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_cancelled">Cancelled</span>
         </div>
-        <p class="product-desc">Project Manager on this (later cancelled) Ubisoft mobile title. Managed the client-server dev team: scheduling, milestones and client consulting.</p>
+        <p class="product-desc" data-i18n="pd_ac_utopia">Project Manager on this (later cancelled) Ubisoft mobile title. Managed the client-server dev team: scheduling, milestones and client consulting.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Mobile</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Client Consulting</span>
@@ -1353,9 +1305,9 @@
         <div class="product-name">Berserk</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · 2013
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;">Project Manager</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;border:1px solid rgba(67,56,202,0.15);font-weight:600;" data-i18n="badge_projm">Project Manager</span>
         </div>
-        <p class="product-desc">Project Manager — milestones, scheduling and client relations.</p>
+        <p class="product-desc" data-i18n="pd_berserk">Project Manager — milestones, scheduling and client relations.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Game Dev</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Scheduling</span>
@@ -1368,10 +1320,10 @@
         <div class="product-name">Chantelise</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · 2008–2009
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Licensing</span>
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_licensing">Licensing</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">2D/3D action-RPG. Managed the full pipeline from game licensing to overseas publishing — marketing, contracts, localization and publisher research.</p>
+        <p class="product-desc" data-i18n="pd_chantelise">2D/3D action-RPG. Managed the full pipeline from game licensing to overseas publishing — marketing, contracts, localization and publisher research.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Action RPG</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Localization</span>
@@ -1384,9 +1336,9 @@
         <div class="product-name">Gunner's Heart</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · 2008–2010
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">3D rail-shooter for PC.</p>
+        <p class="product-desc" data-i18n="pd_gunners">3D rail-shooter for PC.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">3D / PC</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Rail Shooter</span>
@@ -1398,10 +1350,10 @@
         <div class="product-icon" style="background:#fdf2f8;">🐶</div>
         <div class="product-name">Kawaii Koinu</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          Mobile · 2013
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span data-i18n="pcm_kawaii">Mobile · 2013</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">Android puppy-simulator game with social features.</p>
+        <p class="product-desc" data-i18n="pd_kawaii">Android puppy-simulator game with social features.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Android</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Social</span>
@@ -1414,9 +1366,9 @@
         <div class="product-name">Game Co-Dev &amp; Licensing</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · Digicraft · 2007–2013
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Business Dev</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_bizdev">Business Dev</span>
         </div>
-        <p class="product-desc">Managed multicultural dev teams (up to 10) on game projects with partners including Square Enix, Ubisoft and GREE. Founded and led an international indie-game licensing division — 15 titles licensed in 3 years.</p>
+        <p class="product-desc" data-i18n="pd_codev">Managed multicultural dev teams (up to 10) on game projects with partners including Square Enix, Ubisoft and GREE. Founded and led an international indie-game licensing division — 15 titles licensed in 3 years.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Game Dev</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">Licensing</span>
@@ -1430,9 +1382,9 @@
         <div class="product-name">Internal Tools &amp; Software</div>
         <div class="product-company" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           Silicon Studio · 2007–2013
-          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;">Developer</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:20px;background:#f1f5f9;color:#475569;border:1px solid rgba(71,85,105,0.15);font-weight:600;" data-i18n="badge_developer">Developer</span>
         </div>
-        <p class="product-desc">Built intranet tools and internal software (.NET, SQL) for studio operations — reporting, workflow and data management. Still in production 5 years after delivery.</p>
+        <p class="product-desc" data-i18n="pd_internal_tools">Built intranet tools and internal software (.NET, SQL) for studio operations — reporting, workflow and data management. Still in production 5 years after delivery.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">.NET</span>
           <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f3f4f6;color:var(--text-muted);">SQL</span>
@@ -1456,41 +1408,41 @@
       <div class="product-card">
         <div class="product-icon" style="background:#f3ede7;"><i class="ti ti-terminal-2" style="font-size:22px;color:#d97757;" aria-hidden="true"></i></div>
         <div class="product-name">Claude Code</div>
-        <div class="product-company" style="margin-bottom:0.5rem;">Anthropic · Agentic coding</div>
+        <div class="product-company" style="margin-bottom:0.5rem;" data-i18n="ait_claudecode_co">Anthropic · Agentic coding</div>
         <p class="product-desc" data-i18n="ai_t_claudecode">My primary build agent — scaffolding, refactors, debugging and multi-file changes straight from the terminal. Built most of JobTrackr this way.</p>
       </div>
 
       <div class="product-card">
         <div class="product-icon" style="background:#ececec;"><i class="ti ti-cursor-text" style="font-size:22px;color:#111;" aria-hidden="true"></i></div>
         <div class="product-name">Cursor</div>
-        <div class="product-company" style="margin-bottom:0.5rem;">AI code editor</div>
+        <div class="product-company" style="margin-bottom:0.5rem;" data-i18n="ait_cursor_co">AI code editor</div>
         <p class="product-desc" data-i18n="ai_t_cursor">In-editor AI pair programming for fast inline edits, tab completion and reasoning over the whole codebase.</p>
       </div>
 
       <div class="product-card">
         <div class="product-icon" style="background:#e1f5ee;"><i class="ti ti-sparkles" style="font-size:22px;color:#d97757;" aria-hidden="true"></i></div>
         <div class="product-name">Claude API</div>
-        <div class="product-company" style="margin-bottom:0.5rem;">Claude Haiku · In-product AI</div>
+        <div class="product-company" style="margin-bottom:0.5rem;" data-i18n="ait_claudeapi_co">Claude Haiku · In-product AI</div>
         <p class="product-desc" data-i18n="ai_t_claudeapi">Powers JobTrackr's email parsing, STAR-story generator and adaptive CV rewriter — prompt design, structured outputs and cost-aware model selection.</p>
       </div>
 
       <div class="product-card">
         <div class="product-icon" style="background:#111;"><i class="ti ti-triangle-filled" style="font-size:18px;color:#fff;" aria-hidden="true"></i></div>
         <div class="product-name">Vercel</div>
-        <div class="product-company" style="margin-bottom:0.5rem;">Deploy · Serverless</div>
+        <div class="product-company" style="margin-bottom:0.5rem;" data-i18n="ait_vercel_co">Deploy · Serverless</div>
         <p class="product-desc" data-i18n="ai_t_vercel">Hosting, serverless functions and CI previews. From git push to a live URL in minutes, with zero infra to manage.</p>
       </div>
 
       <div class="product-card">
         <div class="product-icon" style="background:#f0f0f0;"><i class="ti ti-brand-github" style="font-size:22px;color:#111;" aria-hidden="true"></i></div>
         <div class="product-name">GitHub</div>
-        <div class="product-company" style="margin-bottom:0.5rem;">Version control · CI/CD</div>
+        <div class="product-company" style="margin-bottom:0.5rem;" data-i18n="ait_github_co">Version control · CI/CD</div>
         <p class="product-desc" data-i18n="ai_t_github">Source control, branching, PR workflows and Actions — the backbone connecting code to automated deploys.</p>
       </div>
 
       <div class="product-card">
         <div class="product-icon" style="background:var(--green-light);"><i class="ti ti-stack-2" style="font-size:22px;color:var(--green);" aria-hidden="true"></i></div>
-        <div class="product-name">Modern web stack</div>
+        <div class="product-name" data-i18n="ait_stack_name">Modern web stack</div>
         <div class="product-company" style="margin-bottom:0.5rem;">React · Vite · Tailwind · Node</div>
         <p class="product-desc" data-i18n="ai_t_stack">Comfortable reading and shaping a modern JS/TS stack — enough to direct the AI, review its output and ship production code.</p>
       </div>
@@ -1508,10 +1460,10 @@
 
     <div class="cv-download-card">
       <div class="cv-meta">
-        <h3>Alexandre Leblanc — Senior Product Manager</h3>
-        <p>English version · Last updated 2026</p>
+        <h3 data-i18n="cv_card_h">Alexandre Leblanc — Senior Product Manager</h3>
+        <p data-i18n="cv_card_sub">English version · Last updated 2026</p>
         <div class="cv-badges">
-          <span class="cv-badge">18+ years experience</span>
+          <span class="cv-badge" data-i18n="cv_badge_years">18+ years experience</span>
           <span class="cv-badge">B2B / B2C</span>
           <span class="cv-badge">Web3 · AdTech · IoT</span>
         </div>
@@ -1570,10 +1522,10 @@
               <div style="font-size:13px;font-weight:600;color:var(--green);">Wargaming</div>
             </div>
           </div>
-          <div style="font-size:15px;font-weight:600;color:var(--dark);line-height:1.4;">World of Warships — Tokyo Game Show 2014 Coverage</div>
-          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;">Press coverage of the World of Warships presentation at Tokyo Game Show 2014, where I represented Wargaming as Producer for the Japanese market. Coordinated the booth, press interviews, and regional launch strategy.</p>
+          <div style="font-size:15px;font-weight:600;color:var(--dark);line-height:1.4;" data-i18n="press1_title">World of Warships — Tokyo Game Show 2014 Coverage</div>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;" data-i18n="press1_desc">Press coverage of the World of Warships presentation at Tokyo Game Show 2014, where I represented Wargaming as Producer for the Japanese market. Coordinated the booth, press interviews, and regional launch strategy.</p>
           <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-weight:500;">
-            <i class="ti ti-external-link" aria-hidden="true"></i> Read article on 4Gamer.net
+            <i class="ti ti-external-link" aria-hidden="true"></i> <span data-i18n="press1_cta">Read article on 4Gamer.net</span>
           </div>
         </div>
       </a>
@@ -1585,14 +1537,14 @@
               <i class="ti ti-file-text" style="font-size:20px;color:var(--green);" aria-hidden="true"></i>
             </div>
             <div>
-              <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;font-weight:500;">JCSS 2019 · Academic paper</div>
+              <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;font-weight:500;" data-i18n="press2_eyebrow">JCSS 2019 · Academic paper</div>
               <div style="font-size:13px;font-weight:600;color:var(--green);">Pechat · Hakuhodo I-Studio</div>
             </div>
           </div>
-          <div style="font-size:15px;font-weight:600;color:var(--dark);line-height:1.4;">Pechat — IoT Button Speaker Research Publication</div>
-          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;">Academic publication from the Japanese Cognitive Science Society referencing Pechat, the connected IoT toy I led from 0 to 120K+ units sold. Demonstrates the product's reach into research and education communities beyond consumer markets.</p>
+          <div style="font-size:15px;font-weight:600;color:var(--dark);line-height:1.4;" data-i18n="press2_title">Pechat — IoT Button Speaker Research Publication</div>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;" data-i18n="press2_desc">Academic publication from the Japanese Cognitive Science Society referencing Pechat, the connected IoT toy I led from 0 to 120K+ units sold. Demonstrates the product's reach into research and education communities beyond consumer markets.</p>
           <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-weight:500;">
-            <i class="ti ti-external-link" aria-hidden="true"></i> Read publication (PDF)
+            <i class="ti ti-external-link" aria-hidden="true"></i> <span data-i18n="press2_cta">Read publication (PDF)</span>
           </div>
         </div>
       </a>
@@ -1608,10 +1560,10 @@
               <div style="font-size:13px;font-weight:600;color:#d97706;">Pechat · Hakuhodo I-Studio</div>
             </div>
           </div>
-          <div style="font-size:15px;font-weight:600;color:var(--dark);line-height:1.4;">Pechat — Good Design Award Winner 🏆</div>
-          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;">Pechat, the connected IoT button speaker I led as Product Manager, received the prestigious Good Design Award (グッドデザイン賞) — Japan's most recognized design prize. Recognition for innovation at the intersection of hardware, software, and child-centered UX.</p>
+          <div style="font-size:15px;font-weight:600;color:var(--dark);line-height:1.4;" data-i18n="press3_title">Pechat — Good Design Award Winner 🏆</div>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;" data-i18n="press3_desc">Pechat, the connected IoT button speaker I led as Product Manager, received the prestigious Good Design Award (グッドデザイン賞) — Japan's most recognized design prize. Recognition for innovation at the intersection of hardware, software, and child-centered UX.</p>
           <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#d97706;font-weight:500;">
-            <i class="ti ti-external-link" aria-hidden="true"></i> View award on g-mark.org
+            <i class="ti ti-external-link" aria-hidden="true"></i> <span data-i18n="press3_cta">View award on g-mark.org</span>
           </div>
         </div>
       </a>
@@ -1636,7 +1588,7 @@
           <div style="width:38px;height:38px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green);font-size:14px;flex-shrink:0;">JY</div>
           <div>
             <div style="font-size:13px;font-weight:600;color:var(--dark);">Jeannie Yang</div>
-            <div style="font-size:11px;color:var(--text-muted);">Ex-SVP SmartNews · Senior to Alexandre</div>
+            <div style="font-size:11px;color:var(--text-muted);" data-i18n="testi1_role">Ex-SVP SmartNews · Senior to Alexandre</div>
           </div>
           <a href="https://linkedin.com/in/devilalex/" target="_blank" style="margin-left:auto;color:var(--text-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
             <i class="ti ti-brand-linkedin" style="font-size:18px;" aria-hidden="true"></i>
@@ -1651,7 +1603,7 @@
           <div style="width:38px;height:38px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green);font-size:14px;flex-shrink:0;">TO</div>
           <div>
             <div style="font-size:13px;font-weight:600;color:var(--dark);">Takahiro Ogoshi</div>
-            <div style="font-size:11px;color:var(--text-muted);">VP of Product, Micoworks · Direct manager at SmartNews</div>
+            <div style="font-size:11px;color:var(--text-muted);" data-i18n="testi2_role">VP of Product, Micoworks · Direct manager at SmartNews</div>
           </div>
           <a href="https://linkedin.com/in/devilalex/" target="_blank" style="margin-left:auto;color:var(--text-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
             <i class="ti ti-brand-linkedin" style="font-size:18px;" aria-hidden="true"></i>
@@ -1666,7 +1618,7 @@
           <div style="width:38px;height:38px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green);font-size:14px;flex-shrink:0;">LK</div>
           <div>
             <div style="font-size:13px;font-weight:600;color:var(--dark);">Léonard Keat</div>
-            <div style="font-size:11px;color:var(--text-muted);">Expert Cybersécurité & IA · Mentor</div>
+            <div style="font-size:11px;color:var(--text-muted);" data-i18n="testi3_role">Expert Cybersécurité & IA · Mentor</div>
           </div>
           <a href="https://linkedin.com/in/devilalex/" target="_blank" style="margin-left:auto;color:var(--text-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
             <i class="ti ti-brand-linkedin" style="font-size:18px;" aria-hidden="true"></i>
@@ -1681,7 +1633,7 @@
           <div style="width:38px;height:38px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green);font-size:14px;flex-shrink:0;">JC</div>
           <div>
             <div style="font-size:13px;font-weight:600;color:var(--dark);">Jessica Cohen</div>
-            <div style="font-size:11px;color:var(--text-muted);">Creator & Editor · K-Society Magazine</div>
+            <div style="font-size:11px;color:var(--text-muted);" data-i18n="testi4_role">Creator & Editor · K-Society Magazine</div>
           </div>
           <a href="https://linkedin.com/in/devilalex/" target="_blank" style="margin-left:auto;color:var(--text-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
             <i class="ti ti-brand-linkedin" style="font-size:18px;" aria-hidden="true"></i>
@@ -1696,7 +1648,7 @@
           <div style="width:38px;height:38px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green);font-size:14px;flex-shrink:0;">MM</div>
           <div>
             <div style="font-size:13px;font-weight:600;color:var(--dark);">Mickaël Moreira</div>
-            <div style="font-size:11px;color:var(--text-muted);">Directeur de l'Exploitation · ACMOSS</div>
+            <div style="font-size:11px;color:var(--text-muted);" data-i18n="testi5_role">Directeur de l'Exploitation · ACMOSS</div>
           </div>
           <a href="https://linkedin.com/in/devilalex/" target="_blank" style="margin-left:auto;color:var(--text-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
             <i class="ti ti-brand-linkedin" style="font-size:18px;" aria-hidden="true"></i>
@@ -1709,7 +1661,7 @@
 </section>
 
 <footer>
-  <p>Designed & built by <span>Alexandre Leblanc</span> · 2026</p>
+  <p data-i18n="footer_text">Designed & built by <span>Alexandre Leblanc</span> · 2026</p>
 </footer>
 
 
