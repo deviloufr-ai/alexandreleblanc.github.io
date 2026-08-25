@@ -99,13 +99,13 @@
   }
 
   .hero-photo {
-    width: 104px; height: 104px;
+    width: 120px; height: 120px;
     border-radius: 50%;
     object-fit: cover; object-position: center top;
-    border: 3px solid rgba(29,158,117,0.55);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-    margin-bottom: 1.75rem;
-    position: relative; z-index: 1;
+    border: 3px solid var(--green);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    align-self: center;
+    margin-bottom: 6px;
   }
 
   .hero-tag {
@@ -594,7 +594,7 @@
     /* Hero */
     .hero { height: auto; margin-top: 60px; }
     .hero-left { padding: 3rem 1.25rem 2rem; }
-    .hero-photo { width: 88px; height: 88px; margin-bottom: 1.25rem; }
+    .hero-photo { width: 100px; height: 100px; }
     .hero-left h1 { font-size: 2.4rem; letter-spacing: -1px; }
     .hero-left .subtitle { font-size: 0.9rem; }
     .hero-metrics { flex-wrap: wrap; width: 100%; }
@@ -764,7 +764,6 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-left">
-    <img class="hero-photo" src="assets/alexandre-leblanc.jpg" alt="Alexandre Leblanc" onerror="this.style.display='none'">
     <div class="hero-tag" data-i18n="hero_tag">Available for new opportunities</div>
 
     <h1>Alexandre<br><span>Leblanc</span></h1>
@@ -831,6 +830,7 @@
   </div>
 
   <div class="hero-right">
+    <img class="hero-photo" src="assets/alexandre-leblanc.jpg" alt="Alexandre Leblanc" onerror="this.style.display='none'">
     <div class="location-badge" style="margin: 4px 0;">
       <i class="ti ti-map-pin" style="font-size:14px;color:#1D9E75;" aria-hidden="true"></i>
       <span data-i18n="loc_beauvais">Beauvais, France · Open to remote</span>
